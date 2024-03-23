@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A12D52182BAE7F25000B08D4 /* ReactorKit in Frameworks */ = {isa = PBXBuildFile; productRef = A12D52172BAE7F25000B08D4 /* ReactorKit */; };
+		A12D521B2BAE7F3E000B08D4 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = A12D521A2BAE7F3E000B08D4 /* SnapKit */; };
+		A12D521E2BAE7F4B000B08D4 /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = A12D521D2BAE7F4B000B08D4 /* RxBlocking */; };
+		A12D52202BAE7F4B000B08D4 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = A12D521F2BAE7F4B000B08D4 /* RxCocoa */; };
+		A12D52222BAE7F4B000B08D4 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = A12D52212BAE7F4B000B08D4 /* RxRelay */; };
+		A12D52252BAE8296000B08D4 /* RxKeyboard in Frameworks */ = {isa = PBXBuildFile; productRef = A12D52242BAE8296000B08D4 /* RxKeyboard */; };
+		A12D52272BAE82D4000B08D4 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12D52262BAE82D4000B08D4 /* LoginService.swift */; };
 		A1C3A2522BADD922000A41FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C3A2512BADD922000A41FD /* AppDelegate.swift */; };
 		A1C3A2542BADD922000A41FD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C3A2532BADD922000A41FD /* SceneDelegate.swift */; };
 		A1C3A2562BADD922000A41FD /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C3A2552BADD922000A41FD /* LaunchViewController.swift */; };
@@ -15,8 +22,20 @@
 		A1C3A2692BADD924000A41FD /* sonmongTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C3A2682BADD924000A41FD /* sonmongTests.swift */; };
 		A1C3A2732BADD924000A41FD /* sonmongUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C3A2722BADD924000A41FD /* sonmongUITests.swift */; };
 		A1C3A2752BADD924000A41FD /* sonmongUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C3A2742BADD924000A41FD /* sonmongUITestsLaunchTests.swift */; };
+		A1CFB0B72BAEEBAE00BAABC8 /* RxOptional in Frameworks */ = {isa = PBXBuildFile; productRef = A1CFB0B62BAEEBAE00BAABC8 /* RxOptional */; };
+		A1CFB0B92BAEEBF200BAABC8 /* RegisterUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CFB0B82BAEEBF200BAABC8 /* RegisterUserVC.swift */; };
+		A1CFB0BB2BAEEC1800BAABC8 /* RegisterUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CFB0BA2BAEEC1800BAABC8 /* RegisterUserView.swift */; };
+		A1CFB0BD2BAEEC3200BAABC8 /* RegisterUserReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CFB0BC2BAEEC3200BAABC8 /* RegisterUserReactor.swift */; };
+		A1CFB0BF2BAEECC700BAABC8 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CFB0BE2BAEECC700BAABC8 /* Constant.swift */; };
+		A1CFB0C42BAEF10800BAABC8 /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CFB0C32BAEF10800BAABC8 /* APIResponse.swift */; };
+		A1CFB0C62BAEF17700BAABC8 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CFB0C52BAEF17700BAABC8 /* APIService.swift */; };
+		A1CFB0C92BAEF4D500BAABC8 /* RxAlamofire in Frameworks */ = {isa = PBXBuildFile; productRef = A1CFB0C82BAEF4D500BAABC8 /* RxAlamofire */; };
+		A1CFB0CC2BAEFA4600BAABC8 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = A1CFB0CB2BAEFA4600BAABC8 /* Alamofire */; };
+		A1CFB0CE2BAEFA4600BAABC8 /* AlamofireDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = A1CFB0CD2BAEFA4600BAABC8 /* AlamofireDynamic */; };
+		A1CFB0D12BAEFB7300BAABC8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CFB0D02BAEFB7300BAABC8 /* User.swift */; };
 		A1EE02422BAE7C75008EE352 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EE02412BAE7C75008EE352 /* LoginVC.swift */; };
 		A1EE02442BAE7C7B008EE352 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EE02432BAE7C7B008EE352 /* LoginView.swift */; };
+		A1EE02492BAE7DC5008EE352 /* LoginReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EE02482BAE7DC5008EE352 /* LoginReactor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +56,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A12D52262BAE82D4000B08D4 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		A1C3A24E2BADD922000A41FD /* sonmong.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sonmong.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1C3A2512BADD922000A41FD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A1C3A2532BADD922000A41FD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,8 +69,16 @@
 		A1C3A26E2BADD924000A41FD /* sonmongUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = sonmongUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1C3A2722BADD924000A41FD /* sonmongUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sonmongUITests.swift; sourceTree = "<group>"; };
 		A1C3A2742BADD924000A41FD /* sonmongUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sonmongUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		A1CFB0B82BAEEBF200BAABC8 /* RegisterUserVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUserVC.swift; sourceTree = "<group>"; };
+		A1CFB0BA2BAEEC1800BAABC8 /* RegisterUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUserView.swift; sourceTree = "<group>"; };
+		A1CFB0BC2BAEEC3200BAABC8 /* RegisterUserReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUserReactor.swift; sourceTree = "<group>"; };
+		A1CFB0BE2BAEECC700BAABC8 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		A1CFB0C32BAEF10800BAABC8 /* APIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponse.swift; sourceTree = "<group>"; };
+		A1CFB0C52BAEF17700BAABC8 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		A1CFB0D02BAEFB7300BAABC8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A1EE02412BAE7C75008EE352 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		A1EE02432BAE7C7B008EE352 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		A1EE02482BAE7DC5008EE352 /* LoginReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginReactor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +86,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1CFB0CC2BAEFA4600BAABC8 /* Alamofire in Frameworks */,
+				A1CFB0B72BAEEBAE00BAABC8 /* RxOptional in Frameworks */,
+				A12D52222BAE7F4B000B08D4 /* RxRelay in Frameworks */,
+				A12D52252BAE8296000B08D4 /* RxKeyboard in Frameworks */,
+				A12D52182BAE7F25000B08D4 /* ReactorKit in Frameworks */,
+				A12D521E2BAE7F4B000B08D4 /* RxBlocking in Frameworks */,
+				A1CFB0C92BAEF4D500BAABC8 /* RxAlamofire in Frameworks */,
+				A1CFB0CE2BAEFA4600BAABC8 /* AlamofireDynamic in Frameworks */,
+				A12D52202BAE7F4B000B08D4 /* RxCocoa in Frameworks */,
+				A12D521B2BAE7F3E000B08D4 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,6 +139,8 @@
 		A1C3A2502BADD922000A41FD /* sonmong */ = {
 			isa = PBXGroup;
 			children = (
+				A1CFB0CF2BAEFB5400BAABC8 /* Model */,
+				A1CFB0C22BAEF0FC00BAABC8 /* Supporting */,
 				A1EE02402BAE7C66008EE352 /* Login */,
 				A1C3A2512BADD922000A41FD /* AppDelegate.swift */,
 				A1C3A2532BADD922000A41FD /* SceneDelegate.swift */,
@@ -108,6 +148,7 @@
 				A1C3A25A2BADD923000A41FD /* Assets.xcassets */,
 				A1C3A25C2BADD923000A41FD /* LaunchScreen.storyboard */,
 				A1C3A25F2BADD923000A41FD /* Info.plist */,
+				A1CFB0BE2BAEECC700BAABC8 /* Constant.swift */,
 			);
 			path = sonmong;
 			sourceTree = "<group>";
@@ -129,11 +170,33 @@
 			path = sonmongUITests;
 			sourceTree = "<group>";
 		};
+		A1CFB0C22BAEF0FC00BAABC8 /* Supporting */ = {
+			isa = PBXGroup;
+			children = (
+				A1CFB0C32BAEF10800BAABC8 /* APIResponse.swift */,
+				A1CFB0C52BAEF17700BAABC8 /* APIService.swift */,
+			);
+			path = Supporting;
+			sourceTree = "<group>";
+		};
+		A1CFB0CF2BAEFB5400BAABC8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A1CFB0D02BAEFB7300BAABC8 /* User.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		A1EE02402BAE7C66008EE352 /* Login */ = {
 			isa = PBXGroup;
 			children = (
 				A1EE02412BAE7C75008EE352 /* LoginVC.swift */,
 				A1EE02432BAE7C7B008EE352 /* LoginView.swift */,
+				A1EE02482BAE7DC5008EE352 /* LoginReactor.swift */,
+				A12D52262BAE82D4000B08D4 /* LoginService.swift */,
+				A1CFB0B82BAEEBF200BAABC8 /* RegisterUserVC.swift */,
+				A1CFB0BA2BAEEC1800BAABC8 /* RegisterUserView.swift */,
+				A1CFB0BC2BAEEC3200BAABC8 /* RegisterUserReactor.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -154,6 +217,18 @@
 			dependencies = (
 			);
 			name = sonmong;
+			packageProductDependencies = (
+				A12D52172BAE7F25000B08D4 /* ReactorKit */,
+				A12D521A2BAE7F3E000B08D4 /* SnapKit */,
+				A12D521D2BAE7F4B000B08D4 /* RxBlocking */,
+				A12D521F2BAE7F4B000B08D4 /* RxCocoa */,
+				A12D52212BAE7F4B000B08D4 /* RxRelay */,
+				A12D52242BAE8296000B08D4 /* RxKeyboard */,
+				A1CFB0B62BAEEBAE00BAABC8 /* RxOptional */,
+				A1CFB0C82BAEF4D500BAABC8 /* RxAlamofire */,
+				A1CFB0CB2BAEFA4600BAABC8 /* Alamofire */,
+				A1CFB0CD2BAEFA4600BAABC8 /* AlamofireDynamic */,
+			);
 			productName = sonmong;
 			productReference = A1C3A24E2BADD922000A41FD /* sonmong.app */;
 			productType = "com.apple.product-type.application";
@@ -227,9 +302,13 @@
 			);
 			mainGroup = A1C3A2452BADD922000A41FD;
 			packageReferences = (
-				A1EE02452BAE7CFC008EE352 /* XCRemoteSwiftPackageReference "RxSwift" */,
-				A1EE02462BAE7D4D008EE352 /* XCRemoteSwiftPackageReference "ReactorKit" */,
-				A1EE02472BAE7D56008EE352 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				A12D52162BAE7F25000B08D4 /* XCRemoteSwiftPackageReference "ReactorKit" */,
+				A12D52192BAE7F3E000B08D4 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				A12D521C2BAE7F4B000B08D4 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				A12D52232BAE8296000B08D4 /* XCRemoteSwiftPackageReference "RxKeyboard" */,
+				A1CFB0B52BAEEBAE00BAABC8 /* XCRemoteSwiftPackageReference "RxOptional" */,
+				A1CFB0C72BAEF4D500BAABC8 /* XCRemoteSwiftPackageReference "RxAlamofire" */,
+				A1CFB0CA2BAEFA4600BAABC8 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = A1C3A24F2BADD922000A41FD /* Products */;
 			projectDirPath = "";
@@ -275,9 +354,18 @@
 			files = (
 				A1C3A2562BADD922000A41FD /* LaunchViewController.swift in Sources */,
 				A1C3A2522BADD922000A41FD /* AppDelegate.swift in Sources */,
+				A1CFB0BD2BAEEC3200BAABC8 /* RegisterUserReactor.swift in Sources */,
+				A1EE02492BAE7DC5008EE352 /* LoginReactor.swift in Sources */,
+				A1CFB0BB2BAEEC1800BAABC8 /* RegisterUserView.swift in Sources */,
+				A1CFB0C42BAEF10800BAABC8 /* APIResponse.swift in Sources */,
+				A1CFB0D12BAEFB7300BAABC8 /* User.swift in Sources */,
 				A1EE02422BAE7C75008EE352 /* LoginVC.swift in Sources */,
+				A1CFB0B92BAEEBF200BAABC8 /* RegisterUserVC.swift in Sources */,
 				A1C3A2542BADD922000A41FD /* SceneDelegate.swift in Sources */,
+				A1CFB0C62BAEF17700BAABC8 /* APIService.swift in Sources */,
+				A1CFB0BF2BAEECC700BAABC8 /* Constant.swift in Sources */,
 				A1EE02442BAE7C7B008EE352 /* LoginView.swift in Sources */,
+				A12D52272BAE82D4000B08D4 /* LoginService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -456,7 +544,6 @@
 				INFOPLIST_FILE = sonmong/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -484,7 +571,6 @@
 				INFOPLIST_FILE = sonmong/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -618,15 +704,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		A1EE02452BAE7CFC008EE352 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 6.6.0;
-			};
-		};
-		A1EE02462BAE7D4D008EE352 /* XCRemoteSwiftPackageReference "ReactorKit" */ = {
+		A12D52162BAE7F25000B08D4 /* XCRemoteSwiftPackageReference "ReactorKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactorKit/ReactorKit.git";
 			requirement = {
@@ -634,7 +712,7 @@
 				minimumVersion = 3.2.0;
 			};
 		};
-		A1EE02472BAE7D56008EE352 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+		A12D52192BAE7F3E000B08D4 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
 			requirement = {
@@ -642,7 +720,100 @@
 				minimumVersion = 5.7.1;
 			};
 		};
+		A12D521C2BAE7F4B000B08D4 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.6.0;
+			};
+		};
+		A12D52232BAE8296000B08D4 /* XCRemoteSwiftPackageReference "RxKeyboard" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxKeyboard.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.1;
+			};
+		};
+		A1CFB0B52BAEEBAE00BAABC8 /* XCRemoteSwiftPackageReference "RxOptional" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxOptional.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.5;
+			};
+		};
+		A1CFB0C72BAEF4D500BAABC8 /* XCRemoteSwiftPackageReference "RxAlamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxAlamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.1.1;
+			};
+		};
+		A1CFB0CA2BAEFA4600BAABC8 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.9.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A12D52172BAE7F25000B08D4 /* ReactorKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A12D52162BAE7F25000B08D4 /* XCRemoteSwiftPackageReference "ReactorKit" */;
+			productName = ReactorKit;
+		};
+		A12D521A2BAE7F3E000B08D4 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A12D52192BAE7F3E000B08D4 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		A12D521D2BAE7F4B000B08D4 /* RxBlocking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A12D521C2BAE7F4B000B08D4 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxBlocking;
+		};
+		A12D521F2BAE7F4B000B08D4 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A12D521C2BAE7F4B000B08D4 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		A12D52212BAE7F4B000B08D4 /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A12D521C2BAE7F4B000B08D4 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		A12D52242BAE8296000B08D4 /* RxKeyboard */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A12D52232BAE8296000B08D4 /* XCRemoteSwiftPackageReference "RxKeyboard" */;
+			productName = RxKeyboard;
+		};
+		A1CFB0B62BAEEBAE00BAABC8 /* RxOptional */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A1CFB0B52BAEEBAE00BAABC8 /* XCRemoteSwiftPackageReference "RxOptional" */;
+			productName = RxOptional;
+		};
+		A1CFB0C82BAEF4D500BAABC8 /* RxAlamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A1CFB0C72BAEF4D500BAABC8 /* XCRemoteSwiftPackageReference "RxAlamofire" */;
+			productName = RxAlamofire;
+		};
+		A1CFB0CB2BAEFA4600BAABC8 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A1CFB0CA2BAEFA4600BAABC8 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		A1CFB0CD2BAEFA4600BAABC8 /* AlamofireDynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A1CFB0CA2BAEFA4600BAABC8 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = AlamofireDynamic;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A1C3A2462BADD922000A41FD /* Project object */;
 }
