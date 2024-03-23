@@ -25,14 +25,15 @@ extension Constant {
         static let l2 = UIColor(red: 0.90, green: 0.91, blue: 0.93, alpha: 1.00)
         static let l3 = UIColor(red: 0.86, green: 0.87, blue: 0.88, alpha: 1.00)
         
-        static let m1 = UIColor(red: 0.96, green: 0.64, blue: 0.74, alpha: 1.00)
+        static let m1 = UIColor(red: 0.91, green: 0.25, blue: 0.33, alpha: 1.00)
         static let m2 = UIColor(red: 0.96, green: 0.64, blue: 0.74, alpha: 1.00)
-        static let m3 = UIColor(red: 0.96, green: 0.64, blue: 0.74, alpha: 1.00)
-        static let m4 = UIColor(red: 0.96, green: 0.64, blue: 0.74, alpha: 1.00)
-        static let m5 = UIColor(red: 0.96, green: 0.64, blue: 0.74, alpha: 1.00)
-        static let m6 = UIColor(red: 0.96, green: 0.64, blue: 0.74, alpha: 1.00)
-        static let m7 = UIColor(red: 0.96, green: 0.64, blue: 0.74, alpha: 1.00)
-        static let m8 = UIColor(red: 0.96, green: 0.64, blue: 0.74, alpha: 1.00)
+        static let m3 = UIColor(red: 0.98, green: 0.81, blue: 0.83, alpha: 1.00)
+        static let m4 = UIColor(red: 1.00, green: 0.89, blue: 0.95, alpha: 1.00)
+        static let m5 = UIColor(red: 0.21, green: 0.24, blue: 0.34, alpha: 1.00)
+        static let m6 = UIColor(red: 0.28, green: 0.29, blue: 0.63, alpha: 1.00)
+        static let m7 = UIColor(red: 0.42, green: 0.36, blue: 0.83, alpha: 1.00)
+        
+        static let f1 = UIColor(red: 1.00, green: 1.00, blue: 1.00, alpha: 1.00)
     }
     
 }
