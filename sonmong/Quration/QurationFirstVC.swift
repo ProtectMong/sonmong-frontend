@@ -6,3 +6,157 @@
 //
 
 import Foundation
+import UIKit
+import RxSwift
+import RxCocoa
+import ReactorKit
+import SnapKit
+
+class QurationFirstVC: UIViewController, View {
+    
+    var disposeBag = DisposeBag()
+    let baseView = QurationFirstView()
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        bindNavigation()
+        reactor?.action.onNext(.viewDidLoaded)
+    }
+    
+    func bind(reactor: QurationFirstReactor) {
+        baseView.layout(superView: self.view)
+        
+        baseView.painAreaUserInputTextField.delegate = self
+        
+        reactor.state.map { $0.painAreaDataSource }
+            .filterNil()
+            .bind(to: baseView.painAreaCollectionView.rx.items(cellIdentifier: "QurationSelectionStyleCell", cellType: QurationSelectionStyleCell.self)) { row, cellReactor, cell in
+                cell.titleLabel.text = cellReactor.currentState.title
+                
+                if cellReactor.currentState.isSelected == true {
+                    cell.baseView.layer.borderColor = Constant.Color.m7.cgColor
+                    cell.baseView.backgroundColor = Constant.Color.m7_mate
+                    cell.titleLabel.textColor = Constant.Color.m7
+//                    cell.deleteButton.setImage(UIImage(named: "close-outline"), for: .normal)
+                } else {
+                    cell.baseView.layer.borderColor = Constant.Color.g1.cgColor
+                    cell.baseView.backgroundColor = Constant.Color.f1
+                    cell.titleLabel.textColor = Constant.Color.g5
+//                    cell.deleteButton.setImage(UIImage(named: "close-outline"), for: .normal)
+                }
+                
+                cell.deleteButton.isHidden = true
+                cell.deleteButton.snp.updateConstraints { make in
+                    make.trailing.equalTo(cell.baseView.snp.trailing).offset(-4)
+                    make.width.equalTo(0)
+                }
+                
+//                if cellReactor.currentState.isCustom == false {
+//                    cell.deleteButton.isHidden = true
+//                    cell.deleteButton.snp.updateConstraints { make in
+//                        make.trailing.equalTo(cell.baseView.snp.trailing).offset(-4)
+//                        make.width.equalTo(0)
+//                    }
+//                } else {
+//                    cell.deleteButton.isHidden = false
+//                    cell.deleteButton.snp.updateConstraints { make in
+//                        make.trailing.equalTo(cell.baseView.snp.trailing).offset(-10)
+//                        make.width.equalTo(16)
+//                    }
+//                }
+                
+//                cell.deleteButton.rx.tap
+//                    .map { Reactor.Action.didCellDeleteButtonTapped(cellReactor.currentState.title)}
+//                    .bind(to: reactor.action)
+//                    .disposed(by: cell.disposeBag)
+            }
+            .disposed(by: disposeBag)
+        
+        baseView.painAreaCollectionView.rx.observe(CGSize.self, "contentSize")
+            .distinctUntilChanged()
+            .debounce(RxTimeInterval.milliseconds(300), scheduler: MainScheduler.asyncInstance)
+            .filterNil()
+            .withUnretained(self)
+            .subscribe(onNext: { vc, contentSize in
+                vc.baseView.painAreaCollectionView.snp.updateConstraints { make in
+                    make.height.equalTo(contentSize.height)
+                }
+                self.baseView.layoutIfNeeded()
+            }).disposed(by: disposeBag)
+        
+        baseView.painAreaCollectionView.rx.modelSelected(PainAreaCollectionViewCellReactor.self)
+            .map { Reactor.Action.didPainAreaSelected($0)}
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        baseView.painAreaUserInputTextField.rx.text.orEmpty
+            .map { Reactor.Action.didPainAreaTextFieldChanged($0)}
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.inputPainAreaData }
+            .distinctUntilChanged()
+            .bind(to: baseView.painAreaUserInputTextField.rx.text)
+            .disposed(by: disposeBag)
+        
+        baseView.painAreaUserInputButton.rx.tap
+            .map { Reactor.Action.didPainAreaUserInputButtonTapped }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+    }
+    
+    func bindTextFieldToolBar() {
+        let toolBar = UIToolbar()
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: nil)
+        toolBar.items = [flexibleSpace, doneButton]
+        toolBar.sizeToFit()
+        
+        doneButton.rx.tap
+            .withUnretained(self)
+            .subscribe(onNext: { vc, _ in
+                vc.baseView.endEditing(true)
+            })
+            .disposed(by: self.disposeBag)
+        
+        baseView.painAreaUserInputTextField.inputAccessoryView = toolBar
+    }
+    
+    func bindNavigation() {
+        self.title = "손목 건강문답"
+        self.navigationController?.navigationBar.prefersLargeTitles = false
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.navigationBar.backgroundColor = Constant.Color.f1
+        self.navigationController?.navigationBar.titleTextAttributes = [
+            NSAttributedString.Key.font : UIFont.systemFont(ofSize: 20, weight: .bold)
+        ]
+        
+        self.navigationController?.navigationBar.tintColor = Constant.Color.b1
+        
+        let backButtonItem = UIBarButtonItem(image: UIImage(named: "back_ic"), style: .plain, target: nil, action: nil)
+        backButtonItem.tintColor = Constant.Color.b1
+        backButtonItem.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        
+        self.navigationItem.setLeftBarButtonItems([backButtonItem], animated: false)
+
+        backButtonItem.rx.tap
+            .subscribe(onNext: { _ in
+                self.navigationController?.popViewController(animated: true)
+            }).disposed(by: disposeBag)
+    }
+}
+
+extension QurationFirstVC: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        baseView.painAreaUserInputTextField.layer.borderColor = Constant.Color.m7.cgColor
+        baseView.painAreaUserInputButton.backgroundColor = Constant.Color.m7
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        baseView.painAreaUserInputTextField.layer.borderColor = Constant.Color.g1.cgColor
+        baseView.painAreaUserInputButton.backgroundColor = Constant.Color.g2
+    }
+}
