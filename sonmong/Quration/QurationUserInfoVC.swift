@@ -76,9 +76,24 @@ class QurationUserInfoVC: UIViewController, View {
             })
             .disposed(by: disposeBag)
         
+        baseView.previousButton.rx.tap
+            .map { Reactor.Action.didPreviousButtonTapped }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
         baseView.nextButton.rx.tap
             .map { Reactor.Action.didNextButtonTapped }
             .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.isPresentPreviousVC }
+            .distinctUntilChanged()
+            .filterNil()
+            .filter { $0 == true }
+            .withUnretained(self)
+            .subscribe(onNext: { vc, _ in
+                vc.navigationController?.popViewController(animated: true)
+            })
             .disposed(by: disposeBag)
         
         reactor.state.map { $0.isPresentNextVC }

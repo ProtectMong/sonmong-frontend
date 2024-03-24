@@ -16,6 +16,7 @@ class QurationUserInfoReactor: Reactor {
         case didBirthdayPickerChanged(Date?)
         case didGenderGirlButtonTapped
         case didGenderBoyButtonTapped
+        case didPreviousButtonTapped
         case didNextButtonTapped
     }
     
@@ -23,6 +24,7 @@ class QurationUserInfoReactor: Reactor {
         case setBirthday(String?)
         case setGender(String)
         
+        case setIsPresentPreviousVC(Bool?)
         case setIsPresentNextVC(Bool?)
     }
     
@@ -30,6 +32,7 @@ class QurationUserInfoReactor: Reactor {
         var birthday: String?
         var gender: String = "W"
         
+        var isPresentPreviousVC: Bool?
         var isPresentNextVC: Bool?
     }
     
@@ -56,6 +59,13 @@ class QurationUserInfoReactor: Reactor {
             return Observable.concat([
                 .just(Mutation.setGender("M"))
             ])
+            
+        case .didPreviousButtonTapped:
+            return Observable.concat([
+                .just(Mutation.setIsPresentPreviousVC(true)),
+                .just(Mutation.setIsPresentPreviousVC(nil))
+            ])
+            
         case .didNextButtonTapped:
             return Observable.concat([
                 .just(Mutation.setIsPresentNextVC(true)),
@@ -72,6 +82,8 @@ class QurationUserInfoReactor: Reactor {
         case .setGender(let gender):
             newState.gender = gender
             
+        case .setIsPresentPreviousVC(let isPresent):
+            newState.isPresentPreviousVC = isPresent
         case .setIsPresentNextVC(let isPresent):
             newState.isPresentNextVC = isPresent
         }

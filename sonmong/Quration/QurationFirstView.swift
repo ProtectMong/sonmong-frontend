@@ -161,6 +161,7 @@ class QurationFirstView: UIView {
         textField.layer.borderColor = Constant.Color.g1.cgColor
         textField.layer.borderWidth = 1
         textField.layer.cornerRadius = 8
+        textField.textColor = Constant.Color.g5
         
         let margin = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: 15))
         textField.leftView = margin
@@ -170,6 +171,59 @@ class QurationFirstView: UIView {
     }()
     
     let painAreaUserInputButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("등록", for: .normal)
+        button.setTitleColor(Constant.Color.f1, for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 15, weight: .regular)
+        button.backgroundColor = Constant.Color.g2
+        button.layer.cornerRadius = 8
+        
+        return button
+    }()
+    
+    let painDetailAreaTitle: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "위의 영역 중 어느 위치가 아프신가요?"
+        label.textColor = Constant.Color.b1
+        label.font = .systemFont(ofSize: 16, weight: .bold)
+        label.numberOfLines = 0
+        
+        return label
+    }()
+    
+    let painDetailAreaCollectionView: UICollectionView = {
+        let layout = CollectionViewCellLeftAlignFlowLayout()
+        layout.estimatedItemSize = CollectionViewCellLeftAlignFlowLayout.automaticSize
+        layout.sectionInset = UIEdgeInsets.zero
+
+        var collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collection.translatesAutoresizingMaskIntoConstraints = false
+        collection.register(QurationSelectionStyleCell.self, forCellWithReuseIdentifier: "QurationSelectionStyleCell")
+        collection.isScrollEnabled = false
+        collection.contentInset = UIEdgeInsets.zero
+
+        return collection
+    }()
+    
+    let painDetailAreaUserInputTextField: UITextField = {
+        let textField = UITextField()
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.placeholder = "직접 입력해 주세요."
+        textField.layer.borderColor = Constant.Color.g1.cgColor
+        textField.layer.borderWidth = 1
+        textField.layer.cornerRadius = 8
+        textField.textColor = Constant.Color.g5
+        
+        let margin = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: 15))
+        textField.leftView = margin
+        textField.leftViewMode = .always
+        
+        return textField
+    }()
+    
+    let painDetailAreaUserInputButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("등록", for: .normal)
@@ -306,6 +360,36 @@ class QurationFirstView: UIView {
         contentView.addSubview(painAreaUserInputTextField)
         painAreaUserInputTextField.snp.makeConstraints { make in
             make.top.equalTo(painAreaCollectionView.snp.bottom).offset(7)
+            make.leading.equalTo(contentView.snp.leading).offset(22)
+            make.trailing.equalTo(painAreaUserInputButton.snp.leading).offset(-8)
+            make.height.equalTo(46)
+        }
+        
+        contentView.addSubview(painDetailAreaTitle)
+        painDetailAreaTitle.snp.makeConstraints { make in
+            make.top.equalTo(painAreaUserInputTextField.snp.bottom).offset(30)
+            make.leading.equalTo(contentView.snp.leading).offset(22)
+        }
+        
+        contentView.addSubview(painDetailAreaCollectionView)
+        painDetailAreaCollectionView.snp.makeConstraints { make in
+            make.top.equalTo(painDetailAreaTitle.snp.bottom).offset(18)
+            make.leading.equalTo(contentView.snp.leading).offset(22)
+            make.trailing.equalTo(contentView.snp.trailing).offset(-22)
+            make.height.equalTo(48)
+        }
+        
+        contentView.addSubview(painDetailAreaUserInputButton)
+        painDetailAreaUserInputButton.snp.makeConstraints { make in
+            make.top.equalTo(painDetailAreaCollectionView.snp.bottom).offset(7)
+            make.trailing.equalTo(contentView.snp.trailing).offset(-22)
+            make.width.equalTo(84)
+            make.height.equalTo(46)
+        }
+        
+        contentView.addSubview(painDetailAreaUserInputTextField)
+        painDetailAreaUserInputTextField.snp.makeConstraints { make in
+            make.top.equalTo(painDetailAreaCollectionView.snp.bottom).offset(7)
             make.leading.equalTo(contentView.snp.leading).offset(22)
             make.trailing.equalTo(painAreaUserInputButton.snp.leading).offset(-8)
             make.height.equalTo(46)

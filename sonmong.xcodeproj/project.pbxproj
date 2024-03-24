@@ -29,6 +29,9 @@
 		A15C25D42BAFFED8007AA1E7 /* QurationSelectionStyleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15C25D32BAFFED8007AA1E7 /* QurationSelectionStyleCell.swift */; };
 		A15C25D62BAFFF66007AA1E7 /* CollectionViewCellLeftAlignFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15C25D52BAFFF66007AA1E7 /* CollectionViewCellLeftAlignFlowLayout.swift */; };
 		A15C25D82BB002EA007AA1E7 /* PainAreaCollectionViewCellReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15C25D72BB002EA007AA1E7 /* PainAreaCollectionViewCellReactor.swift */; };
+		A15C25DA2BB024D8007AA1E7 /* QurationSecondVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15C25D92BB024D8007AA1E7 /* QurationSecondVC.swift */; };
+		A15C25DC2BB024F9007AA1E7 /* QurationSecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15C25DB2BB024F9007AA1E7 /* QurationSecondView.swift */; };
+		A15C25DE2BB02502007AA1E7 /* QurationSecondReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15C25DD2BB02502007AA1E7 /* QurationSecondReactor.swift */; };
 		A1C3A2522BADD922000A41FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C3A2512BADD922000A41FD /* AppDelegate.swift */; };
 		A1C3A2542BADD922000A41FD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C3A2532BADD922000A41FD /* SceneDelegate.swift */; };
 		A1C3A2562BADD922000A41FD /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C3A2552BADD922000A41FD /* LaunchViewController.swift */; };
@@ -84,6 +87,9 @@
 		A15C25D32BAFFED8007AA1E7 /* QurationSelectionStyleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QurationSelectionStyleCell.swift; sourceTree = "<group>"; };
 		A15C25D52BAFFF66007AA1E7 /* CollectionViewCellLeftAlignFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCellLeftAlignFlowLayout.swift; sourceTree = "<group>"; };
 		A15C25D72BB002EA007AA1E7 /* PainAreaCollectionViewCellReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PainAreaCollectionViewCellReactor.swift; sourceTree = "<group>"; };
+		A15C25D92BB024D8007AA1E7 /* QurationSecondVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QurationSecondVC.swift; sourceTree = "<group>"; };
+		A15C25DB2BB024F9007AA1E7 /* QurationSecondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QurationSecondView.swift; sourceTree = "<group>"; };
+		A15C25DD2BB02502007AA1E7 /* QurationSecondReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QurationSecondReactor.swift; sourceTree = "<group>"; };
 		A1C3A24E2BADD922000A41FD /* sonmong.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sonmong.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1C3A2512BADD922000A41FD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A1C3A2532BADD922000A41FD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -154,6 +160,9 @@
 				A15C25CD2BAFFD78007AA1E7 /* QurationFirstVC.swift */,
 				A15C25CF2BAFFD99007AA1E7 /* QurationFirstView.swift */,
 				A15C25D12BAFFDA3007AA1E7 /* QurationFirstReactor.swift */,
+				A15C25D92BB024D8007AA1E7 /* QurationSecondVC.swift */,
+				A15C25DB2BB024F9007AA1E7 /* QurationSecondView.swift */,
+				A15C25DD2BB02502007AA1E7 /* QurationSecondReactor.swift */,
 				A15C25D32BAFFED8007AA1E7 /* QurationSelectionStyleCell.swift */,
 				A15C25D72BB002EA007AA1E7 /* PainAreaCollectionViewCellReactor.swift */,
 			);
@@ -417,6 +426,7 @@
 				A1EE02492BAE7DC5008EE352 /* LoginReactor.swift in Sources */,
 				A1CFB0BB2BAEEC1800BAABC8 /* RegisterUserView.swift in Sources */,
 				A15C25CE2BAFFD78007AA1E7 /* QurationFirstVC.swift in Sources */,
+				A15C25DE2BB02502007AA1E7 /* QurationSecondReactor.swift in Sources */,
 				A15C25D82BB002EA007AA1E7 /* PainAreaCollectionViewCellReactor.swift in Sources */,
 				A136175D2BAFBE1E00113997 /* QurtionUserInfoReactor.swift in Sources */,
 				A1CFB0C42BAEF10800BAABC8 /* APIResponse.swift in Sources */,
@@ -428,9 +438,11 @@
 				A1CFB0B92BAEEBF200BAABC8 /* RegisterUserVC.swift in Sources */,
 				A1C3A2542BADD922000A41FD /* SceneDelegate.swift in Sources */,
 				A15C25C62BAFDEDC007AA1E7 /* HomeReactor.swift in Sources */,
+				A15C25DC2BB024F9007AA1E7 /* QurationSecondView.swift in Sources */,
 				A1CFB0C62BAEF17700BAABC8 /* APIService.swift in Sources */,
 				A15C25D42BAFFED8007AA1E7 /* QurationSelectionStyleCell.swift in Sources */,
 				A136175B2BAFBE0C00113997 /* QurtionUserInfoView.swift in Sources */,
+				A15C25DA2BB024D8007AA1E7 /* QurationSecondVC.swift in Sources */,
 				A1CFB0BF2BAEECC700BAABC8 /* Constant.swift in Sources */,
 				A1EE02442BAE7C7B008EE352 /* LoginView.swift in Sources */,
 				A15C25C42BAFDEC6007AA1E7 /* HomeVC.swift in Sources */,

@@ -121,7 +121,7 @@ class QurationUserInfoView: UIView {
     let mainTitleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "인적 사항을\n선택해 주세요."
+        label.text = "인적 사항을\n선택해 주세요"
         label.textColor = Constant.Color.b1
         label.font = .systemFont(ofSize: 23, weight: .bold)
         label.numberOfLines = 0
@@ -158,7 +158,7 @@ class QurationUserInfoView: UIView {
         textField.layer.borderColor = Constant.Color.g1.cgColor
         textField.layer.cornerRadius = 10
         textField.placeholder = ""
-//        textField.contentVerticalAlignment = .center
+        textField.textColor = Constant.Color.g5
         
         let outerView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 15))
         let icon = UIImageView(frame: CGRect(x: 15, y: 0, width: 15, height: 15))
