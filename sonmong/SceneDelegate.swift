@@ -20,7 +20,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = RegisterUserVC(reactor: RegisterUserReactor())
+        
+//        let registerVC = RegisterUserVC(reactor: RegisterUserReactor())
+        let tabBarVC = UITabBarController()
+        
+        //각 탭과 연결될 네비게이션컨트롤러 설정
+        let homeVC = HomeVC()
+        let qurationVC = QurationMainVC(reactor: QurationMainReactor())
+                
+        let nav1 = UINavigationController(rootViewController: homeVC)
+        let nav2 = UINavigationController(rootViewController: qurationVC)
+        nav1.tabBarItem = UITabBarItem(title: "First", image: UIImage(systemName: "pencil"), tag: 0)
+        nav2.tabBarItem = UITabBarItem(title: "Second", image: UIImage(systemName: "folder"), tag: 1)
+        tabBarVC.viewControllers = [nav1, nav2]
+        tabBarVC.tabBar.backgroundColor = Constant.Color.f1
+         
+        window?.rootViewController = tabBarVC
         window?.makeKeyAndVisible()
         
     }
