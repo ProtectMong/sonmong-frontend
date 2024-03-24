@@ -20,11 +20,15 @@ class RegisterUserReactor: Reactor {
     enum Mutation {
         case setUserName(String?)
         case setUserNumber(String?)
+        
+        case setIsPresentQurationVC(Bool?)
     }
     
     struct State {
         var userName: String?
         var userNumber: String?
+        
+        var isPresentQurationVC: Bool?
     }
     
     let initialState = State()
@@ -50,19 +54,22 @@ class RegisterUserReactor: Reactor {
                 fatalError("URL is not valid")
             }
 
-            apiService.fetchData(url: url)
-                .observe(on: MainScheduler.instance) // 메인 스레드에서 관찰
-                .subscribe(onNext: { data in
-                    // 데이터를 성공적으로 받았을 때의 처리
-                    print("Received data: \(data)")
-                }, onError: { error in
-                    // 에러 처리
-                    print("Error: \(error)")
-                })
-                .disposed(by: disposeBag)
+//            apiService.request(url: url, , type: <#T##(Decodable & Encodable).Type#>, token: <#T##String#>)
+//                .observe(on: MainScheduler.instance) // 메인 스레드에서 관찰
+//                .subscribe(onNext: { data in
+//                    // 데이터를 성공적으로 받았을 때의 처리
+//                    print("Received data: \(data)")
+//                }, onError: { error in
+//                    // 에러 처리
+//                    print("Error: \(error)")
+//                })
+//                .disposed(by: disposeBag)
 
             
-            return Observable.empty()
+            return Observable.concat([
+                .just(Mutation.setIsPresentQurationVC(true)),
+                .just(Mutation.setIsPresentQurationVC(nil))
+            ])
         }
     }
     
@@ -73,6 +80,9 @@ class RegisterUserReactor: Reactor {
             newState.userName = name
         case .setUserNumber(let number):
             newState.userNumber = number
+            
+        case .setIsPresentQurationVC(let isPresent):
+            newState.isPresentQurationVC = isPresent
         }
         return newState
     }
