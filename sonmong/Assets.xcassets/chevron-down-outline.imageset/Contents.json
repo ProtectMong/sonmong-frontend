@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Tooltip.png",
+      "filename" : "chevron-down-outline.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Tooltip@2x.png",
+      "filename" : "chevron-down-outline@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Tooltip@3x.png",
+      "filename" : "chevron-down-outline@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

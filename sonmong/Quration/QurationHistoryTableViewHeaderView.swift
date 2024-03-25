@@ -15,32 +15,36 @@ class QurationHistoryTableViewHeaderView: UITableViewHeaderFooterView {
     let baseView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = Constant.Color.m7
+        view.backgroundColor = Constant.Color.f1
+//        view.layer.cornerRadius = 13
+//        view.layer.shadowColor = Constant.Color.b1.cgColor
+//        view.layer.shadowOpacity = 0.3
+//        view.layer.shadowOffset = CGSize(width: 0, height: 4)
+//        view.layer.shadowRadius = 4.0
+        view.layer.borderColor = Constant.Color.l2.cgColor
+        view.layer.borderWidth = 1
         
         return view
     }()
     
-    let qurationInfoTitleLabel: UILabel = {
+    let totalNumberLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "AI 전문가에게 작성하고\n손목통증을 진단 하쇼!"
-        label.font = .systemFont(ofSize: 23, weight: .bold)
-        label.textColor = Constant.Color.f1
-        label.textAlignment = .left
-        label.numberOfLines = 0
+        label.text = "총 3개"
+        label.font = .systemFont(ofSize: 14, weight: .regular)
+        label.textColor = Constant.Color.g4
         
         return label
     }()
     
-    let startQurationButton: UIButton = {
+    let sortButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("문답시작!", for: .normal)
-        button.setTitleColor(Constant.Color.f1, for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 16, weight: .medium)
-        button.layer.cornerRadius = 10
-        button.backgroundColor = Constant.Color.m2
-        button.isUserInteractionEnabled = true
+        button.setTitle("오래된 순", for: .normal)
+        button.setTitleColor(Constant.Color.g4, for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 14, weight: .regular)
+        button.setImage(UIImage(named: "chevron-down-outline"), for: .normal)
+        button.semanticContentAttribute = .forceRightToLeft
         
         return button
     }()
@@ -57,19 +61,19 @@ class QurationHistoryTableViewHeaderView: UITableViewHeaderFooterView {
             make.bottom.equalTo(self.contentView.snp.bottom)
         }
         
-        baseView.addSubview(qurationInfoTitleLabel)
-        qurationInfoTitleLabel.snp.makeConstraints { make in
-            make.top.equalTo(baseView.snp.top)
-            make.leading.equalTo(baseView.snp.leading).offset(22)
+        baseView.addSubview(sortButton)
+        sortButton.snp.makeConstraints { make in
+            make.top.equalTo(baseView.snp.top).offset(18)
+            make.trailing.equalTo(baseView.snp.trailing).offset(-22)
+            make.bottom.equalTo(baseView.snp.bottom).offset(-18)
+            make.width.equalTo(82)
         }
         
-        baseView.addSubview(startQurationButton)
-        startQurationButton.snp.makeConstraints { make in
-            make.top.equalTo(qurationInfoTitleLabel.snp.bottom).offset(35)
+        baseView.addSubview(totalNumberLabel)
+        totalNumberLabel.snp.makeConstraints { make in
+            make.top.equalTo(baseView.snp.top).offset(18)
             make.leading.equalTo(baseView.snp.leading).offset(22)
-            make.trailing.equalTo(baseView.snp.trailing).offset(-22)
-            make.bottom.equalTo(baseView.snp.bottom).offset(-30)
-            make.height.equalTo(62)
+            make.bottom.equalTo(baseView.snp.bottom).offset(-18)
         }
     }
     

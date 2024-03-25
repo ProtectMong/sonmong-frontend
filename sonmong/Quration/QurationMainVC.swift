@@ -66,17 +66,12 @@ extension QurationMainVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "QurationHistoryTableViewHeaderView") as! QurationHistoryTableViewHeaderView
         
-        headerView.startQurationButton.rx.tap
-            .subscribe(onNext: { vc in
-                self.reactor?.action.onNext(.didNextButtonTapped)
-            })
-            .disposed(by: disposeBag)
-        
         return headerView
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 200
+        
+        return 50
     }
     
     func bindNavigation() {
