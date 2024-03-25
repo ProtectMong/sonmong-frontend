@@ -21,7 +21,6 @@
 		A15C25C42BAFDEC6007AA1E7 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15C25C32BAFDEC6007AA1E7 /* HomeVC.swift */; };
 		A15C25C62BAFDEDC007AA1E7 /* HomeReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15C25C52BAFDEDC007AA1E7 /* HomeReactor.swift */; };
 		A15C25C82BAFEBB2007AA1E7 /* QurationMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15C25C72BAFEBB2007AA1E7 /* QurationMainVC.swift */; };
-		A15C25CA2BAFEBD1007AA1E7 /* QurationMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15C25C92BAFEBD1007AA1E7 /* QurationMainView.swift */; };
 		A15C25CC2BAFEBDC007AA1E7 /* QurationMainReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15C25CB2BAFEBDC007AA1E7 /* QurationMainReactor.swift */; };
 		A15C25CE2BAFFD78007AA1E7 /* QurationFirstVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15C25CD2BAFFD78007AA1E7 /* QurationFirstVC.swift */; };
 		A15C25D02BAFFD99007AA1E7 /* QurationFirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15C25CF2BAFFD99007AA1E7 /* QurationFirstView.swift */; };
@@ -57,6 +56,7 @@
 		A1CFB0C62BAEF17700BAABC8 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CFB0C52BAEF17700BAABC8 /* APIService.swift */; };
 		A1CFB0C92BAEF4D500BAABC8 /* RxAlamofire in Frameworks */ = {isa = PBXBuildFile; productRef = A1CFB0C82BAEF4D500BAABC8 /* RxAlamofire */; };
 		A1CFB0D12BAEFB7300BAABC8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CFB0D02BAEFB7300BAABC8 /* User.swift */; };
+		A1D7E05B2BB1790900EAF09F /* QurationMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D7E05A2BB1790900EAF09F /* QurationMainView.swift */; };
 		A1EE02422BAE7C75008EE352 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EE02412BAE7C75008EE352 /* LoginVC.swift */; };
 		A1EE02442BAE7C7B008EE352 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EE02432BAE7C7B008EE352 /* LoginView.swift */; };
 		A1EE02492BAE7DC5008EE352 /* LoginReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EE02482BAE7DC5008EE352 /* LoginReactor.swift */; };
@@ -87,7 +87,6 @@
 		A15C25C32BAFDEC6007AA1E7 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		A15C25C52BAFDEDC007AA1E7 /* HomeReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeReactor.swift; sourceTree = "<group>"; };
 		A15C25C72BAFEBB2007AA1E7 /* QurationMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QurationMainVC.swift; sourceTree = "<group>"; };
-		A15C25C92BAFEBD1007AA1E7 /* QurationMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QurationMainView.swift; sourceTree = "<group>"; };
 		A15C25CB2BAFEBDC007AA1E7 /* QurationMainReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QurationMainReactor.swift; sourceTree = "<group>"; };
 		A15C25CD2BAFFD78007AA1E7 /* QurationFirstVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QurationFirstVC.swift; sourceTree = "<group>"; };
 		A15C25CF2BAFFD99007AA1E7 /* QurationFirstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QurationFirstView.swift; sourceTree = "<group>"; };
@@ -125,6 +124,7 @@
 		A1CFB0C32BAEF10800BAABC8 /* APIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponse.swift; sourceTree = "<group>"; };
 		A1CFB0C52BAEF17700BAABC8 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		A1CFB0D02BAEFB7300BAABC8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		A1D7E05A2BB1790900EAF09F /* QurationMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QurationMainView.swift; sourceTree = "<group>"; };
 		A1EE02412BAE7C75008EE352 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		A1EE02432BAE7C7B008EE352 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		A1EE02482BAE7DC5008EE352 /* LoginReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginReactor.swift; sourceTree = "<group>"; };
@@ -168,7 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				A15C25C72BAFEBB2007AA1E7 /* QurationMainVC.swift */,
-				A15C25C92BAFEBD1007AA1E7 /* QurationMainView.swift */,
+				A1D7E05A2BB1790900EAF09F /* QurationMainView.swift */,
 				A15C25CB2BAFEBDC007AA1E7 /* QurationMainReactor.swift */,
 				A15C25EB2BB0505B007AA1E7 /* QurationHistoryTableViewCell.swift */,
 				A15C25ED2BB05097007AA1E7 /* QurationHistoryTableViewHeaderView.swift */,
@@ -446,6 +446,7 @@
 				A1C3A2562BADD922000A41FD /* LaunchViewController.swift in Sources */,
 				A15C25E62BB02F13007AA1E7 /* QurationFourthVC.swift in Sources */,
 				A1C3A2522BADD922000A41FD /* AppDelegate.swift in Sources */,
+				A1D7E05B2BB1790900EAF09F /* QurationMainView.swift in Sources */,
 				A13617592BAFBDE200113997 /* QurationUserInfoVC.swift in Sources */,
 				A15C25D22BAFFDA3007AA1E7 /* QurationFirstReactor.swift in Sources */,
 				A1CFB0BD2BAEEC3200BAABC8 /* RegisterUserReactor.swift in Sources */,
@@ -459,7 +460,6 @@
 				A15C25D82BB002EA007AA1E7 /* PainAreaCollectionViewCellReactor.swift in Sources */,
 				A136175D2BAFBE1E00113997 /* QurtionUserInfoReactor.swift in Sources */,
 				A1CFB0C42BAEF10800BAABC8 /* APIResponse.swift in Sources */,
-				A15C25CA2BAFEBD1007AA1E7 /* QurationMainView.swift in Sources */,
 				A15C25EC2BB0505B007AA1E7 /* QurationHistoryTableViewCell.swift in Sources */,
 				A15C25CC2BAFEBDC007AA1E7 /* QurationMainReactor.swift in Sources */,
 				A1CFB0D12BAEFB7300BAABC8 /* User.swift in Sources */,

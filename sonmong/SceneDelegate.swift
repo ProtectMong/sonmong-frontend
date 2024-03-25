@@ -27,13 +27,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         //각 탭과 연결될 네비게이션컨트롤러 설정
         let homeVC = HomeVC()
         let qurationVC = QurationMainVC(reactor: QurationMainReactor())
+        let loginVC = LoginVC(reactor: LoginReactor())
                 
         let nav1 = UINavigationController(rootViewController: homeVC)
         let nav2 = UINavigationController(rootViewController: qurationVC)
-        nav1.tabBarItem = UITabBarItem(title: "First", image: UIImage(systemName: "pencil"), tag: 0)
-        nav2.tabBarItem = UITabBarItem(title: "Second", image: UIImage(systemName: "folder"), tag: 1)
-        tabBarVC.viewControllers = [nav1, nav2]
+        let nav3 = UINavigationController(rootViewController: loginVC)
+        let nav4 = UINavigationController(rootViewController: loginVC)
+        nav1.tabBarItem = UITabBarItem(title: "홈", image: UIImage(named: "home-outline"), selectedImage: UIImage(named: "home_export")?.withRenderingMode(.alwaysOriginal))
+        nav2.tabBarItem = UITabBarItem(title: "AI상담", image: UIImage(named: "chatbubble-ellipses-outline"), selectedImage: UIImage(named: "chatbubble-ellipses-outline"))
+        nav3.tabBarItem = UITabBarItem(title: "손몽이", image: UIImage(named: "happy-outline"), selectedImage: UIImage(named: "happy-outline"))
+        nav4.tabBarItem = UITabBarItem(title: "마이", image: UIImage(named: "person-outline"), selectedImage: UIImage(named: "person-outline"))
+        tabBarVC.viewControllers = [nav1, nav2, nav3, nav4]
         tabBarVC.tabBar.backgroundColor = Constant.Color.f1
+        
+        tabBarVC.tabBar.tintColor = Constant.Color.b1
+        tabBarVC.tabBar.unselectedItemTintColor = Constant.Color.g4
          
         window?.rootViewController = tabBarVC
         window?.makeKeyAndVisible()
