@@ -20,16 +20,21 @@ class QurationMainVC: UIViewController, View {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        bindNavigation()
         baseView.layout(superView: self.view)
     }
     
     func bind(reactor: QurationMainReactor) {
         
-        baseView.nextButton.rx.tap
-            .debug()
-            .map { Reactor.Action.didNextButtonTapped }
-            .bind(to: reactor.action)
+        reactor.state.map { $0.historyDataSource }
+            .distinctUntilChanged()
+            .filterNil()
+            .bind(to: baseView.qurationListTable.rx.items(cellIdentifier: "QurationHistoryTableViewCell", cellType: QurationHistoryTableViewCell.self)) { row, data, cell in
+                cell.totalTitleLabel.text = data
+            }
             .disposed(by: disposeBag)
+        
+        baseView.qurationListTable.delegate = self
         
         reactor.state.map { $0.isPresentQurationUserInfoVC }
             .distinctUntilChanged()
@@ -54,5 +59,33 @@ class QurationMainVC: UIViewController, View {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+extension QurationMainVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "QurationHistoryTableViewHeaderView") as! QurationHistoryTableViewHeaderView
+        
+        headerView.startQurationButton.rx.tap
+            .subscribe(onNext: { vc in
+                self.reactor?.action.onNext(.didNextButtonTapped)
+            })
+            .disposed(by: disposeBag)
+        
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 200
+    }
+    
+    func bindNavigation() {
+        self.navigationController?.navigationBar.prefersLargeTitles = false
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.navigationBar.backgroundColor = UIColor.clear
+        self.navigationController?.navigationBar.titleTextAttributes = [
+            NSAttributedString.Key.font : UIFont.systemFont(ofSize: 20, weight: .bold)
+        ]
     }
 }

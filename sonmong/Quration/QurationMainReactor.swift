@@ -20,6 +20,11 @@ class QurationMainReactor: Reactor {
     }
     
     struct State {
+        var historyDataSource: [String]? = [
+        "통증점수 1점",
+        "통증점수 2점",
+        "통증점수 3점"
+        ]
         var isPresentQurationUserInfoVC: Bool?
     }
     

@@ -1,33 +1,37 @@
 //
-//  QurationSecondReactor.swift
+//  QurationFourthReactor.swift
 //  sonmong
 //
 //  Created by 이은솔 on 3/24/24.
 //
 
 import Foundation
-import Foundation
 import RxSwift
 import ReactorKit
 
-class QurationSecondReactor: Reactor {
+class QurationFourthReactor: Reactor {
     enum Action {
-        case didStartWhenPickerChanged(Date?)
+        case didPastPainYesButtonTapped
+        case didPastPainNoButtonTapped
+        case didPastMusclePainYesButtonTapped
+        case didPastMusclePainNoButtonTapped
         
         case didPreviousButtonTapped
         case didNextButtonTapped
     }
     
     enum Mutation {
-        case setStartWhen(String?)
+        case setPastPain(Bool?)
+        case setPastMusclePain(Bool?)
         
         case setIsPresentPreviousVC(Bool?)
         case setIsPresentNextVC(Bool?)
     }
     
     struct State {
-        var startWhen: String?
-        
+        var pastPain: Bool? = false
+        var pastMusclePain: Bool? = false
+     
         var isPresentPreviousVC: Bool?
         var isPresentNextVC: Bool?
     }
@@ -36,10 +40,24 @@ class QurationSecondReactor: Reactor {
     
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
-            
-        case .didStartWhenPickerChanged(let inputDate):
+        case .didPastPainYesButtonTapped:
             return Observable.concat([
-                .just(Mutation.setStartWhen(inputDate?.toString(withFormat: "yyyy.MM.dd")))
+                .just(Mutation.setPastPain(true))
+            ])
+            
+        case .didPastPainNoButtonTapped:
+            return Observable.concat([
+                .just(Mutation.setPastPain(false))
+            ])
+            
+        case .didPastMusclePainYesButtonTapped:
+            return Observable.concat([
+                .just(Mutation.setPastMusclePain(true))
+            ])
+            
+        case .didPastMusclePainNoButtonTapped:
+            return Observable.concat([
+                .just(Mutation.setPastMusclePain(false))
             ])
             
         case .didPreviousButtonTapped:
@@ -59,8 +77,10 @@ class QurationSecondReactor: Reactor {
     func reduce(state: State, mutation: Mutation) -> State {
         var newState = state
         switch mutation {
-        case .setStartWhen(let date):
-            newState.startWhen = date
+        case .setPastPain(let pastData):
+            newState.pastPain = pastData
+        case .setPastMusclePain(let pastData):
+            newState.pastMusclePain = pastData
             
         case .setIsPresentPreviousVC(let isPresent):
             newState.isPresentPreviousVC = isPresent

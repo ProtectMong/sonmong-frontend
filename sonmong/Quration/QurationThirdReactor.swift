@@ -1,32 +1,38 @@
 //
-//  QurationSecondReactor.swift
+//  QurationThirdReactor.swift
 //  sonmong
 //
 //  Created by 이은솔 on 3/24/24.
 //
 
 import Foundation
-import Foundation
 import RxSwift
 import ReactorKit
 
-class QurationSecondReactor: Reactor {
+class QurationThirdReactor: Reactor {
     enum Action {
-        case didStartWhenPickerChanged(Date?)
+        case didPainHowTextFieldChanged(String?)
+        case didPainWhenTextFieldChanged(String?)
+        case didPainWithWorkYesButton
+        case didPainWithWorkNoButton
         
         case didPreviousButtonTapped
         case didNextButtonTapped
     }
     
     enum Mutation {
-        case setStartWhen(String?)
+        case setPainHow(String?)
+        case setPainWhen(String?)
+        case setPainWithWork(Bool?)
         
         case setIsPresentPreviousVC(Bool?)
         case setIsPresentNextVC(Bool?)
     }
     
     struct State {
-        var startWhen: String?
+        var painHow: String?
+        var painWhen: String?
+        var painWithWork: Bool?
         
         var isPresentPreviousVC: Bool?
         var isPresentNextVC: Bool?
@@ -36,10 +42,24 @@ class QurationSecondReactor: Reactor {
     
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
-            
-        case .didStartWhenPickerChanged(let inputDate):
+        case .didPainHowTextFieldChanged(let inputData):
             return Observable.concat([
-                .just(Mutation.setStartWhen(inputDate?.toString(withFormat: "yyyy.MM.dd")))
+                .just(Mutation.setPainHow(inputData))
+            ])
+            
+        case .didPainWhenTextFieldChanged(let inputData):
+            return Observable.concat([
+                .just(Mutation.setPainWhen(inputData))
+            ])
+            
+        case .didPainWithWorkYesButton:
+            return Observable.concat([
+                .just(Mutation.setPainWithWork(true))
+            ])
+            
+        case .didPainWithWorkNoButton:
+            return Observable.concat([
+                .just(Mutation.setPainWithWork(false))
             ])
             
         case .didPreviousButtonTapped:
@@ -59,8 +79,12 @@ class QurationSecondReactor: Reactor {
     func reduce(state: State, mutation: Mutation) -> State {
         var newState = state
         switch mutation {
-        case .setStartWhen(let date):
-            newState.startWhen = date
+        case .setPainHow(let inputData):
+            newState.painHow = inputData
+        case .setPainWhen(let inputData):
+            newState.painWhen = inputData
+        case .setPainWithWork(let inputData):
+            newState.painWithWork = inputData
             
         case .setIsPresentPreviousVC(let isPresent):
             newState.isPresentPreviousVC = isPresent
