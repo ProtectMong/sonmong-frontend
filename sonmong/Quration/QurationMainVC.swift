@@ -36,6 +36,11 @@ class QurationMainVC: UIViewController, View {
         
         baseView.qurationListTable.delegate = self
         
+        baseView.startQurationButton.rx.tap
+            .map { Reactor.Action.didNextButtonTapped }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
         reactor.state.map { $0.isPresentQurationUserInfoVC }
             .distinctUntilChanged()
             .filterNil()
