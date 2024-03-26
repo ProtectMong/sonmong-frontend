@@ -77,12 +77,13 @@ class QurationHistoryTableViewCell: UITableViewCell {
         super.init(style: .default, reuseIdentifier: "QurationHistoryTableViewCell")
         self.selectionStyle = .none
         
+        self.contentView.backgroundColor = Constant.Color.f2
         self.contentView.addSubview(baseView)
         baseView.snp.makeConstraints { make in
-            make.top.equalTo(self.contentView.snp.top).offset(15)
+            make.top.equalTo(self.contentView.snp.top).offset(13)
             make.leading.equalTo(self.contentView.snp.leading).offset(22)
             make.trailing.equalTo(self.contentView.snp.trailing).offset(-22)
-            make.bottom.equalTo(self.contentView.snp.bottom)
+            make.bottom.equalTo(self.contentView.snp.bottom).offset(-2)
         }
         
         baseView.addSubview(arrowIconImageView)
@@ -102,7 +103,7 @@ class QurationHistoryTableViewCell: UITableViewCell {
         
         baseView.addSubview(tagView)
         tagView.snp.makeConstraints { make in
-            make.top.equalTo(baseView.snp.top).offset(22)
+            make.centerY.equalTo(baseView.snp.centerY)
             make.leading.equalTo(baseView.snp.leading).offset(20)
         }
         
@@ -116,8 +117,9 @@ class QurationHistoryTableViewCell: UITableViewCell {
         
         baseView.addSubview(totalTitleLabel)
         totalTitleLabel.snp.makeConstraints { make in
-            make.centerY.equalTo(tagView.snp.centerY)
+            make.centerY.equalTo(baseView.snp.centerY)
             make.leading.equalTo(tagView.snp.trailing).offset(10)
+//            make.height.equalTo(15)
         }
 
     }

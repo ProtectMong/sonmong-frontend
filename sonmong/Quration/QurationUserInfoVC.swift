@@ -76,6 +76,36 @@ class QurationUserInfoVC: UIViewController, View {
             })
             .disposed(by: disposeBag)
         
+        baseView.jobOrHobbyUserInputTextField.rx.text.orEmpty
+            .map { Reactor.Action.didJobOrHabbyTextFieldChanged($0) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.jobOrHobbyDataSource }
+            .distinctUntilChanged()
+            .filterNil()
+            .bind(to: baseView.jobOrHobbyCollectionView.rx.items(cellIdentifier: "QurationSelectionStyleCell", cellType: QurationSelectionStyleCell.self)) { row, data, cell in
+                cell.deleteButton.isHidden = true
+                cell.titleLabel.text = data
+            }
+            .disposed(by: disposeBag)
+        
+        baseView.jobOrHobbyCollectionView.rx.observe(CGSize.self, "contentSize")
+            .distinctUntilChanged()
+            .debounce(RxTimeInterval.milliseconds(300), scheduler: MainScheduler.asyncInstance)
+            .filterNil()
+            .withUnretained(self)
+            .subscribe(onNext: { vc, contentSize in
+                vc.baseView.jobOrHobbyCollectionView.snp.updateConstraints { make in
+                    make.height.equalTo(contentSize.height)
+                }
+                
+                vc.baseView.jobOrHobbyUserInputButton.snp.updateConstraints { make in
+                    make.top.equalTo(vc.baseView.jobOrHobbyCollectionView.snp.bottom).offset(7)
+                }
+                self.baseView.layoutIfNeeded()
+            }).disposed(by: disposeBag)
+        
         baseView.previousButton.rx.tap
             .map { Reactor.Action.didPreviousButtonTapped }
             .bind(to: reactor.action)
@@ -139,7 +169,7 @@ class QurationUserInfoVC: UIViewController, View {
         // 초기 날짜 설정
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy.MM.dd"
-        if let initialDate = dateFormatter.date(from: "1999.01.01") {
+        if let initialDate = dateFormatter.date(from: "1900.01.01") {
             birthdayPicker.date = initialDate
         }
         
@@ -163,12 +193,11 @@ class QurationUserInfoVC: UIViewController, View {
     
     func bindNavigation() {
         self.title = "손목 건강문답"
-        self.navigationController?.navigationBar.prefersLargeTitles = false
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController?.navigationBar.isTranslucent = true
-        self.navigationController?.navigationBar.backgroundColor = Constant.Color.f1
+        self.navigationController?.navigationBar.shadowImage = nil
+        self.navigationController?.navigationBar.backgroundColor = nil
+        self.navigationController?.navigationBar.barTintColor = Constant.Color.f2
         self.navigationController?.navigationBar.titleTextAttributes = [
-            NSAttributedString.Key.font : UIFont.systemFont(ofSize: 20, weight: .bold)
+            NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .semibold)
         ]
         
         self.navigationController?.navigationBar.tintColor = Constant.Color.b1

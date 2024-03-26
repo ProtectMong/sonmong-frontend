@@ -16,6 +16,7 @@ class QurationUserInfoReactor: Reactor {
         case didBirthdayPickerChanged(Date?)
         case didGenderGirlButtonTapped
         case didGenderBoyButtonTapped
+        case didJobOrHabbyTextFieldChanged(String?)
         case didPreviousButtonTapped
         case didNextButtonTapped
     }
@@ -23,6 +24,7 @@ class QurationUserInfoReactor: Reactor {
     enum Mutation {
         case setBirthday(String?)
         case setGender(String)
+        case setJobOrHobbyDataSource([PainAreaCollectionViewCellReactor]?)
         
         case setIsPresentPreviousVC(Bool?)
         case setIsPresentNextVC(Bool?)
@@ -30,7 +32,8 @@ class QurationUserInfoReactor: Reactor {
     
     struct State {
         var birthday: String?
-        var gender: String = "W"
+        var gender: String?
+        var jobOrHobbyDataSource: [PainAreaCollectionViewCellReactor]?
         
         var isPresentPreviousVC: Bool?
         var isPresentNextVC: Bool?
@@ -60,6 +63,16 @@ class QurationUserInfoReactor: Reactor {
                 .just(Mutation.setGender("M"))
             ])
             
+        case .didJobOrHabbyTextFieldChanged(let inputData):
+            var currentDataSource = currentState.jobOrHobbyDataSource ?? []
+            let newCellReactor = PainAreaCollectionViewCellReactor(title: inputData, isSelected: true, isCustom: false)
+            
+            currentDataSource.append(newCellReactor)
+            currentDataSource = currentDataSource.filter { !$0.isEmpty }
+            return Observable.concat([
+                .just(Mutation.setJobOrHobbyDataSource(currentDataSource))
+            ])
+            
         case .didPreviousButtonTapped:
             return Observable.concat([
                 .just(Mutation.setIsPresentPreviousVC(true)),
@@ -81,6 +94,8 @@ class QurationUserInfoReactor: Reactor {
             newState.birthday = date
         case .setGender(let gender):
             newState.gender = gender
+        case .setJobOrHobbyDataSource(let dataSource):
+            newState.jobOrHobbyDataSource = dataSource
             
         case .setIsPresentPreviousVC(let isPresent):
             newState.isPresentPreviousVC = isPresent

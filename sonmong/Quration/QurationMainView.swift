@@ -22,6 +22,10 @@ class QurationMainView: UIView {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = Constant.Color.m7
+        view.layer.shadowColor = Constant.Color.b1.cgColor
+        view.layer.shadowOpacity = 0.1
+        view.layer.shadowOffset = CGSize(width: 0, height: 4)
+        view.layer.shadowRadius = 6.0
         
         return view
     }()

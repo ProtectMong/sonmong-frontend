@@ -197,12 +197,11 @@ class QurationUserInfoView: UIView {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("여자", for: .normal)
-        button.setTitleColor(Constant.Color.m7, for: .normal)
+        button.setTitleColor(Constant.Color.b1, for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 14, weight: .medium)
         button.layer.cornerRadius = 10
         button.layer.borderWidth = 1
-        button.layer.borderColor = Constant.Color.m7.cgColor
-        button.backgroundColor = Constant.Color.m7_mate
+        button.layer.borderColor = Constant.Color.g1.cgColor
         
         return button
     }()
@@ -216,6 +215,59 @@ class QurationUserInfoView: UIView {
         button.layer.cornerRadius = 10
         button.layer.borderWidth = 1
         button.layer.borderColor = Constant.Color.g1.cgColor
+        
+        return button
+    }()
+    
+    let jobOrHobbyTitle: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "귀하의 직업이나 취미활동은 무엇인가요?"
+        label.textColor = Constant.Color.b1
+        label.font = .systemFont(ofSize: 16, weight: .bold)
+        label.numberOfLines = 0
+        
+        return label
+    }()
+    
+    let jobOrHobbyCollectionView: UICollectionView = {
+        let layout = CollectionViewCellLeftAlignFlowLayout()
+        layout.estimatedItemSize = CollectionViewCellLeftAlignFlowLayout.automaticSize
+        layout.sectionInset = UIEdgeInsets.zero
+
+        var collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collection.translatesAutoresizingMaskIntoConstraints = false
+        collection.register(QurationSelectionStyleCell.self, forCellWithReuseIdentifier: "QurationSelectionStyleCell")
+        collection.isScrollEnabled = false
+        collection.contentInset = UIEdgeInsets.zero
+
+        return collection
+    }()
+    
+    let jobOrHobbyUserInputTextField: UITextField = {
+        let textField = UITextField()
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.placeholder = "직접 입력해 주세요."
+        textField.layer.borderColor = Constant.Color.g1.cgColor
+        textField.layer.borderWidth = 1
+        textField.layer.cornerRadius = 8
+        textField.textColor = Constant.Color.g5
+        
+        let margin = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: 15))
+        textField.leftView = margin
+        textField.leftViewMode = .always
+        
+        return textField
+    }()
+    
+    let jobOrHobbyUserInputButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("등록", for: .normal)
+        button.setTitleColor(Constant.Color.f1, for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 15, weight: .regular)
+        button.backgroundColor = Constant.Color.g2
+        button.layer.cornerRadius = 8
         
         return button
     }()
@@ -234,6 +286,7 @@ class QurationUserInfoView: UIView {
         view.axis = .horizontal
         view.spacing = 10
         view.distribution = .fillEqually
+        view.backgroundColor = Constant.Color.f2
         
         return view
     }()
@@ -258,11 +311,10 @@ class QurationUserInfoView: UIView {
         button.setTitleColor(Constant.Color.f1, for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 16, weight: .medium)
         button.layer.cornerRadius = 10
-        button.backgroundColor = Constant.Color.m7
+        button.backgroundColor = Constant.Color.g4
         
         return button
     }()
-    
     
     func layout(superView: UIView) {
         superView.backgroundColor = .white
@@ -351,6 +403,36 @@ class QurationUserInfoView: UIView {
         
         [genderGirlButton, genderBoyButton].forEach {
             genderStackView.addArrangedSubview($0)
+        }
+        
+        contentView.addSubview(jobOrHobbyTitle)
+        jobOrHobbyTitle.snp.makeConstraints { make in
+            make.top.equalTo(genderStackView.snp.bottom).offset(30)
+            make.leading.equalTo(contentView.snp.leading).offset(22)
+        }
+        
+        contentView.addSubview(jobOrHobbyCollectionView)
+        jobOrHobbyCollectionView.snp.makeConstraints { make in
+            make.top.equalTo(jobOrHobbyTitle.snp.bottom).offset(18)
+            make.leading.equalTo(contentView.snp.leading).offset(22)
+            make.trailing.equalTo(contentView.snp.trailing).offset(-22)
+            make.height.equalTo(0)
+        }
+        
+        contentView.addSubview(jobOrHobbyUserInputButton)
+        jobOrHobbyUserInputButton.snp.makeConstraints { make in
+            make.top.equalTo(jobOrHobbyCollectionView.snp.bottom).offset(0)
+            make.trailing.equalTo(contentView.snp.trailing).offset(-22)
+            make.width.equalTo(84)
+            make.height.equalTo(46)
+        }
+        
+        contentView.addSubview(jobOrHobbyUserInputTextField)
+        jobOrHobbyUserInputTextField.snp.makeConstraints { make in
+            make.top.equalTo(jobOrHobbyUserInputButton.snp.top)
+            make.leading.equalTo(contentView.snp.leading).offset(22)
+            make.trailing.equalTo(jobOrHobbyUserInputButton.snp.leading).offset(-8)
+            make.height.equalTo(46)
         }
         
         contentView.addSubview(stepButtonStackView)

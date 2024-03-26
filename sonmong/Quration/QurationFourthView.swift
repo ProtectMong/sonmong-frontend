@@ -239,6 +239,7 @@ class QurationFourthView: UIView {
         view.axis = .horizontal
         view.spacing = 10
         view.distribution = .fillEqually
+        view.backgroundColor = Constant.Color.f2
         
         return view
     }()
@@ -263,7 +264,7 @@ class QurationFourthView: UIView {
         button.setTitleColor(Constant.Color.f1, for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 16, weight: .medium)
         button.layer.cornerRadius = 10
-        button.backgroundColor = Constant.Color.m7
+        button.backgroundColor = Constant.Color.g4
         
         return button
     }()
