@@ -140,18 +140,25 @@ class QurationSecondView: UIView {
         return label
     }()
     
-    let painLevelSlider: UISlider = {
-        let slider = UISlider()
-        slider.translatesAutoresizingMaskIntoConstraints = false
-        slider.minimumValue = 0
-        slider.maximumValue = 10
-        slider.value = 5
-        slider.minimumTrackTintColor = Constant.Color.m7
-        slider.maximumTrackTintColor = Constant.Color.m7
-        slider.thumbTintColor = Constant.Color.f1
+//    let painLevelSlider: UISlider = {
+//        let slider = UISlider()
+//        slider.translatesAutoresizingMaskIntoConstraints = false
+//        slider.minimumValue = 0
+//        slider.maximumValue = 10
+//        slider.value = 5
+//        slider.minimumTrackTintColor = Constant.Color.m7
+//        slider.maximumTrackTintColor = Constant.Color.m7
+//        slider.thumbTintColor = Constant.Color.f1
+//
+//        return slider
+//    }()
+    
+    let painLevelSlider: SliderView = {
+        let slider = SliderView(maxValue: 11)
         
         return slider
     }()
+    
     
     let painStartWhenTitle: UILabel = {
         let label = UILabel()
@@ -297,6 +304,7 @@ class QurationSecondView: UIView {
             make.top.equalTo(painLevelTitle.snp.bottom).offset(40)
             make.leading.equalTo(contentView.snp.leading).offset(22)
             make.trailing.equalTo(contentView.snp.trailing).offset(-22)
+            make.height.equalTo(25)
         }
         
         contentView.addSubview(painStartWhenTitle)
