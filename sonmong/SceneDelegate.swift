@@ -25,7 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let tabBarVC = UITabBarController()
         
         //각 탭과 연결될 네비게이션컨트롤러 설정
-        let homeVC = HomeVC()
+        let homeVC = HomeVC(reactor: HomeReactor())
         let qurationVC = QurationMainVC(reactor: QurationMainReactor())
         let loginVC = LoginVC(reactor: LoginReactor())
                 

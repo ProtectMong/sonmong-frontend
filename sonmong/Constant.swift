@@ -19,6 +19,7 @@ extension Constant {
         static let g4 = UIColor(red: 0.43, green: 0.43, blue: 0.45, alpha: 1.00)
         static let g5 = UIColor(red: 0.21, green: 0.21, blue: 0.22, alpha: 1.00)
         static let g6 = UIColor(red: 0.07, green: 0.07, blue: 0.07, alpha: 1.00)
+        static let g7 = UIColor(red: 0.10, green: 0.10, blue: 0.10, alpha: 1.00)
         
         static let b1 = UIColor(red: 0.00, green: 0.00, blue: 0.00, alpha: 1.00)
         

@@ -77,7 +77,9 @@ class QurationHistoryTableViewCell: UITableViewCell {
         super.init(style: .default, reuseIdentifier: "QurationHistoryTableViewCell")
         self.selectionStyle = .none
         
-        self.contentView.backgroundColor = Constant.Color.f2
+//        self.contentView.backgroundColor = Constant.Color.f2
+        self.backgroundColor = UIColor.clear
+        self.contentView.backgroundColor = UIColor.clear
         self.contentView.addSubview(baseView)
         baseView.snp.makeConstraints { make in
             make.top.equalTo(self.contentView.snp.top).offset(13)

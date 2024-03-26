@@ -68,7 +68,7 @@ class QurationUserInfoReactor: Reactor {
             let newCellReactor = PainAreaCollectionViewCellReactor(title: inputData, isSelected: true, isCustom: false)
             
             currentDataSource.append(newCellReactor)
-            currentDataSource = currentDataSource.filter { !$0.isEmpty }
+            currentDataSource = currentDataSource.filter { $0 != nil }
             return Observable.concat([
                 .just(Mutation.setJobOrHobbyDataSource(currentDataSource))
             ])

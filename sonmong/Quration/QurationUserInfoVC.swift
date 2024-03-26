@@ -85,8 +85,8 @@ class QurationUserInfoVC: UIViewController, View {
             .distinctUntilChanged()
             .filterNil()
             .bind(to: baseView.jobOrHobbyCollectionView.rx.items(cellIdentifier: "QurationSelectionStyleCell", cellType: QurationSelectionStyleCell.self)) { row, data, cell in
-                cell.deleteButton.isHidden = true
-                cell.titleLabel.text = data
+//                cell.deleteButton.isHidden = true
+//                cell.titleLabel.text = data
             }
             .disposed(by: disposeBag)
         
