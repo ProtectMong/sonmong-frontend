@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C5CA06B2BB2DD4800E2E659 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5CA06A2BB2DD4800E2E659 /* HomeView.swift */; };
+		4C5CA06D2BB3192E00E2E659 /* Slider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5CA06C2BB3192E00E2E659 /* Slider.swift */; };
 		A12D52182BAE7F25000B08D4 /* ReactorKit in Frameworks */ = {isa = PBXBuildFile; productRef = A12D52172BAE7F25000B08D4 /* ReactorKit */; };
 		A12D521B2BAE7F3E000B08D4 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = A12D521A2BAE7F3E000B08D4 /* SnapKit */; };
 		A12D521E2BAE7F4B000B08D4 /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = A12D521D2BAE7F4B000B08D4 /* RxBlocking */; };
@@ -80,6 +82,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4C5CA06A2BB2DD4800E2E659 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		4C5CA06C2BB3192E00E2E659 /* Slider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slider.swift; sourceTree = "<group>"; };
 		A12D52262BAE82D4000B08D4 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		A13617582BAFBDE200113997 /* QurationUserInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QurationUserInfoVC.swift; sourceTree = "<group>"; };
 		A136175A2BAFBE0C00113997 /* QurtionUserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QurtionUserInfoView.swift; sourceTree = "<group>"; };
@@ -189,6 +193,7 @@
 				A15C25E92BB02F39007AA1E7 /* QurationFourthReactor.swift */,
 				A15C25D32BAFFED8007AA1E7 /* QurationSelectionStyleCell.swift */,
 				A15C25D72BB002EA007AA1E7 /* PainAreaCollectionViewCellReactor.swift */,
+				4C5CA06C2BB3192E00E2E659 /* Slider.swift */,
 			);
 			path = Quration;
 			sourceTree = "<group>";
@@ -197,6 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				A15C25C32BAFDEC6007AA1E7 /* HomeVC.swift */,
+				4C5CA06A2BB2DD4800E2E659 /* HomeView.swift */,
 				A15C25C52BAFDEDC007AA1E7 /* HomeReactor.swift */,
 			);
 			path = Main;
@@ -453,6 +459,7 @@
 				A15C25E42BB02CDE007AA1E7 /* QurationThirdReactor.swift in Sources */,
 				A1EE02492BAE7DC5008EE352 /* LoginReactor.swift in Sources */,
 				A1CFB0BB2BAEEC1800BAABC8 /* RegisterUserView.swift in Sources */,
+				4C5CA06B2BB2DD4800E2E659 /* HomeView.swift in Sources */,
 				A15C25CE2BAFFD78007AA1E7 /* QurationFirstVC.swift in Sources */,
 				A15C25E22BB02CD1007AA1E7 /* QurationThirdView.swift in Sources */,
 				A15C25E82BB02F2A007AA1E7 /* QurationFourthView.swift in Sources */,
@@ -478,6 +485,7 @@
 				A1CFB0BF2BAEECC700BAABC8 /* Constant.swift in Sources */,
 				A1EE02442BAE7C7B008EE352 /* LoginView.swift in Sources */,
 				A15C25C42BAFDEC6007AA1E7 /* HomeVC.swift in Sources */,
+				4C5CA06D2BB3192E00E2E659 /* Slider.swift in Sources */,
 				A12D52272BAE82D4000B08D4 /* LoginService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -659,6 +667,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -686,6 +695,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
