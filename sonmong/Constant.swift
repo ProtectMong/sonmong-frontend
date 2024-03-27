@@ -43,4 +43,18 @@ extension Constant {
         static let f2 = UIColor(red: 0.97, green: 0.98, blue: 0.98, alpha: 1.00)
     }
     
+    struct APIURL {
+        static let aiCuration = "/api/v1/ai-consulting/curation"
+    }
+    
+}
+
+extension String {
+    func toDate() -> Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy.MM.dd"
+        dateFormatter.locale = Locale(identifier: "ko_KR")
+        dateFormatter.timeZone = TimeZone(abbreviation: "KST")
+        return dateFormatter.date(from: self)
+    }
 }

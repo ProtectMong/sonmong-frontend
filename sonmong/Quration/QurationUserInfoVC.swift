@@ -49,7 +49,7 @@ class QurationUserInfoVC: UIViewController, View {
         
         reactor.state.map { $0.gender }
             .distinctUntilChanged()
-            .filter { $0 == "W" }
+            .filter { $0 == true }
             .withUnretained(self)
             .subscribe(onNext: { vc, _ in
                 vc.baseView.genderGirlButton.layer.borderColor = Constant.Color.m7.cgColor
@@ -64,7 +64,7 @@ class QurationUserInfoVC: UIViewController, View {
         
         reactor.state.map { $0.gender }
             .distinctUntilChanged()
-            .filter { $0 == "M" }
+            .filter { $0 == false }
             .withUnretained(self)
             .subscribe(onNext: { vc, _ in
                 vc.baseView.genderGirlButton.layer.borderColor = Constant.Color.g1.cgColor
@@ -137,6 +137,28 @@ class QurationUserInfoVC: UIViewController, View {
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
+        reactor.state.map { $0.isNextButtonEnabled }
+            .distinctUntilChanged()
+            .filterNil()
+            .filter { $0 == true }
+            .withUnretained(self)
+            .subscribe(onNext: { vc, isEnabled in
+//                vc.baseView.nextButton.isEnabled = isEnabled
+                vc.baseView.nextButton.backgroundColor = Constant.Color.m7
+            })
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.isNextButtonEnabled }
+            .distinctUntilChanged()
+            .filterNil()
+            .filter { $0 == false }
+            .withUnretained(self)
+            .subscribe(onNext: { vc, isEnabled in
+//                vc.baseView.nextButton.isEnabled = isEnabled
+                vc.baseView.nextButton.backgroundColor = Constant.Color.g4
+            })
+            .disposed(by: disposeBag)
+        
         baseView.previousButton.rx.tap
             .map { Reactor.Action.didPreviousButtonTapped }
             .bind(to: reactor.action)
@@ -161,13 +183,26 @@ class QurationUserInfoVC: UIViewController, View {
             .distinctUntilChanged()
             .filterNil()
             .filter { $0 == true }
+            .map { _ in reactor.currentState.qurationParameter }
             .withUnretained(self)
-            .subscribe(onNext: { vc, _ in
+            .subscribe(onNext: { vc, parameter in
                 let nextVC = QurationFirstVC()
-                let nextReactor = QurationFirstReactor()
+                let nextReactor = QurationFirstReactor(qurationParameter: parameter)
                 nextVC.reactor = nextReactor
                 
                 vc.navigationController?.pushViewController( nextVC, animated: true)
+            })
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.isPresentAlertMesasge }
+            .distinctUntilChanged()
+            .filterNil()
+            .withUnretained(self)
+            .subscribe(onNext: { vc, message in
+                let alert = UIAlertController(title: "필수값을 확인해주세요!", message: message, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
+                
+                self.present(alert, animated: true, completion: nil)
             })
             .disposed(by: disposeBag)
     }
@@ -200,12 +235,12 @@ class QurationUserInfoVC: UIViewController, View {
         // 초기 날짜 설정
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy.MM.dd"
-        if let initialDate = dateFormatter.date(from: "1900.01.01") {
-            birthdayPicker.date = initialDate
-        }
+//        if let initialDate = dateFormatter.date(from: "1900.01.01") {
+//            birthdayPicker.date = initialDate
+//        }
         
         // UIDatePicker 최소 및 최대 날짜 설정 (옵션)
-        if let minDate = dateFormatter.date(from: "1900/01/01"),
+        if let minDate = dateFormatter.date(from: "1960/01/01"),
            let maxDate = dateFormatter.date(from: "2999/12/31") {
             birthdayPicker.minimumDate = minDate
             birthdayPicker.maximumDate = maxDate
@@ -214,6 +249,7 @@ class QurationUserInfoVC: UIViewController, View {
         baseView.birthdayTextField.inputAccessoryView = toolBar
         
         birthdayPicker.rx.date
+            .skip(1)
             .distinctUntilChanged()
             .withUnretained(self)
             .subscribe(onNext: { vc, date in

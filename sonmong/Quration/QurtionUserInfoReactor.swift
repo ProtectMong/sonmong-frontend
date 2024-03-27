@@ -24,25 +24,33 @@ class QurationUserInfoReactor: Reactor {
     }
     
     enum Mutation {
+        case setQurationParameter(Quration?)
         case setBirthday(String?)
-        case setGender(String)
+        case setGender(Bool?)
         case setJobOrHobbyDataSource([PainAreaCollectionViewCellReactor]?)
         case setInputJobOrHobbyData(String?)
         case setSelectedJobOrHobby([String]?)
         
         case setIsPresentPreviousVC(Bool?)
         case setIsPresentNextVC(Bool?)
+        
+        case setIsNextButtonEnabled(Bool?)
+        case setIsPresentAlertMesasge(String?)
     }
     
     struct State {
+        var qurationParameter: Quration?
         var birthday: String?
-        var gender: String?
+        var gender: Bool?
         var jobOrHobbyDataSource: [PainAreaCollectionViewCellReactor]? = []
         var inputJobOrHobbyData: String?
         var selectedJobOrHobby: [String]?
         
         var isPresentPreviousVC: Bool?
         var isPresentNextVC: Bool?
+        
+        var isNextButtonEnabled: Bool?
+        var isPresentAlertMesasge: String?
     }
     
     let initialState = State()
@@ -55,35 +63,50 @@ class QurationUserInfoReactor: Reactor {
             ])
             
         case .didBirthdayPickerChanged(let inputDate):
+            var isNextButtonEnabled: Bool? = false
+            if let gender = currentState.gender {
+                if let selectedJobOrHobby = currentState.selectedJobOrHobby, selectedJobOrHobby.count > 0 {
+                    isNextButtonEnabled = true
+                }
+            }
+            
             return Observable.concat([
+                .just(Mutation.setIsNextButtonEnabled(isNextButtonEnabled)),
                 .just(Mutation.setBirthday(inputDate?.toString(withFormat: "yyyy.MM.dd")))
             ])
             
         case .didGenderGirlButtonTapped:
+            var isNextButtonEnabled: Bool? = false
+            if let birthday = currentState.birthday {
+                if let selectedJobOrHobby = currentState.selectedJobOrHobby, selectedJobOrHobby.count > 0 {
+                    isNextButtonEnabled = true
+                }
+            }
             return Observable.concat([
-                .just(Mutation.setGender("W"))
+                .just(Mutation.setIsNextButtonEnabled(isNextButtonEnabled)),
+                .just(Mutation.setGender(true))
             ])
             
         case .didGenderBoyButtonTapped:
+            var isNextButtonEnabled: Bool? = false
+            if let birthday = currentState.birthday {
+                if let selectedJobOrHobby = currentState.selectedJobOrHobby, selectedJobOrHobby.count > 0 {
+                    isNextButtonEnabled = true
+                }
+            }
             return Observable.concat([
-                .just(Mutation.setGender("M"))
+                .just(Mutation.setIsNextButtonEnabled(isNextButtonEnabled)),
+                .just(Mutation.setGender(false))
             ])
             
         case .didJobOrHabbyTextFieldChanged(let inputData):
-//            var currentDataSource = currentState.jobOrHobbyDataSource ?? []
-//            let newCellReactor = PainAreaCollectionViewCellReactor(title: inputData, isSelected: true, isCustom: false)
-//
-//            currentDataSource.append(newCellReactor)
-//            currentDataSource = currentDataSource.filter { $0 != nil }
-//            return Observable.concat([
-//                .just(Mutation.setJobOrHobbyDataSource(currentDataSource))
-//            ])
-            
             return Observable.concat([
                 .just(Mutation.setInputJobOrHobbyData(inputData))
             ])
             
         case .didJobORHobbyButtonTapped:
+            var isNextButtonEnabled: Bool? = false
+            
             let currentUserInputData = currentState.inputJobOrHobbyData ?? ""
             if currentUserInputData == "" {
                 return Observable.empty()
@@ -97,7 +120,30 @@ class QurationUserInfoReactor: Reactor {
                 currentJobOrHobbyDataSource.append(inputPainAreaAsCellReactor)
             }
             
+            var currentSelectedJobOrHobby = currentState.selectedJobOrHobby ?? []
+            if currentSelectedJobOrHobby.contains(currentUserInputData) == false {
+                currentSelectedJobOrHobby.append(currentUserInputData)
+            }
+            
+            if currentState.birthday != nil {
+                if currentState.gender != nil {
+                    if currentSelectedJobOrHobby.count > 0 {
+                        isNextButtonEnabled = true
+                    } else {
+                        
+                    }
+                } else {
+                    
+                }
+            } else {
+                
+            }
+            
+            print("✅ currentSelectedJobOrHobby = ", currentSelectedJobOrHobby)
+            
             return Observable.concat([
+                .just(Mutation.setIsNextButtonEnabled(isNextButtonEnabled)),
+                .just(Mutation.setSelectedJobOrHobby(currentSelectedJobOrHobby)),
                 .just(Mutation.setJobOrHobbyDataSource(currentJobOrHobbyDataSource)),
                 .just(Mutation.setInputJobOrHobbyData(nil))
             ])
@@ -123,6 +169,14 @@ class QurationUserInfoReactor: Reactor {
             
             print("✅ selectedJobOrHobby = \(selectedJobOrHobby)")
             
+            if currentRecognizedDatas.count <= 0 {
+                return Observable.concat([
+                    .just(Mutation.setSelectedJobOrHobby(nil)),
+                    .just(Mutation.setJobOrHobbyDataSource([])),
+                    .just(Mutation.setIsNextButtonEnabled(false))
+                ])
+            }
+            
             return Observable.concat([
                 .just(Mutation.setSelectedJobOrHobby(selectedJobOrHobby)),
                 .just(Mutation.setJobOrHobbyDataSource(currentRecognizedDatas))
@@ -135,16 +189,49 @@ class QurationUserInfoReactor: Reactor {
             ])
             
         case .didNextButtonTapped:
-            return Observable.concat([
-                .just(Mutation.setIsPresentNextVC(true)),
-                .just(Mutation.setIsPresentNextVC(nil))
-            ])
+            
+            var message = ""
+            var qurationParameter = Quration()
+            
+            if let birthday = currentState.birthday, birthday != "" {
+                qurationParameter.birthday = birthday.toDate()
+            } else {
+                message += "🌟 생년월일\n"
+            }
+            
+            if let gender = currentState.gender {
+                qurationParameter.gender = gender
+            } else {
+                message += "🌟 성별\n"
+            }
+            
+            if let jobOrHobby = currentState.selectedJobOrHobby, jobOrHobby.count > 0 {
+                #warning("jobOrHobby 타입 체크 후 수정")
+                qurationParameter.jobOrHobby = jobOrHobby.first
+            } else {
+                message += "🌟 직업이나 취미\n"
+            }
+            
+            if message == "" {
+                return Observable.concat([
+                    .just(Mutation.setQurationParameter(qurationParameter)),
+                    .just(Mutation.setIsPresentNextVC(true)),
+                    .just(Mutation.setIsPresentNextVC(nil))
+                ])
+            } else {
+                return Observable.concat([
+                    .just(Mutation.setIsPresentAlertMesasge(message)),
+                    .just(Mutation.setIsPresentAlertMesasge(nil))
+                ])
+            }
         }
     }
     
     func reduce(state: State, mutation: Mutation) -> State {
         var newState = state
         switch mutation {
+        case .setQurationParameter(let quration):
+            newState.qurationParameter = quration
         case .setBirthday(let date):
             newState.birthday = date
         case .setGender(let gender):
@@ -160,6 +247,11 @@ class QurationUserInfoReactor: Reactor {
             newState.isPresentPreviousVC = isPresent
         case .setIsPresentNextVC(let isPresent):
             newState.isPresentNextVC = isPresent
+            
+        case .setIsNextButtonEnabled(let isEnabled):
+            newState.isNextButtonEnabled = isEnabled
+        case .setIsPresentAlertMesasge(let message):
+            newState.isPresentAlertMesasge = message
         }
         return newState
     }

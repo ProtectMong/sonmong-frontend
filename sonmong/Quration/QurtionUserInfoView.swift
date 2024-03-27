@@ -157,7 +157,7 @@ class QurationUserInfoView: UIView {
         textField.layer.borderWidth = 1
         textField.layer.borderColor = Constant.Color.g1.cgColor
         textField.layer.cornerRadius = 10
-        textField.placeholder = ""
+        textField.placeholder = "yyyy.MM.dd"
         textField.textColor = Constant.Color.g5
         
         let outerView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 15))
@@ -280,6 +280,14 @@ class QurationUserInfoView: UIView {
         return view
     }()
     
+    let stepButtonBaseView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = Constant.Color.f2
+        
+        return view
+    }()
+    
     let stepButtonStackView: UIStackView = {
         let view = UIStackView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -296,6 +304,7 @@ class QurationUserInfoView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("이전", for: .normal)
         button.setTitleColor(Constant.Color.b1, for: .normal)
+        button.backgroundColor = Constant.Color.f1
         button.titleLabel?.font = .systemFont(ofSize: 16, weight: .medium)
         button.layer.cornerRadius = 10
         button.layer.borderWidth = 1
@@ -316,6 +325,12 @@ class QurationUserInfoView: UIView {
         return button
     }()
     
+//    var isEnabled: Bool {
+//            didSet {
+//                nextButton.backgroundColor = isEnabled ? Constant.Color.m7 : Constant.Color.g4
+//            }
+//        }
+    
     func layout(superView: UIView) {
         superView.backgroundColor = .white
         
@@ -324,13 +339,21 @@ class QurationUserInfoView: UIView {
             make.top.equalTo(superView.safeAreaLayoutGuide.snp.top)
             make.leading.equalTo(superView.safeAreaLayoutGuide.snp.leading)
             make.trailing.equalTo(superView.safeAreaLayoutGuide.snp.trailing)
-            make.bottom.equalTo(superView.safeAreaLayoutGuide.snp.bottom)
+            make.bottom.equalTo(superView.snp.bottom)
         }
         
-        self.addSubview(stepButtonStackView)
-        stepButtonStackView.snp.makeConstraints { make in            make.bottom.equalTo(self.snp.bottom).offset(-11)
-            make.leading.equalTo(self.snp.leading).offset(6)
-            make.trailing.equalTo(self.snp.trailing).offset(-6)
+        self.addSubview(stepButtonBaseView)
+        stepButtonBaseView.snp.makeConstraints { make in
+            make.bottom.equalTo(self.snp.bottom)
+            make.leading.equalTo(self.snp.leading)
+            make.trailing.equalTo(self.snp.trailing)
+            make.height.equalTo(99)
+        }
+        
+        stepButtonBaseView.addSubview(stepButtonStackView)
+        stepButtonStackView.snp.makeConstraints { make in            make.top.equalTo(stepButtonBaseView.snp.top).offset(10)
+            make.leading.equalTo(stepButtonBaseView.snp.leading).offset(6)
+            make.trailing.equalTo(stepButtonBaseView.snp.trailing).offset(-6)
             make.height.equalTo(46)
         }
         
@@ -338,11 +361,11 @@ class QurationUserInfoView: UIView {
             stepButtonStackView.addArrangedSubview($0)
         }
         
-        self.addSubview(stepButtonLineView)
+        stepButtonBaseView.addSubview(stepButtonLineView)
         stepButtonLineView.snp.makeConstraints { make in
-            make.bottom.equalTo(stepButtonStackView.snp.top).offset(-10)
-            make.trailing.equalTo(self.snp.trailing)
-            make.leading.equalTo(self.snp.leading)
+            make.top.equalTo(stepButtonBaseView.snp.top)
+            make.trailing.equalTo(stepButtonBaseView.snp.trailing)
+            make.leading.equalTo(stepButtonBaseView.snp.leading)
             make.height.equalTo(1)
         }
         

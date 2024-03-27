@@ -27,6 +27,7 @@ class QurationFirstReactor: Reactor {
     }
     
     enum Mutation {
+        case setQurationParameter(Quration?)
         case setPainAreaDataSource([PainAreaCollectionViewCellReactor]?)
         case setSelectedPainArea([String]?)
         case setInputPainAreaData(String?)
@@ -37,9 +38,13 @@ class QurationFirstReactor: Reactor {
         
         case setIsPresentPreviousVC(Bool?)
         case setIsPresentNextVC(Bool?)
+        
+        case setIsNextButtonEnabled(Bool?)
+        case setIsPresentAlertMesasge(String?)
     }
     
     struct State {
+        var qurationParameter: Quration?
         var painAreaDataSource: [PainAreaCollectionViewCellReactor]? = [
             PainAreaCollectionViewCellReactor(title: "왼쪽 손바닥쪽", isSelected: false, isCustom: false),
             PainAreaCollectionViewCellReactor(title: "왼쪽 손등쪽", isSelected: false, isCustom: false),
@@ -57,12 +62,15 @@ class QurationFirstReactor: Reactor {
         
         var isPresentPreviousVC: Bool?
         var isPresentNextVC: Bool?
+        
+        var isNextButtonEnabled: Bool?
+        var isPresentAlertMesasge: String?
     }
     
     let initialState: State
     
-    init() {
-        self.initialState = State()
+    init(qurationParameter: Quration?) {
+        self.initialState = State(qurationParameter: qurationParameter)
     }
     
     func mutate(action: QurationFirstReactor.Action) -> Observable<QurationFirstReactor.Mutation> {
@@ -93,6 +101,14 @@ class QurationFirstReactor: Reactor {
             
             print("✅ selectedPainAreas = \(selectedPainAreas)")
             
+            if selectedPainAreas?.count ?? 0 <= 0 {
+                return Observable.concat([
+                    .just(Mutation.setIsNextButtonEnabled(false)),
+                    .just(Mutation.setSelectedPainArea(nil)),
+                    .just(Mutation.setPainAreaDataSource([]))
+                ])
+            }
+            
             return Observable.concat([
                 .just(Mutation.setSelectedPainArea(selectedPainAreas)),
                 .just(Mutation.setPainAreaDataSource(currentRecognizedDatas))
@@ -104,6 +120,8 @@ class QurationFirstReactor: Reactor {
             ])
             
         case .didPainAreaUserInputButtonTapped:
+            var isNextButtonEnabled: Bool? = false
+            
             let currentUserInputData = currentState.inputPainAreaData ?? ""
             
             if currentUserInputData == "" {
@@ -126,6 +144,7 @@ class QurationFirstReactor: Reactor {
             print("✅ selectedPainAreas = \(currentSelectedPainAreas)")
             
             return Observable.concat([
+                .just(Mutation.setIsNextButtonEnabled(isNextButtonEnabled)),
                 .just(Mutation.setPainAreaDataSource(currentPainAreaDataSource)),
                 .just(Mutation.setSelectedPainArea(currentSelectedPainAreas)),
                 .just(Mutation.setInputPainAreaData(nil))
@@ -222,6 +241,8 @@ class QurationFirstReactor: Reactor {
     func reduce(state: QurationFirstReactor.State, mutation: QurationFirstReactor.Mutation) -> State {
         var newState = state
         switch mutation {
+        case .setQurationParameter(let quration):
+            newState.qurationParameter = quration
         case .setPainAreaDataSource(let dataSource):
             newState.painAreaDataSource = dataSource
         case .setSelectedPainArea(let painAreas):
@@ -241,6 +262,11 @@ class QurationFirstReactor: Reactor {
             newState.isPresentPreviousVC = isPresent
         case .setIsPresentNextVC(let isPresent):
             newState.isPresentNextVC = isPresent
+            
+        case .setIsNextButtonEnabled(let isEnabled):
+            newState.isNextButtonEnabled = isEnabled
+        case .setIsPresentAlertMesasge(let message):
+            newState.isPresentAlertMesasge = message
         }
         
         return newState

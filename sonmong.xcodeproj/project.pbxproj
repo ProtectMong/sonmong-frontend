@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4C5CA06B2BB2DD4800E2E659 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5CA06A2BB2DD4800E2E659 /* HomeView.swift */; };
 		4C5CA06D2BB3192E00E2E659 /* Slider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5CA06C2BB3192E00E2E659 /* Slider.swift */; };
+		4C5CA06F2BB45F6300E2E659 /* Quration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5CA06E2BB45F6300E2E659 /* Quration.swift */; };
 		A12D52182BAE7F25000B08D4 /* ReactorKit in Frameworks */ = {isa = PBXBuildFile; productRef = A12D52172BAE7F25000B08D4 /* ReactorKit */; };
 		A12D521B2BAE7F3E000B08D4 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = A12D521A2BAE7F3E000B08D4 /* SnapKit */; };
 		A12D521E2BAE7F4B000B08D4 /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = A12D521D2BAE7F4B000B08D4 /* RxBlocking */; };
@@ -84,6 +85,7 @@
 /* Begin PBXFileReference section */
 		4C5CA06A2BB2DD4800E2E659 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		4C5CA06C2BB3192E00E2E659 /* Slider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slider.swift; sourceTree = "<group>"; };
+		4C5CA06E2BB45F6300E2E659 /* Quration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quration.swift; sourceTree = "<group>"; };
 		A12D52262BAE82D4000B08D4 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		A13617582BAFBDE200113997 /* QurationUserInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QurationUserInfoVC.swift; sourceTree = "<group>"; };
 		A136175A2BAFBE0C00113997 /* QurtionUserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QurtionUserInfoView.swift; sourceTree = "<group>"; };
@@ -231,9 +233,9 @@
 		A1C3A2502BADD922000A41FD /* sonmong */ = {
 			isa = PBXGroup;
 			children = (
+				A1CFB0CF2BAEFB5400BAABC8 /* Model */,
 				A15C25C02BAFD807007AA1E7 /* Main */,
 				A13617572BAFBDC200113997 /* Quration */,
-				A1CFB0CF2BAEFB5400BAABC8 /* Model */,
 				A1CFB0C22BAEF0FC00BAABC8 /* Supporting */,
 				A1EE02402BAE7C66008EE352 /* Login */,
 				A1C3A2512BADD922000A41FD /* AppDelegate.swift */,
@@ -278,6 +280,7 @@
 			isa = PBXGroup;
 			children = (
 				A1CFB0D02BAEFB7300BAABC8 /* User.swift */,
+				4C5CA06E2BB45F6300E2E659 /* Quration.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -484,6 +487,7 @@
 				A15C25DA2BB024D8007AA1E7 /* QurationSecondVC.swift in Sources */,
 				A1CFB0BF2BAEECC700BAABC8 /* Constant.swift in Sources */,
 				A1EE02442BAE7C7B008EE352 /* LoginView.swift in Sources */,
+				4C5CA06F2BB45F6300E2E659 /* Quration.swift in Sources */,
 				A15C25C42BAFDEC6007AA1E7 /* HomeVC.swift in Sources */,
 				4C5CA06D2BB3192E00E2E659 /* Slider.swift in Sources */,
 				A12D52272BAE82D4000B08D4 /* LoginService.swift in Sources */,
