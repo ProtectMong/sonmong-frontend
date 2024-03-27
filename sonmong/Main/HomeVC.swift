@@ -21,6 +21,7 @@ class HomeVC: UIViewController, View {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        bindNavigation()
         reactor?.action.onNext(.viewDidLoaded)
     }
     
@@ -134,5 +135,18 @@ class HomeVC: UIViewController, View {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func bindNavigation() {
+        let backButtonItem = UIBarButtonItem(image: UIImage(named: "search_ic"), style: .plain, target: nil, action: nil)
+        backButtonItem.tintColor = Constant.Color.b1
+        backButtonItem.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        
+//        self.navigationItem.setRightBarButton([backButtonItem], animated: false)
+
+        backButtonItem.rx.tap
+            .subscribe(onNext: { _ in
+//                self.navigationController?.popViewController(animated: true)
+            }).disposed(by: disposeBag)
     }
 }

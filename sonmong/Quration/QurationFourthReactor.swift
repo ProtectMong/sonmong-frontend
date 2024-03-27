@@ -29,8 +29,8 @@ class QurationFourthReactor: Reactor {
     }
     
     struct State {
-        var pastPain: Bool? = false
-        var pastMusclePain: Bool? = false
+        var pastPain: Bool?
+        var pastMusclePain: Bool?
      
         var isPresentPreviousVC: Bool?
         var isPresentNextVC: Bool?

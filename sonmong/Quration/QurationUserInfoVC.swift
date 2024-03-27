@@ -29,6 +29,7 @@ class QurationUserInfoVC: UIViewController, View {
         setDatePicker()
         
         baseView.birthdayTextField.delegate = self
+        baseView.jobOrHobbyUserInputTextField.delegate = self
         
         reactor.state.map { $0.birthday }
             .distinctUntilChanged()
@@ -81,12 +82,37 @@ class QurationUserInfoVC: UIViewController, View {
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
-        reactor.state.map { $0.jobOrHobbyDataSource }
+        reactor.state.map { $0.inputJobOrHobbyData }
             .distinctUntilChanged()
+            .bind(to: baseView.jobOrHobbyUserInputTextField.rx.text)
+            .disposed(by: disposeBag)
+        
+        baseView.jobOrHobbyUserInputButton.rx.tap
+            .map { Reactor.Action.didJobORHobbyButtonTapped }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.jobOrHobbyDataSource }
             .filterNil()
-            .bind(to: baseView.jobOrHobbyCollectionView.rx.items(cellIdentifier: "QurationSelectionStyleCell", cellType: QurationSelectionStyleCell.self)) { row, data, cell in
-//                cell.deleteButton.isHidden = true
-//                cell.titleLabel.text = data
+            .bind(to: baseView.jobOrHobbyCollectionView.rx.items(cellIdentifier: "QurationSelectionStyleCell", cellType: QurationSelectionStyleCell.self)) { row, cellReactor, cell in
+                
+                if cellReactor.currentState.isSelected == true {
+                    cell.baseView.layer.borderColor = Constant.Color.m7.cgColor
+                    cell.baseView.backgroundColor = Constant.Color.m7_mate
+                    cell.titleLabel.textColor = Constant.Color.m7
+                } else {
+                    cell.baseView.layer.borderColor = Constant.Color.g1.cgColor
+                    cell.baseView.backgroundColor = Constant.Color.f1
+                    cell.titleLabel.textColor = Constant.Color.g5
+                }
+                
+                cell.deleteButton.isHidden = true
+                cell.deleteButton.snp.updateConstraints { make in
+                    make.trailing.equalTo(cell.baseView.snp.trailing).offset(-4)
+                    make.width.equalTo(0)
+                }
+                
+                cell.titleLabel.text = cellReactor.currentState.title
             }
             .disposed(by: disposeBag)
         
@@ -105,6 +131,11 @@ class QurationUserInfoVC: UIViewController, View {
                 }
                 self.baseView.layoutIfNeeded()
             }).disposed(by: disposeBag)
+        
+        baseView.jobOrHobbyCollectionView.rx.modelSelected(PainAreaCollectionViewCellReactor.self)
+            .map { Reactor.Action.didJobOrHobbySelected($0)}
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
         
         baseView.previousButton.rx.tap
             .map { Reactor.Action.didPreviousButtonTapped }
@@ -216,12 +247,46 @@ class QurationUserInfoVC: UIViewController, View {
 
 }
 
+//extension QurationUserInfoVC: UITextFieldDelegate {
+//    func textFieldDidBeginEditing(_ textField: UITextField) {
+//        baseView.birthdayTextField.layer.borderColor = Constant.Color.m7.cgColor
+//    }
+//
+//    func textFieldDidEndEditing(_ textField: UITextField) {
+//        baseView.birthdayTextField.layer.borderColor = Constant.Color.g1.cgColor
+//    }
+//}
+
 extension QurationUserInfoVC: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        baseView.birthdayTextField.layer.borderColor = Constant.Color.m7.cgColor
+        resetTextFieldBorders()
+        
+        textField.layer.borderColor = Constant.Color.m7.cgColor
+        
+        if textField == baseView.jobOrHobbyUserInputTextField {
+            baseView.jobOrHobbyUserInputButton.backgroundColor = Constant.Color.m7
+        }
+        
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.layer.borderColor = Constant.Color.g1.cgColor
+        
+        if textField == baseView.jobOrHobbyUserInputTextField {
+            baseView.jobOrHobbyUserInputButton.backgroundColor = Constant.Color.g2
+        }
+    }
+    
+    // 모든 텍스트 필드의 테두리를 초기 상태로 설정하는 메소드
+    func resetTextFieldBorders() {
+        configureTextFieldBorder(textField: baseView.birthdayTextField)
+        configureTextFieldBorder(textField: baseView.jobOrHobbyUserInputTextField)
+    }
+    
+    // 텍스트 필드의 초기 테두리 설정을 위한 메소드
+    func configureTextFieldBorder(textField: UITextField) {
         baseView.birthdayTextField.layer.borderColor = Constant.Color.g1.cgColor
+        baseView.jobOrHobbyUserInputTextField.layer.borderColor = Constant.Color.g1.cgColor
+        baseView.jobOrHobbyUserInputButton.backgroundColor = Constant.Color.g2
     }
 }

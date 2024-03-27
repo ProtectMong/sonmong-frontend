@@ -17,6 +17,8 @@ class QurationUserInfoReactor: Reactor {
         case didGenderGirlButtonTapped
         case didGenderBoyButtonTapped
         case didJobOrHabbyTextFieldChanged(String?)
+        case didJobORHobbyButtonTapped
+        case didJobOrHobbySelected(PainAreaCollectionViewCellReactor)
         case didPreviousButtonTapped
         case didNextButtonTapped
     }
@@ -25,6 +27,8 @@ class QurationUserInfoReactor: Reactor {
         case setBirthday(String?)
         case setGender(String)
         case setJobOrHobbyDataSource([PainAreaCollectionViewCellReactor]?)
+        case setInputJobOrHobbyData(String?)
+        case setSelectedJobOrHobby([String]?)
         
         case setIsPresentPreviousVC(Bool?)
         case setIsPresentNextVC(Bool?)
@@ -33,7 +37,9 @@ class QurationUserInfoReactor: Reactor {
     struct State {
         var birthday: String?
         var gender: String?
-        var jobOrHobbyDataSource: [PainAreaCollectionViewCellReactor]?
+        var jobOrHobbyDataSource: [PainAreaCollectionViewCellReactor]? = []
+        var inputJobOrHobbyData: String?
+        var selectedJobOrHobby: [String]?
         
         var isPresentPreviousVC: Bool?
         var isPresentNextVC: Bool?
@@ -64,13 +70,62 @@ class QurationUserInfoReactor: Reactor {
             ])
             
         case .didJobOrHabbyTextFieldChanged(let inputData):
-            var currentDataSource = currentState.jobOrHobbyDataSource ?? []
-            let newCellReactor = PainAreaCollectionViewCellReactor(title: inputData, isSelected: true, isCustom: false)
+//            var currentDataSource = currentState.jobOrHobbyDataSource ?? []
+//            let newCellReactor = PainAreaCollectionViewCellReactor(title: inputData, isSelected: true, isCustom: false)
+//
+//            currentDataSource.append(newCellReactor)
+//            currentDataSource = currentDataSource.filter { $0 != nil }
+//            return Observable.concat([
+//                .just(Mutation.setJobOrHobbyDataSource(currentDataSource))
+//            ])
             
-            currentDataSource.append(newCellReactor)
-            currentDataSource = currentDataSource.filter { $0 != nil }
             return Observable.concat([
-                .just(Mutation.setJobOrHobbyDataSource(currentDataSource))
+                .just(Mutation.setInputJobOrHobbyData(inputData))
+            ])
+            
+        case .didJobORHobbyButtonTapped:
+            let currentUserInputData = currentState.inputJobOrHobbyData ?? ""
+            if currentUserInputData == "" {
+                return Observable.empty()
+            }
+            
+            var currentJobOrHobbyDataSource = currentState.jobOrHobbyDataSource ?? []
+            let isDuplicate = currentJobOrHobbyDataSource.contains(where: { $0.currentState.title == currentUserInputData })
+            
+            if !isDuplicate {
+                let inputPainAreaAsCellReactor = PainAreaCollectionViewCellReactor(title: currentUserInputData, isSelected: true, isCustom: true)
+                currentJobOrHobbyDataSource.append(inputPainAreaAsCellReactor)
+            }
+            
+            return Observable.concat([
+                .just(Mutation.setJobOrHobbyDataSource(currentJobOrHobbyDataSource)),
+                .just(Mutation.setInputJobOrHobbyData(nil))
+            ])
+            
+        case .didJobOrHobbySelected(let inputCellReactor):
+            var selectedJobOrHobby: [String]? = []
+            
+            let currentRecognizedDatas = currentState.jobOrHobbyDataSource?.map ({ cellReactor -> PainAreaCollectionViewCellReactor in
+                if cellReactor.currentState.title == inputCellReactor.currentState.title {
+                    if inputCellReactor.currentState.isSelected == true {
+                        return PainAreaCollectionViewCellReactor(title: inputCellReactor.currentState.title, isSelected: false, isCustom: inputCellReactor.currentState.isCustom)
+                    } else {
+                        selectedJobOrHobby?.append(inputCellReactor.currentState.title ?? "")
+                        return PainAreaCollectionViewCellReactor(title: inputCellReactor.currentState.title, isSelected: true , isCustom: inputCellReactor.currentState.isCustom)
+                    }
+                } else {
+                    if cellReactor.currentState.isSelected == true {
+                        selectedJobOrHobby?.append(cellReactor.currentState.title ?? "")
+                    }
+                    return PainAreaCollectionViewCellReactor(title: cellReactor.currentState.title, isSelected: cellReactor.currentState.isSelected, isCustom: cellReactor.currentState.isCustom)
+                }
+            }) ?? []
+            
+            print("✅ selectedJobOrHobby = \(selectedJobOrHobby)")
+            
+            return Observable.concat([
+                .just(Mutation.setSelectedJobOrHobby(selectedJobOrHobby)),
+                .just(Mutation.setJobOrHobbyDataSource(currentRecognizedDatas))
             ])
             
         case .didPreviousButtonTapped:
@@ -96,6 +151,10 @@ class QurationUserInfoReactor: Reactor {
             newState.gender = gender
         case .setJobOrHobbyDataSource(let dataSource):
             newState.jobOrHobbyDataSource = dataSource
+        case .setInputJobOrHobbyData(let data):
+            newState.inputJobOrHobbyData = data
+        case .setSelectedJobOrHobby(let dataSource):
+            newState.selectedJobOrHobby = dataSource
             
         case .setIsPresentPreviousVC(let isPresent):
             newState.isPresentPreviousVC = isPresent

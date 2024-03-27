@@ -106,7 +106,7 @@ class QurationFirstReactor: Reactor {
         case .didPainAreaUserInputButtonTapped:
             let currentUserInputData = currentState.inputPainAreaData ?? ""
             
-            if currentUserInputData == "" || currentUserInputData == nil {
+            if currentUserInputData == "" {
                 return Observable.empty()
             }
             

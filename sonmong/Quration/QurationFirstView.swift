@@ -11,6 +11,17 @@ import SnapKit
 
 class QurationFirstView: UIView {
     
+    let baseScrollView: UIScrollView = {
+        let scrollView = UIScrollView(frame: .zero)
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.isScrollEnabled = true
+        scrollView.showsVerticalScrollIndicator = true
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.backgroundColor = UIColor.clear
+        
+        return scrollView
+    }()
+    
     let contentView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -290,22 +301,41 @@ class QurationFirstView: UIView {
             make.bottom.equalTo(superView.safeAreaLayoutGuide.snp.bottom)
         }
         
-        self.addSubview(contentView)
-        contentView.snp.makeConstraints { make in
+        self.addSubview(stepButtonStackView)
+        stepButtonStackView.snp.makeConstraints { make in            make.bottom.equalTo(self.snp.bottom).offset(-11)
+            make.leading.equalTo(self.snp.leading).offset(6)
+            make.trailing.equalTo(self.snp.trailing).offset(-6)
+            make.height.equalTo(46)
+        }
+        
+        [previousButton, nextButton].forEach {
+            stepButtonStackView.addArrangedSubview($0)
+        }
+        
+        self.addSubview(stepButtonLineView)
+        stepButtonLineView.snp.makeConstraints { make in
+            make.bottom.equalTo(stepButtonStackView.snp.top).offset(-10)
+            make.trailing.equalTo(self.snp.trailing)
+            make.leading.equalTo(self.snp.leading)
+            make.height.equalTo(1)
+        }
+        
+        self.addSubview(baseScrollView)
+        baseScrollView.snp.makeConstraints { make in
             make.top.equalTo(self.snp.top)
             make.leading.equalTo(self.snp.leading)
             make.trailing.equalTo(self.snp.trailing)
-            make.bottom.equalTo(self.snp.bottom)
+            make.bottom.equalTo(stepButtonLineView.snp.top)
         }
         
-//        baseScrollView.addSubview(contentView)
-//        contentView.snp.makeConstraints { make in
-//            make.top.equalTo(baseScrollView.snp.top)
-//            make.leading.equalTo(baseScrollView.snp.leading)
-//            make.trailing.equalTo(baseScrollView.snp.trailing)
-//            make.bottom.equalTo(baseScrollView.snp.bottom)
-//            make.width.equalTo(baseScrollView.snp.width)
-//        }
+        baseScrollView.addSubview(contentView)
+        contentView.snp.makeConstraints { make in
+            make.top.equalTo(baseScrollView.snp.top)
+            make.leading.equalTo(baseScrollView.snp.leading)
+            make.trailing.equalTo(baseScrollView.snp.trailing)
+            make.bottom.equalTo(baseScrollView.snp.bottom)
+            make.width.equalTo(baseScrollView.snp.width)
+        }
         
         contentView.addSubview(processStackView)
         processStackView.snp.makeConstraints { make in
@@ -393,27 +423,8 @@ class QurationFirstView: UIView {
             make.top.equalTo(painDetailAreaCollectionView.snp.bottom).offset(7)
             make.leading.equalTo(contentView.snp.leading).offset(22)
             make.trailing.equalTo(painAreaUserInputButton.snp.leading).offset(-8)
+            make.bottom.equalTo(contentView.snp.bottom).offset(-20)
             make.height.equalTo(46)
-        }
-        
-        contentView.addSubview(stepButtonStackView)
-        stepButtonStackView.snp.makeConstraints { make in
-            make.bottom.equalTo(contentView.snp.bottom).offset(-11)
-            make.leading.equalTo(contentView.snp.leading).offset(6)
-            make.trailing.equalTo(contentView.snp.trailing).offset(-6)
-            make.height.equalTo(46)
-        }
-        
-        [previousButton, nextButton].forEach {
-            stepButtonStackView.addArrangedSubview($0)
-        }
-        
-        contentView.addSubview(stepButtonLineView)
-        stepButtonLineView.snp.makeConstraints { make in
-            make.bottom.equalTo(stepButtonStackView.snp.top).offset(-10)
-            make.trailing.equalTo(contentView.snp.trailing)
-            make.leading.equalTo(contentView.snp.leading)
-            make.height.equalTo(1)
         }
     }
 }

@@ -167,12 +167,11 @@ class QurationFourthView: UIView {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("아니오", for: .normal)
-        button.setTitleColor(Constant.Color.m7, for: .normal)
+        button.setTitleColor(Constant.Color.b1, for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 14, weight: .medium)
         button.layer.cornerRadius = 10
         button.layer.borderWidth = 1
-        button.layer.borderColor = Constant.Color.m7.cgColor
-        button.backgroundColor = Constant.Color.m7_mate
+        button.layer.borderColor = Constant.Color.g1.cgColor
         
         return button
     }()
@@ -215,12 +214,11 @@ class QurationFourthView: UIView {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("아니오", for: .normal)
-        button.setTitleColor(Constant.Color.m7, for: .normal)
+        button.setTitleColor(Constant.Color.b1, for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 14, weight: .medium)
         button.layer.cornerRadius = 10
         button.layer.borderWidth = 1
-        button.layer.borderColor = Constant.Color.m7.cgColor
-        button.backgroundColor = Constant.Color.m7_mate
+        button.layer.borderColor = Constant.Color.g1.cgColor
         
         return button
     }()
