@@ -21,8 +21,14 @@ class HomeVC: UIViewController, View {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        bindNavigation()
+//        bindNavigation()
         reactor?.action.onNext(.viewDidLoaded)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     func bind(reactor: HomeReactor) {
@@ -32,6 +38,16 @@ class HomeVC: UIViewController, View {
             .map { Reactor.Action.didAIButtonTapped }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
+        
+        baseView.sonmongButton.rx.tap
+            .withUnretained(self)
+            .subscribe(onNext:{ vc, _ in
+                let message = "손몽이 키우기는 아직 준비중이에요.\n조금만 기다려주세요!"
+                let alert = UIAlertController(title: "🫰", message: message, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
+                
+                self.present(alert, animated: true, completion: nil)
+            })
         
         reactor.state.map { $0.qurationListDatasource }
             .distinctUntilChanged()
@@ -138,15 +154,29 @@ class HomeVC: UIViewController, View {
     }
     
     func bindNavigation() {
-        let backButtonItem = UIBarButtonItem(image: UIImage(named: "search_ic"), style: .plain, target: nil, action: nil)
-        backButtonItem.tintColor = Constant.Color.b1
-        backButtonItem.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        self.title = "손몽이를 지켜줘!"
+        self.navigationController?.navigationBar.prefersLargeTitles = false
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.navigationBar.backgroundColor = Constant.Color.f2
+        self.navigationController?.navigationBar.titleTextAttributes = [
+            NSAttributedString.Key.font : UIFont.systemFont(ofSize: 15, weight: .bold)
+        ]
         
-//        self.navigationItem.setRightBarButton([backButtonItem], animated: false)
-
-        backButtonItem.rx.tap
-            .subscribe(onNext: { _ in
-//                self.navigationController?.popViewController(animated: true)
-            }).disposed(by: disposeBag)
+//        self.navigationController?.navigationBar.tintColor = Enti.Color.c000000
+        
+        let searchButtonItem = UIBarButtonItem(image: UIImage(named: "search_ic"),
+                                                  style: .plain,
+                                                  target: nil,
+                                                  action: nil)
+        
+        searchButtonItem.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        searchButtonItem.tintColor = Constant.Color.b1
+//        self.navigationItem.setRightBarButtonItems([searchButtonItem], animated: false)
+//        
+//        searchButtonItem.rx.tap
+//            .subscribe(onNext: { _ in
+//                #warning("검색 기능 구현")
+//            }).disposed(by: disposeBag)
     }
 }
