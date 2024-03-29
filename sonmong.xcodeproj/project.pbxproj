@@ -63,6 +63,12 @@
 		A1CFB0C92BAEF4D500BAABC8 /* RxAlamofire in Frameworks */ = {isa = PBXBuildFile; productRef = A1CFB0C82BAEF4D500BAABC8 /* RxAlamofire */; };
 		A1CFB0D12BAEFB7300BAABC8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CFB0D02BAEFB7300BAABC8 /* User.swift */; };
 		A1D7E05B2BB1790900EAF09F /* QurationMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D7E05A2BB1790900EAF09F /* QurationMainView.swift */; };
+		A1E8A87E2BB5CA030062ADED /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = A1E8A87D2BB5CA030062ADED /* Lottie */; };
+		A1E8A8802BB5CAD80062ADED /* quration_loading.json in Resources */ = {isa = PBXBuildFile; fileRef = A1E8A87F2BB5CAD80062ADED /* quration_loading.json */; };
+		A1E8A8822BB5D4CE0062ADED /* QurationFinalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E8A8812BB5D4CE0062ADED /* QurationFinalVC.swift */; };
+		A1E8A8842BB5D4E40062ADED /* QurationFinalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E8A8832BB5D4E40062ADED /* QurationFinalView.swift */; };
+		A1E8A8862BB5D4F00062ADED /* QurationFinalReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E8A8852BB5D4F00062ADED /* QurationFinalReactor.swift */; };
+		A1E8A8882BB5DFB70062ADED /* LauchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E8A8872BB5DFB70062ADED /* LauchScreenView.swift */; };
 		A1EE02422BAE7C75008EE352 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EE02412BAE7C75008EE352 /* LoginVC.swift */; };
 		A1EE02442BAE7C7B008EE352 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EE02432BAE7C7B008EE352 /* LoginView.swift */; };
 		A1EE02492BAE7DC5008EE352 /* LoginReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EE02482BAE7DC5008EE352 /* LoginReactor.swift */; };
@@ -117,7 +123,7 @@
 		A15C25E92BB02F39007AA1E7 /* QurationFourthReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QurationFourthReactor.swift; sourceTree = "<group>"; };
 		A15C25EB2BB0505B007AA1E7 /* QurationHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QurationHistoryTableViewCell.swift; sourceTree = "<group>"; };
 		A15C25ED2BB05097007AA1E7 /* QurationHistoryTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QurationHistoryTableViewHeaderView.swift; sourceTree = "<group>"; };
-		A1C3A24E2BADD922000A41FD /* sonmong.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sonmong.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1C3A24E2BADD922000A41FD /* 몽지.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "몽지.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1C3A2512BADD922000A41FD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A1C3A2532BADD922000A41FD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		A1C3A2552BADD922000A41FD /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
@@ -137,6 +143,11 @@
 		A1CFB0C52BAEF17700BAABC8 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		A1CFB0D02BAEFB7300BAABC8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A1D7E05A2BB1790900EAF09F /* QurationMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QurationMainView.swift; sourceTree = "<group>"; };
+		A1E8A87F2BB5CAD80062ADED /* quration_loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = quration_loading.json; sourceTree = "<group>"; };
+		A1E8A8812BB5D4CE0062ADED /* QurationFinalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QurationFinalVC.swift; sourceTree = "<group>"; };
+		A1E8A8832BB5D4E40062ADED /* QurationFinalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QurationFinalView.swift; sourceTree = "<group>"; };
+		A1E8A8852BB5D4F00062ADED /* QurationFinalReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QurationFinalReactor.swift; sourceTree = "<group>"; };
+		A1E8A8872BB5DFB70062ADED /* LauchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LauchScreenView.swift; sourceTree = "<group>"; };
 		A1EE02412BAE7C75008EE352 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		A1EE02432BAE7C7B008EE352 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		A1EE02482BAE7DC5008EE352 /* LoginReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginReactor.swift; sourceTree = "<group>"; };
@@ -152,6 +163,7 @@
 				A12D52222BAE7F4B000B08D4 /* RxRelay in Frameworks */,
 				A12D52252BAE8296000B08D4 /* RxKeyboard in Frameworks */,
 				A12D52182BAE7F25000B08D4 /* ReactorKit in Frameworks */,
+				A1E8A87E2BB5CA030062ADED /* Lottie in Frameworks */,
 				A12D521E2BAE7F4B000B08D4 /* RxBlocking in Frameworks */,
 				A1CFB0C92BAEF4D500BAABC8 /* RxAlamofire in Frameworks */,
 				A12D52202BAE7F4B000B08D4 /* RxCocoa in Frameworks */,
@@ -202,6 +214,9 @@
 				4C5CA0702BB4735C00E2E659 /* QurationLoadingVC.swift */,
 				4C5CA0742BB473D700E2E659 /* QurationLoadingReactor.swift */,
 				4C5CA0722BB473BB00E2E659 /* QurationLoadingView.swift */,
+				A1E8A8812BB5D4CE0062ADED /* QurationFinalVC.swift */,
+				A1E8A8832BB5D4E40062ADED /* QurationFinalView.swift */,
+				A1E8A8852BB5D4F00062ADED /* QurationFinalReactor.swift */,
 				A15C25D32BAFFED8007AA1E7 /* QurationSelectionStyleCell.swift */,
 				A15C25D72BB002EA007AA1E7 /* PainAreaCollectionViewCellReactor.swift */,
 				4C5CA06C2BB3192E00E2E659 /* Slider.swift */,
@@ -232,7 +247,7 @@
 		A1C3A24F2BADD922000A41FD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A1C3A24E2BADD922000A41FD /* sonmong.app */,
+				A1C3A24E2BADD922000A41FD /* 몽지.app */,
 				A1C3A2642BADD924000A41FD /* sonmongTests.xctest */,
 				A1C3A26E2BADD924000A41FD /* sonmongUITests.xctest */,
 			);
@@ -250,6 +265,7 @@
 				A1C3A2512BADD922000A41FD /* AppDelegate.swift */,
 				A1C3A2532BADD922000A41FD /* SceneDelegate.swift */,
 				A1C3A2552BADD922000A41FD /* LaunchViewController.swift */,
+				A1E8A8872BB5DFB70062ADED /* LauchScreenView.swift */,
 				A1C3A25A2BADD923000A41FD /* Assets.xcassets */,
 				A1C3A25C2BADD923000A41FD /* LaunchScreen.storyboard */,
 				A1C3A25F2BADD923000A41FD /* Info.plist */,
@@ -278,6 +294,7 @@
 		A1CFB0C22BAEF0FC00BAABC8 /* Supporting */ = {
 			isa = PBXGroup;
 			children = (
+				A1E8A87F2BB5CAD80062ADED /* quration_loading.json */,
 				A1CFB0C32BAEF10800BAABC8 /* APIResponse.swift */,
 				A1CFB0C52BAEF17700BAABC8 /* APIService.swift */,
 				A15C25D52BAFFF66007AA1E7 /* CollectionViewCellLeftAlignFlowLayout.swift */,
@@ -334,9 +351,10 @@
 				A1CFB0B62BAEEBAE00BAABC8 /* RxOptional */,
 				A1CFB0C82BAEF4D500BAABC8 /* RxAlamofire */,
 				A15C25BE2BAFD734007AA1E7 /* Alamofire */,
+				A1E8A87D2BB5CA030062ADED /* Lottie */,
 			);
 			productName = sonmong;
-			productReference = A1C3A24E2BADD922000A41FD /* sonmong.app */;
+			productReference = A1C3A24E2BADD922000A41FD /* 몽지.app */;
 			productType = "com.apple.product-type.application";
 		};
 		A1C3A2632BADD924000A41FD /* sonmongTests */ = {
@@ -415,6 +433,7 @@
 				A1CFB0B52BAEEBAE00BAABC8 /* XCRemoteSwiftPackageReference "RxOptional" */,
 				A1CFB0C72BAEF4D500BAABC8 /* XCRemoteSwiftPackageReference "RxAlamofire" */,
 				A15C25BD2BAFD734007AA1E7 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				A1E8A87C2BB5CA030062ADED /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = A1C3A24F2BADD922000A41FD /* Products */;
 			projectDirPath = "";
@@ -432,6 +451,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1E8A8802BB5CAD80062ADED /* quration_loading.json in Resources */,
 				A1C3A25B2BADD923000A41FD /* Assets.xcassets in Resources */,
 				A1C3A25E2BADD923000A41FD /* Base in Resources */,
 			);
@@ -460,8 +480,10 @@
 			files = (
 				A15C25D02BAFFD99007AA1E7 /* QurationFirstView.swift in Sources */,
 				4C5CA0752BB473D700E2E659 /* QurationLoadingReactor.swift in Sources */,
+				A1E8A8862BB5D4F00062ADED /* QurationFinalReactor.swift in Sources */,
 				A15C25EE2BB05097007AA1E7 /* QurationHistoryTableViewHeaderView.swift in Sources */,
 				A15C25C82BAFEBB2007AA1E7 /* QurationMainVC.swift in Sources */,
+				A1E8A8822BB5D4CE0062ADED /* QurationFinalVC.swift in Sources */,
 				A1C3A2562BADD922000A41FD /* LaunchViewController.swift in Sources */,
 				A15C25E62BB02F13007AA1E7 /* QurationFourthVC.swift in Sources */,
 				A1C3A2522BADD922000A41FD /* AppDelegate.swift in Sources */,
@@ -480,6 +502,7 @@
 				A15C25D82BB002EA007AA1E7 /* PainAreaCollectionViewCellReactor.swift in Sources */,
 				A136175D2BAFBE1E00113997 /* QurtionUserInfoReactor.swift in Sources */,
 				A1CFB0C42BAEF10800BAABC8 /* APIResponse.swift in Sources */,
+				A1E8A8842BB5D4E40062ADED /* QurationFinalView.swift in Sources */,
 				A15C25EC2BB0505B007AA1E7 /* QurationHistoryTableViewCell.swift in Sources */,
 				A15C25CC2BAFEBDC007AA1E7 /* QurationMainReactor.swift in Sources */,
 				A1CFB0D12BAEFB7300BAABC8 /* User.swift in Sources */,
@@ -495,6 +518,7 @@
 				A15C25EA2BB02F39007AA1E7 /* QurationFourthReactor.swift in Sources */,
 				A15C25D42BAFFED8007AA1E7 /* QurationSelectionStyleCell.swift in Sources */,
 				A136175B2BAFBE0C00113997 /* QurtionUserInfoView.swift in Sources */,
+				A1E8A8882BB5DFB70062ADED /* LauchScreenView.swift in Sources */,
 				A15C25DA2BB024D8007AA1E7 /* QurationSecondVC.swift in Sources */,
 				A1CFB0BF2BAEECC700BAABC8 /* Constant.swift in Sources */,
 				4C5CA0712BB4735C00E2E659 /* QurationLoadingVC.swift in Sources */,
@@ -676,9 +700,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = T6HPMD6KD3;
+				DEVELOPMENT_TEAM = WC5T233HM3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = sonmong/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -689,8 +714,8 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.project.sonmong;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = site.mongji.safe;
+				PRODUCT_NAME = "몽지";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -704,9 +729,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = T6HPMD6KD3;
+				DEVELOPMENT_TEAM = WC5T233HM3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = sonmong/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -717,8 +743,8 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.project.sonmong;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = site.mongji.safe;
+				PRODUCT_NAME = "몽지";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -899,6 +925,14 @@
 				minimumVersion = 6.1.1;
 			};
 		};
+		A1E8A87C2BB5CA030062ADED /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.4.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -946,6 +980,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A1CFB0C72BAEF4D500BAABC8 /* XCRemoteSwiftPackageReference "RxAlamofire" */;
 			productName = RxAlamofire;
+		};
+		A1E8A87D2BB5CA030062ADED /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A1E8A87C2BB5CA030062ADED /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
