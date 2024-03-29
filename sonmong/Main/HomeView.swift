@@ -197,8 +197,8 @@ class HomeView: UIView {
         return view
     }()
     
-    let youtubeThumbnailImageView: UIImageView = {
-        let view = UIImageView()
+    let youtubeThumbnailImageView: UIView = {
+        let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.cornerRadius = 94/2
         view.clipsToBounds = true
@@ -208,7 +208,6 @@ class HomeView: UIView {
         view.layer.shadowOpacity = 0.80
         view.layer.shadowOffset = CGSize(width: 0, height: 0)
         view.layer.shadowRadius = 11.0
-        view.image = UIImage(named: "youtubeSample")
         
         return view
     }()
@@ -491,16 +490,15 @@ class HomeView: UIView {
             make.trailing.equalTo(contentView.snp.trailing)
         }
         
-//        recommendBaseView.addSubview(todaysRecommendGoDetailButton)
-//        todaysRecommendGoDetailButton.snp.makeConstraints { make in
-//            make.top.equalTo(recommendBaseView.snp.top).offset(37)
-//            make.trailing.lessThanOrEqualTo(recommendBaseView.snp.trailing).offset(-22)
-//        }
+        recommendBaseView.addSubview(todaysRecommendGoDetailButton)
+        todaysRecommendGoDetailButton.snp.makeConstraints { make in
+            make.top.equalTo(recommendBaseView.snp.top).offset(37)
+            make.trailing.lessThanOrEqualTo(recommendBaseView.snp.trailing).offset(-22)
+        }
         
         recommendBaseView.addSubview(todaysRecommendTitleLabel)
         todaysRecommendTitleLabel.snp.makeConstraints { make in
-            make.top.equalTo(recommendBaseView.snp.top).offset(37)
-//            make.bottom.equalTo(todaysRecommendGoDetailButton.snp.bottom)
+            make.bottom.equalTo(todaysRecommendGoDetailButton.snp.bottom)
             make.leading.equalTo(recommendBaseView.snp.leading).offset(22)
         }
         
@@ -509,7 +507,7 @@ class HomeView: UIView {
             make.top.equalTo(todaysRecommendTitleLabel.snp.bottom).offset(15)
             make.leading.equalTo(recommendBaseView.snp.leading).offset(22)
             make.trailing.equalTo(recommendBaseView.snp.trailing).offset(-22)
-            make.bottom.equalTo(recommendBaseView.snp.bottom).offset(-35)
+            make.bottom.equalTo(recommendBaseView.snp.bottom).offset(-25)
         }
         
         recommandView.addSubview(youtubeThumbnailImageView)

@@ -35,10 +35,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let nav4 = UINavigationController(rootViewController: loginVC)
         nav1.tabBarItem = UITabBarItem(title: "홈 ", image: UIImage(named: "home_export"), selectedImage: UIImage(named: "home_export_selected")?.withRenderingMode(.alwaysOriginal))
         nav2.tabBarItem = UITabBarItem(title: "AI상담 ", image: UIImage(named: "ai_export"), selectedImage: UIImage(named: "ai_export_selected")?.withRenderingMode(.alwaysOriginal))
-//        nav3.tabBarItem = UITabBarItem(title: "손몽이 ", image: UIImage(named: "sm_export"), selectedImage: UIImage(named: "sm_export_selected")?.withRenderingMode(.alwaysOriginal))
-//        nav4.tabBarItem = UITabBarItem(title: "마이 ", image: UIImage(named: "my_export"), selectedImage: UIImage(named: "my_export_selected")?.withRenderingMode(.alwaysOriginal) )
-        tabBarVC.viewControllers = [nav1, nav2]
-//        tabBarVC.viewControllers = [nav1, nav2, nav3, nav4]
+        nav3.tabBarItem = UITabBarItem(title: "손몽이 ", image: UIImage(named: "sm_export"), selectedImage: UIImage(named: "sm_export_selected")?.withRenderingMode(.alwaysOriginal))
+        nav4.tabBarItem = UITabBarItem(title: "마이 ", image: UIImage(named: "my_export"), selectedImage: UIImage(named: "my_export_selected")?.withRenderingMode(.alwaysOriginal) )
+        tabBarVC.viewControllers = [nav1, nav2, nav3, nav4]
         tabBarVC.tabBar.backgroundColor = Constant.Color.f1
         
         tabBarVC.tabBar.tintColor = Constant.Color.b1
