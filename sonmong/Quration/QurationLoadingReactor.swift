@@ -18,7 +18,7 @@ class QurationLoadingReactor: Reactor {
     }
     
     struct State {
-        
+        var isQurationFinished: Bool? = true
     }
     
     let initialState = State()
