@@ -16,30 +16,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon" translatesAutoresizingMaskIntoConstraints="NO" id="eXL-d9-6Wv">
-                                <rect key="frame" x="51" y="193" width="291" height="364"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash_gif.gif" translatesAutoresizingMaskIntoConstraints="NO" id="eXL-d9-6Wv">
+                                <rect key="frame" x="96.666666666666686" y="326" width="200" height="200"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="364" id="xDN-IM-hRg"/>
-                                    <constraint firstAttribute="width" constant="291" id="z2y-Ob-rHD"/>
+                                    <constraint firstAttribute="width" constant="200" id="PYH-Oa-edq"/>
+                                    <constraint firstAttribute="height" constant="200" id="SPG-65-wqI"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="손몽이를 지켜줘!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S21-Mk-edT">
-                                <rect key="frame" x="114" y="533" width="165" height="24"/>
-                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mongji-logo-white" translatesAutoresizingMaskIntoConstraints="NO" id="F4P-M5-Xee">
+                                <rect key="frame" x="163" y="534" width="67" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="HMD-EL-y2c"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.41568624970000001" green="0.3686274886" blue="0.80000001190000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="eXL-d9-6Wv" secondAttribute="trailing" constant="51" id="4ip-ph-t8m"/>
-                            <constraint firstItem="S21-Mk-edT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="114" id="F7D-FQ-ZQy"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="S21-Mk-edT" secondAttribute="trailing" constant="114" id="OK7-On-ZgV"/>
-                            <constraint firstItem="eXL-d9-6Wv" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="134" id="cXd-nT-uB7"/>
-                            <constraint firstItem="eXL-d9-6Wv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="51" id="hjW-5s-od0"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="S21-Mk-edT" secondAttribute="bottom" constant="261" id="jdg-cl-eui"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="F4P-M5-Xee" secondAttribute="bottom" constant="254" id="5YL-WI-Vqj"/>
+                            <constraint firstItem="eXL-d9-6Wv" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Pql-jX-C8N"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="F4P-M5-Xee" secondAttribute="trailing" constant="163" id="TXY-5x-uzh"/>
+                            <constraint firstItem="F4P-M5-Xee" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="163" id="aOR-YY-TCV"/>
+                            <constraint firstItem="eXL-d9-6Wv" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="fkh-DJ-hVO"/>
+                            <constraint firstItem="F4P-M5-Xee" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="topMargin" constant="475" id="vA3-sq-RVB"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -49,6 +48,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icon" width="364" height="364"/>
+        <image name="mongji-logo-white" width="67" height="30"/>
+        <image name="splash_gif.gif" width="900" height="900"/>
     </resources>
 </document>

@@ -63,6 +63,7 @@
 		A1CFB0C92BAEF4D500BAABC8 /* RxAlamofire in Frameworks */ = {isa = PBXBuildFile; productRef = A1CFB0C82BAEF4D500BAABC8 /* RxAlamofire */; };
 		A1CFB0D12BAEFB7300BAABC8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CFB0D02BAEFB7300BAABC8 /* User.swift */; };
 		A1D7E05B2BB1790900EAF09F /* QurationMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D7E05A2BB1790900EAF09F /* QurationMainView.swift */; };
+		A1E487E32BB6FB0400FDC47F /* splash_gif.gif in Resources */ = {isa = PBXBuildFile; fileRef = A1E487E22BB6FB0400FDC47F /* splash_gif.gif */; };
 		A1E8A87E2BB5CA030062ADED /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = A1E8A87D2BB5CA030062ADED /* Lottie */; };
 		A1E8A8802BB5CAD80062ADED /* quration_loading.json in Resources */ = {isa = PBXBuildFile; fileRef = A1E8A87F2BB5CAD80062ADED /* quration_loading.json */; };
 		A1E8A8822BB5D4CE0062ADED /* QurationFinalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E8A8812BB5D4CE0062ADED /* QurationFinalVC.swift */; };
@@ -123,7 +124,7 @@
 		A15C25E92BB02F39007AA1E7 /* QurationFourthReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QurationFourthReactor.swift; sourceTree = "<group>"; };
 		A15C25EB2BB0505B007AA1E7 /* QurationHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QurationHistoryTableViewCell.swift; sourceTree = "<group>"; };
 		A15C25ED2BB05097007AA1E7 /* QurationHistoryTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QurationHistoryTableViewHeaderView.swift; sourceTree = "<group>"; };
-		A1C3A24E2BADD922000A41FD /* mongji.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mongji.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1C3A24E2BADD922000A41FD /* 몽지.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "몽지.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1C3A2512BADD922000A41FD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A1C3A2532BADD922000A41FD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		A1C3A2552BADD922000A41FD /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
@@ -143,6 +144,7 @@
 		A1CFB0C52BAEF17700BAABC8 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		A1CFB0D02BAEFB7300BAABC8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A1D7E05A2BB1790900EAF09F /* QurationMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QurationMainView.swift; sourceTree = "<group>"; };
+		A1E487E22BB6FB0400FDC47F /* splash_gif.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = splash_gif.gif; sourceTree = "<group>"; };
 		A1E8A87F2BB5CAD80062ADED /* quration_loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = quration_loading.json; sourceTree = "<group>"; };
 		A1E8A8812BB5D4CE0062ADED /* QurationFinalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QurationFinalVC.swift; sourceTree = "<group>"; };
 		A1E8A8832BB5D4E40062ADED /* QurationFinalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QurationFinalView.swift; sourceTree = "<group>"; };
@@ -247,7 +249,7 @@
 		A1C3A24F2BADD922000A41FD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A1C3A24E2BADD922000A41FD /* mongji.app */,
+				A1C3A24E2BADD922000A41FD /* 몽지.app */,
 				A1C3A2642BADD924000A41FD /* sonmongTests.xctest */,
 				A1C3A26E2BADD924000A41FD /* sonmongUITests.xctest */,
 			);
@@ -267,6 +269,7 @@
 				A1C3A2552BADD922000A41FD /* LaunchViewController.swift */,
 				A1E8A8872BB5DFB70062ADED /* LauchScreenView.swift */,
 				A1C3A25A2BADD923000A41FD /* Assets.xcassets */,
+				A1E487E22BB6FB0400FDC47F /* splash_gif.gif */,
 				A1C3A25C2BADD923000A41FD /* LaunchScreen.storyboard */,
 				A1C3A25F2BADD923000A41FD /* Info.plist */,
 				A1CFB0BE2BAEECC700BAABC8 /* Constant.swift */,
@@ -354,7 +357,7 @@
 				A1E8A87D2BB5CA030062ADED /* Lottie */,
 			);
 			productName = sonmong;
-			productReference = A1C3A24E2BADD922000A41FD /* mongji.app */;
+			productReference = A1C3A24E2BADD922000A41FD /* 몽지.app */;
 			productType = "com.apple.product-type.application";
 		};
 		A1C3A2632BADD924000A41FD /* sonmongTests */ = {
@@ -453,6 +456,7 @@
 			files = (
 				A1E8A8802BB5CAD80062ADED /* quration_loading.json in Resources */,
 				A1C3A25B2BADD923000A41FD /* Assets.xcassets in Resources */,
+				A1E487E32BB6FB0400FDC47F /* splash_gif.gif in Resources */,
 				A1C3A25E2BADD923000A41FD /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -713,9 +717,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = site.mongji.safe;
-				PRODUCT_NAME = mongji;
+				PRODUCT_NAME = "몽지";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -742,9 +746,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = site.mongji.safe;
-				PRODUCT_NAME = mongji;
+				PRODUCT_NAME = "몽지";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
