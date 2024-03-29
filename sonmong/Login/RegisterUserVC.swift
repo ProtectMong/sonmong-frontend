@@ -32,6 +32,20 @@ class RegisterUserVC: UIViewController, View {
             .map { Reactor.Action.didStartButtonTapped }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.isPresentQurationVC }
+            .distinctUntilChanged()
+            .filterNil()
+            .filter { $0 == true }
+            .withUnretained(self)
+            .subscribe(onNext: { vc, _ in
+                let qurationVC = QurationUserInfoVC()
+                let qurationReactor = QurationUserInfoReactor()
+                qurationVC.reactor = qurationReactor
+                
+                self.navigationController?.pushViewController(UINavigationController(rootViewController: qurationVC), animated: true)
+            })
+            .disposed(by: disposeBag)
     }
     
     func bindKeyboard() {
