@@ -140,30 +140,36 @@ class QurationSecondView: UIView {
         return label
     }()
     
-//    let painLevelSlider: UISlider = {
-//        let slider = UISlider()
-//        slider.translatesAutoresizingMaskIntoConstraints = false
-//        slider.minimumValue = 0
-//        slider.maximumValue = 10
-//        slider.value = 5
-//        slider.minimumTrackTintColor = Constant.Color.m7
-//        slider.maximumTrackTintColor = Constant.Color.m7
-//        slider.thumbTintColor = Constant.Color.f1
-//
-//        return slider
-//    }()
+    let painLevelView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.cornerRadius = 13
+        view.layer.borderWidth = 1
+        view.layer.borderColor = Constant.Color.g1.cgColor
+        
+        return view
+    }()
+    
+    let painLevelTextLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .systemFont(ofSize: 14, weight: .medium)
+        label.textColor = Constant.Color.g5
+        
+        return label
+    }()
     
     let painLevelSlider: SliderView = {
         let slider = SliderView(maxValue: 11)
+        slider.currentValue = 0
         
         return slider
     }()
     
-    
     let painStartWhenTitle: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "아픈 정도를 선택해 주세요."
+        label.text = "언제부터 아팠나요?"
         label.textColor = Constant.Color.b1
         label.font = .systemFont(ofSize: 16, weight: .bold)
         label.numberOfLines = 0
@@ -255,15 +261,6 @@ class QurationSecondView: UIView {
             make.bottom.equalTo(self.snp.bottom)
         }
         
-//        baseScrollView.addSubview(contentView)
-//        contentView.snp.makeConstraints { make in
-//            make.top.equalTo(baseScrollView.snp.top)
-//            make.leading.equalTo(baseScrollView.snp.leading)
-//            make.trailing.equalTo(baseScrollView.snp.trailing)
-//            make.bottom.equalTo(baseScrollView.snp.bottom)
-//            make.width.equalTo(baseScrollView.snp.width)
-//        }
-        
         contentView.addSubview(processStackView)
         processStackView.snp.makeConstraints { make in
             make.top.equalTo(contentView.snp.top).offset(20)
@@ -299,17 +296,31 @@ class QurationSecondView: UIView {
             make.leading.equalTo(contentView.snp.leading).offset(22)
         }
         
-        contentView.addSubview(painLevelSlider)
-        painLevelSlider.snp.makeConstraints { make in
-            make.top.equalTo(painLevelTitle.snp.bottom).offset(40)
+        contentView.addSubview(painLevelView)
+        painLevelView.snp.makeConstraints { make in
+            make.top.equalTo(painLevelTitle.snp.bottom).offset(18)
             make.leading.equalTo(contentView.snp.leading).offset(22)
             make.trailing.equalTo(contentView.snp.trailing).offset(-22)
+        }
+        
+        painLevelView.addSubview(painLevelTextLabel)
+        painLevelTextLabel.snp.makeConstraints { make in
+            make.top.equalTo(painLevelView.snp.top).offset(18)
+            make.centerX.equalTo(painLevelView.snp.centerX)
+        }
+        
+        painLevelView.addSubview(painLevelSlider)
+        painLevelSlider.snp.makeConstraints { make in
+            make.top.equalTo(painLevelTextLabel.snp.bottom).offset(18)
+            make.leading.equalTo(painLevelView.snp.leading).offset(15)
+            make.trailing.equalTo(painLevelView.snp.trailing).offset(-15)
+            make.bottom.equalTo(painLevelView.snp.bottom).offset(-18)
             make.height.equalTo(25)
         }
         
         contentView.addSubview(painStartWhenTitle)
         painStartWhenTitle.snp.makeConstraints { make in
-            make.top.equalTo(painLevelSlider.snp.bottom).offset(40)
+            make.top.equalTo(painLevelView.snp.bottom).offset(40)
             make.leading.equalTo(contentView.snp.leading).offset(22)
             
         }

@@ -101,7 +101,7 @@ class QurationMainView: UIView {
     }()
     
     func layout(superView: UIView) {
-        superView.backgroundColor = Constant.Color.f1
+        superView.backgroundColor = Constant.Color.f2
 //        self.backgroundColor = Constant.Color.m7
         
         superView.addSubview(self)

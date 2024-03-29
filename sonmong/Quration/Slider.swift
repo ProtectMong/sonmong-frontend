@@ -7,6 +7,8 @@
 
 import UIKit
 import SnapKit
+import RxSwift
+import RxCocoa
 
 //MARK: - SliderView.swift
 protocol SliderViewDelegate: AnyObject {
@@ -14,6 +16,23 @@ protocol SliderViewDelegate: AnyObject {
 }
 
 final class SliderView: UIView {
+    
+    weak var sliderDelegate: SliderViewDelegate?
+    // RxSwift를 위한 PublishSubject 추가
+    private var currentValueSubject = PublishSubject<Int>()
+    // 외부에서 접근 가능하도록 Observable로 변환
+    var currentValueObservable: Observable<Int> {
+        return currentValueSubject.asObservable()
+    }
+    
+    var currentValue: Int = 1 {
+        didSet {
+            // delegate 방식을 제거하거나 필요에 따라 유지합니다.
+            sliderDelegate?.sliderView(self, changedValue: currentValue)
+            // 새로운 currentValue를 Subject에 방출합니다.
+            currentValueSubject.onNext(currentValue)
+        }
+    }
     
     //MARK: - Properties
     private let trackView: UIView = {

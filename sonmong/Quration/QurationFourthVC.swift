@@ -23,6 +23,12 @@ class QurationFourthVC: UIViewController, View {
         bindNavigation()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
     func bind(reactor: QurationFourthReactor) {
         baseView.layout(superView: self.view)
         
@@ -136,11 +142,11 @@ class QurationFourthVC: UIViewController, View {
             .filter { $0 == true }
             .withUnretained(self)
             .subscribe(onNext: { vc, _ in
-//                let nextVC = QurationFourthVC()
-//                let nextReactor = QurationFourthReactor()
-//                nextVC.reactor = nextReactor
-//                
-//                vc.navigationController?.pushViewController(nextVC, animated: true)
+                let nextVC = QurationLoadingVC()
+                let nextReactor = QurationLoadingReactor()
+                nextVC.reactor = nextReactor
+                
+                vc.navigationController?.pushViewController(nextVC, animated: true)
             })
             .disposed(by: disposeBag)
     }

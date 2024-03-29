@@ -88,19 +88,24 @@ class QurationHistoryTableViewCell: UITableViewCell {
             make.bottom.equalTo(self.contentView.snp.bottom).offset(-2)
         }
         
-        baseView.addSubview(arrowIconImageView)
-        arrowIconImageView.snp.makeConstraints { make in
-            make.top.equalTo(baseView.snp.top).offset(22)
-            make.trailing.equalTo(baseView.snp.trailing).offset(-22)
-            make.bottom.equalTo(baseView.snp.bottom).offset(-22)
-            make.width.equalTo(10)
-            make.height.equalTo(16)
-        }
+//        baseView.addSubview(arrowIconImageView)
+//        arrowIconImageView.snp.makeConstraints { make in
+//            make.top.equalTo(baseView.snp.top).offset(22)
+//            make.trailing.equalTo(baseView.snp.trailing).offset(-22)
+//            make.bottom.equalTo(baseView.snp.bottom).offset(-22)
+//            make.width.equalTo(10)
+//            make.height.equalTo(16)
+//        }
         
         baseView.addSubview(dateLabel)
         dateLabel.snp.makeConstraints { make in
-            make.centerY.equalTo(baseView.snp.centerY)
-            make.trailing.equalTo(arrowIconImageView.snp.leading).offset(-15)
+            make.top.equalTo(baseView.snp.top).offset(22)
+            make.bottom.equalTo(baseView.snp.bottom).offset(-22)
+            make.trailing.equalTo(baseView.snp.trailing).offset(-22)
+            
+            #warning("originCode")
+//            make.centerY.equalTo(baseView.snp.centerY)
+//            make.trailing.equalTo(arrowIconImageView.snp.leading).offset(-15)
         }
         
         baseView.addSubview(tagView)

@@ -23,6 +23,12 @@ class QurationThirdVC: UIViewController, View {
         bindNavigation()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
     func bind(reactor: QurationThirdReactor) {
         baseView.layout(superView: self.view)
         

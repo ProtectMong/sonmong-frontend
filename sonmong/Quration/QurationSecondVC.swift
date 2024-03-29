@@ -11,7 +11,20 @@ import RxSwift
 import RxCocoa
 import ReactorKit
 
-class QurationSecondVC: UIViewController, View {
+class QurationSecondVC: UIViewController, View, SliderViewDelegate {
+    func sliderView(_ sender: SliderView, changedValue value: Int) {
+        let newValue = value - 1
+        if newValue == 0 {
+            self.baseView.painLevelTextLabel.text = "정도\(newValue), 안 아파요."
+        } else if newValue > 0 && newValue <= 3 {
+            self.baseView.painLevelTextLabel.text = "정도\(newValue), 조금 아파요."
+        } else if newValue > 3 && newValue <= 6 {
+            self.baseView.painLevelTextLabel.text = "정도\(newValue), 아파요."
+        } else {
+            self.baseView.painLevelTextLabel.text = "정도\(newValue), 많이 아파요."
+        }
+    }
+    
     
     var disposeBag = DisposeBag()
     let baseView = QurationSecondView()
@@ -24,10 +37,23 @@ class QurationSecondVC: UIViewController, View {
         setDatePicker()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
     func bind(reactor: QurationSecondReactor) {
         baseView.layout(superView: self.view)
         
         baseView.painStartWhenTextField.delegate = self
+        
+        baseView.painLevelSlider.delegate = self
+//        baseView.painLevelSlider.currentValueObservable
+//            .subscribe(onNext: { currentValue in
+//                print("현재 슬라이더 값: \(currentValue)")
+//            })
+//            .disposed(by: disposeBag)
         
         reactor.state.map { $0.startWhen }
             .distinctUntilChanged()

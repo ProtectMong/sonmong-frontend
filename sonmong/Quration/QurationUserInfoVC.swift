@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import ReactorKit
+import RxKeyboard
 
 class QurationUserInfoVC: UIViewController, View {
     
@@ -21,6 +22,7 @@ class QurationUserInfoVC: UIViewController, View {
         super.viewDidLoad()
         
         bindNavigation()
+        bindKeyboard()
         reactor?.action.onNext(.viewDidLoaded)
     }
     
@@ -256,6 +258,23 @@ class QurationUserInfoVC: UIViewController, View {
                 vc.reactor?.action.onNext(.didBirthdayPickerChanged(date))
             })
             .disposed(by: disposeBag)
+    }
+    
+    func bindKeyboard() {
+        // Tap Keyboard Hide
+        let tapGesture = UITapGestureRecognizer(target: baseView, action: #selector(LoginView.endEditing))
+        tapGesture.cancelsTouchesInView = false
+        self.baseView.addGestureRecognizer(tapGesture)
+        
+        let scrollView = baseView.baseScrollView
+
+        RxKeyboard.instance.visibleHeight.drive(onNext: {  keyboardVisibleHeight in
+                scrollView.contentInset.bottom = keyboardVisibleHeight
+            }).disposed(by: disposeBag)
+
+        RxKeyboard.instance.willShowVisibleHeight.drive(onNext: { keyboardVisibleHeight in
+                scrollView.contentOffset.y += keyboardVisibleHeight/2
+            }).disposed(by: disposeBag)
     }
     
     func bindNavigation() {

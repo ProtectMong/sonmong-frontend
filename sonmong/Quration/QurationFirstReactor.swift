@@ -230,10 +230,33 @@ class QurationFirstReactor: Reactor {
             ])
             
         case .didNextButtonTapped:
-            return Observable.concat([
-                .just(Mutation.setIsPresentNextVC(true)),
-                .just(Mutation.setIsPresentNextVC(nil))
-            ])
+            var message = ""
+            var qurationParameter = Quration()
+            
+            if let painArea = currentState.selectedPainArea, painArea.count > 0 {
+                qurationParameter.whereDoesItHurt = painArea.first
+            } else {
+                message += "🌟 통증 위치 \n"
+            }
+            
+            if let painDetailArea = currentState.selectedPainDetailArea, painDetailArea.count > 0 {
+                qurationParameter.position = painDetailArea.first
+            } else {
+                message += "🌟 상세 통증 위치\n"
+            }
+            
+            if message == "" {
+                return Observable.concat([
+                    .just(Mutation.setQurationParameter(qurationParameter)),
+                    .just(Mutation.setIsPresentNextVC(true)),
+                    .just(Mutation.setIsPresentNextVC(nil))
+                ])
+            } else {
+                return Observable.concat([
+                    .just(Mutation.setIsPresentAlertMesasge(message)),
+                    .just(Mutation.setIsPresentAlertMesasge(nil))
+                ])
+            }
             
         }
     }

@@ -11,6 +11,7 @@ import RxSwift
 import RxCocoa
 import ReactorKit
 import SnapKit
+import RxKeyboard
 
 class QurationFirstVC: UIViewController, View {
     
@@ -22,8 +23,15 @@ class QurationFirstVC: UIViewController, View {
         super.viewDidLoad()
         
         bindNavigation()
+        bindKeyboard()
         bindTextFieldToolBar()
         reactor?.action.onNext(.viewDidLoaded)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.tabBarController?.tabBar.isHidden = true
     }
     
     func bind(reactor: QurationFirstReactor) {
@@ -197,6 +205,18 @@ class QurationFirstVC: UIViewController, View {
                 vc.navigationController?.pushViewController(nextVC, animated: true)
             })
             .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.isPresentAlertMesasge }
+            .distinctUntilChanged()
+            .filterNil()
+            .withUnretained(self)
+            .subscribe(onNext: { vc, message in
+                let alert = UIAlertController(title: "필수값을 확인해주세요!", message: message, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
+                
+                self.present(alert, animated: true, completion: nil)
+            })
+            .disposed(by: disposeBag)
     }
     
     func bindTextFieldToolBar() {
@@ -215,6 +235,23 @@ class QurationFirstVC: UIViewController, View {
         
         baseView.painAreaUserInputTextField.inputAccessoryView = toolBar
         baseView.painDetailAreaUserInputTextField.inputAccessoryView = toolBar
+    }
+    
+    func bindKeyboard() {
+        // Tap Keyboard Hide
+        let tapGesture = UITapGestureRecognizer(target: baseView, action: #selector(LoginView.endEditing))
+        tapGesture.cancelsTouchesInView = false
+        self.baseView.addGestureRecognizer(tapGesture)
+        
+        let scrollView = baseView.baseScrollView
+        
+        RxKeyboard.instance.visibleHeight.drive(onNext: {  keyboardVisibleHeight in
+            scrollView.contentInset.bottom = keyboardVisibleHeight
+        }).disposed(by: disposeBag)
+        
+        RxKeyboard.instance.willShowVisibleHeight.drive(onNext: { keyboardVisibleHeight in
+            scrollView.contentOffset.y += keyboardVisibleHeight/2
+        }).disposed(by: disposeBag)
     }
     
     func bindNavigation() {

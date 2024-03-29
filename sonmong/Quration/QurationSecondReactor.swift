@@ -12,6 +12,7 @@ import ReactorKit
 
 class QurationSecondReactor: Reactor {
     enum Action {
+        case didSliderValueChanged(Int?)
         case didStartWhenPickerChanged(Date?)
         
         case didPreviousButtonTapped
@@ -19,6 +20,7 @@ class QurationSecondReactor: Reactor {
     }
     
     enum Mutation {
+        case setLevelOfPain(Int?)
         case setStartWhen(String?)
         
         case setIsPresentPreviousVC(Bool?)
@@ -26,6 +28,7 @@ class QurationSecondReactor: Reactor {
     }
     
     struct State {
+        var levelOfPain: Int?
         var startWhen: String?
         
         var isPresentPreviousVC: Bool?
@@ -36,6 +39,11 @@ class QurationSecondReactor: Reactor {
     
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
+        case .didSliderValueChanged(let inputData):
+            return Observable.concat([
+                .just(Mutation.setLevelOfPain(inputData))
+            ])
+            
             
         case .didStartWhenPickerChanged(let inputDate):
             return Observable.concat([
@@ -59,6 +67,8 @@ class QurationSecondReactor: Reactor {
     func reduce(state: State, mutation: Mutation) -> State {
         var newState = state
         switch mutation {
+        case .setLevelOfPain(let data):
+            newState.levelOfPain = data
         case .setStartWhen(let date):
             newState.startWhen = date
             

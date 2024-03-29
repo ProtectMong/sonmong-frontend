@@ -20,8 +20,14 @@ class QurationMainVC: UIViewController, View {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        bindNavigation()
+//        bindNavigation()
         baseView.layout(superView: self.view)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = false
+        
     }
     
     func bind(reactor: QurationMainReactor) {
@@ -80,12 +86,29 @@ extension QurationMainVC: UITableViewDelegate {
     }
     
     func bindNavigation() {
+        self.title = "손몽이를 지켜줘!"
         self.navigationController?.navigationBar.prefersLargeTitles = false
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.isTranslucent = true
-        self.navigationController?.navigationBar.backgroundColor = UIColor.clear
+        self.navigationController?.navigationBar.backgroundColor = Constant.Color.f2
         self.navigationController?.navigationBar.titleTextAttributes = [
-            NSAttributedString.Key.font : UIFont.systemFont(ofSize: 20, weight: .bold)
+            NSAttributedString.Key.font : UIFont.systemFont(ofSize: 15, weight: .bold)
         ]
+        
+//        self.navigationController?.navigationBar.tintColor = Enti.Color.c000000
+        
+        let searchButtonItem = UIBarButtonItem(image: UIImage(named: "search_ic"),
+                                                  style: .plain,
+                                                  target: nil,
+                                                  action: nil)
+        
+        searchButtonItem.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        searchButtonItem.tintColor = Constant.Color.b1
+//        self.navigationItem.setRightBarButtonItems([searchButtonItem], animated: false)
+//
+//        searchButtonItem.rx.tap
+//            .subscribe(onNext: { _ in
+//                #warning("검색 기능 구현")
+//            }).disposed(by: disposeBag)
     }
 }
