@@ -14,6 +14,7 @@ class HomeReactor: Reactor {
     enum Action {
         case viewDidLoaded
         case didAIButtonTapped
+        case didSonmongButtonTapped
         case didQurationListGpDetailButtonTapped
         case didGoQurationButtonTapped
     }
@@ -21,6 +22,7 @@ class HomeReactor: Reactor {
     enum Mutation {
         case setIsPresentQurationMainVC(Bool?)
         case setIsPresentQurationUserInfoVC(Bool?)
+        case setIsPresentAlertMessage(Bool?)
     }
     
     struct State {
@@ -34,6 +36,7 @@ class HomeReactor: Reactor {
         
         var isPresentQurationMainVC: Bool?
         var isPresentQurationUserInfoVC: Bool?
+        var isPresentAlertMessage: Bool?
     }
     
     let initialState: State
@@ -52,6 +55,12 @@ class HomeReactor: Reactor {
             return Observable.concat([
                 .just(Mutation.setIsPresentQurationMainVC(true)),
                 .just(Mutation.setIsPresentQurationMainVC(nil))
+            ])
+            
+        case .didSonmongButtonTapped:
+            return Observable.concat([
+                .just(Mutation.setIsPresentAlertMessage(true)),
+                .just(Mutation.setIsPresentAlertMessage(nil))
             ])
             
         case .didQurationListGpDetailButtonTapped:
@@ -75,6 +84,8 @@ class HomeReactor: Reactor {
             newState.isPresentQurationMainVC = isPresent
         case .setIsPresentQurationUserInfoVC(let isPresent):
             newState.isPresentQurationUserInfoVC = isPresent
+        case .setIsPresentAlertMessage(let isPresent):
+            newState.isPresentAlertMessage = isPresent
         }
         
         return newState

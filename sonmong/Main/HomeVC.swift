@@ -33,6 +33,11 @@ class HomeVC: UIViewController, View {
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
+        baseView.sonmongButton.rx.tap
+            .map { Reactor.Action.didSonmongButtonTapped }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
         reactor.state.map { $0.qurationListDatasource }
             .distinctUntilChanged()
             .filterNil()
@@ -122,6 +127,19 @@ class HomeVC: UIViewController, View {
                 qurationUserInfoVC.reactor = qurationUserInfoReactor
                 
                 vc.navigationController?.pushViewController(qurationUserInfoVC, animated: true)
+            })
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.isPresentAlertMessage }
+            .distinctUntilChanged()
+            .filterNil()
+            .filter { $0 == true }
+            .withUnretained(self)
+            .subscribe(onNext: { vc, _ in
+                let alert = UIAlertController(title: "🫰", message: "손몽이 키우기는 준비중입니다!\n잠시만 기다려 주세요!!", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
+                
+                self.present(alert, animated: true, completion: nil)
             })
             .disposed(by: disposeBag)
         
