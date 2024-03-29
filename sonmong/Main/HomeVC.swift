@@ -166,5 +166,20 @@ class HomeVC: UIViewController, View {
             .subscribe(onNext: { _ in
 //                self.navigationController?.popViewController(animated: true)
             }).disposed(by: disposeBag)
+        
+        let image = UIImage(named: "app-logo")
+        let imageView = UIImageView(image: image)
+        
+        // 이미지 뷰의 크기를 조정합니다. 필요에 따라 조정해 주세요.
+        imageView.contentMode = .scaleAspectFit
+        let titleView = UIView(frame: CGRect(x: -5, y: 0, width: 80, height: 45)) // 여기서 크기를 조절할 수 있습니다.
+        imageView.frame = titleView.bounds
+        titleView.addSubview(imageView)
+        
+        // UIBarButtonItem을 생성하고, customView로 위에서 설정한 imageView를 넣습니다.
+        let leftBarButtonItem = UIBarButtonItem(customView: titleView)
+        
+        // navigationItem의 leftBarButtonItem으로 설정합니다.
+        self.navigationItem.leftBarButtonItem = leftBarButtonItem
     }
 }
