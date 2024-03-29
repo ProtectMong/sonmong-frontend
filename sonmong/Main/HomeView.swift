@@ -197,8 +197,23 @@ class HomeView: UIView {
         return view
     }()
     
-    let youtubeThumbnailImageView: UIView = {
-        let view = UIView()
+//    let youtubeThumbnailImageView: UIView = {
+//        let view = UIView()
+//        view.translatesAutoresizingMaskIntoConstraints = false
+//        view.layer.cornerRadius = 94/2
+//        view.clipsToBounds = true
+//        view.backgroundColor = UIColor.lightGray
+//        view.isUserInteractionEnabled = true
+//        view.layer.shadowColor = Constant.Color.b1.cgColor
+//        view.layer.shadowOpacity = 0.80
+//        view.layer.shadowOffset = CGSize(width: 0, height: 0)
+//        view.layer.shadowRadius = 11.0
+//        
+//        return view
+//    }()
+    
+    let youtubeThumbnailImageView: UIImageView = {
+        let view = UIImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.cornerRadius = 94/2
         view.clipsToBounds = true
@@ -208,6 +223,7 @@ class HomeView: UIView {
         view.layer.shadowOpacity = 0.80
         view.layer.shadowOffset = CGSize(width: 0, height: 0)
         view.layer.shadowRadius = 11.0
+        view.image = UIImage(named: "youtube-sample")
         
         return view
     }()
