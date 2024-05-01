@@ -12,9 +12,8 @@ import ReactorKit
 
 class LoginReactor: Reactor {
     enum Action {
-        case didIdTextFieldChanged(String?)
-        case didPwdTextFieldChanged(String?)
-        case didIconButtonTapped
+        case didNameTextFieldChanged(String?)
+        case didPhoneNumberTextFieldChanged(String?)
         case didLoginButtonTapped
         case didRegisterButtonTapped
         case didFindIdButtonTapped
@@ -22,12 +21,8 @@ class LoginReactor: Reactor {
     }
     
     enum Mutation {
-        case setId(String?)
-        case setIdSubTitleIsHidden(Bool?)
-        case setPwd(String?)
-        case setPwdSubTitleIsHidden(Bool?)
-        case setPwdSubTitleMessage(String?)
-        case setIsIconEyeOn(Bool?)
+        case setName(String?)
+        case setPhoneNumber(String?)
         case setIsLoginButtonEnabled(Bool?)
         
         case setIsPresentRegisterVC(Bool?)
@@ -35,18 +30,13 @@ class LoginReactor: Reactor {
         case setIsPresentResetPwdCheckIdVC(Bool?)
         
         case setIsPresentMainVC(Bool?)
-        case setIsPresentPlatformMainVC(Bool?)
         
         case setIsPresentAlertMessage(String?)
     }
     
     struct State {
-        var id: String?
-        var idSubTitleIsHidden: Bool?
-        var pwd: String?
-        var pwdSubTitleIsHidden: Bool?
-        var pwdSubTitleMessage: String?
-        var isIconEyeOn: Bool?
+        var name: String?
+        var phoneNumber: String?
         var isLoginButtonEnabled: Bool? = false
         
         var isPresentRegisterVC: Bool?
@@ -54,86 +44,90 @@ class LoginReactor: Reactor {
         var isPresentResetPwdCheckIdVC: Bool?
         
         var isPresentMainVC: Bool?
-        var isPresentPlatformMainVC: Bool?
         
         var isPresentAlertMessage: String?
     }
     
     let initialState = State()
     let service = LoginService()
+    let apiService = APIService()
     
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
-        case .didIdTextFieldChanged(let inputId):
-            let isEmail = service.checkEmailValidation(inputId)
-            if isEmail == false {
+        case .didNameTextFieldChanged(let inputName):
+            let phoneNumber = currentState.phoneNumber
+            if phoneNumber == nil || phoneNumber == "" {
                 return Observable.concat([
-                    .just(Mutation.setIdSubTitleIsHidden(false)),
-                    .just(Mutation.setIsLoginButtonEnabled(false))
-                ])
-            }
-            
-            let pwd = currentState.pwd
-            if pwd == nil || pwd == "" {
-                return Observable.concat([
-                    .just(Mutation.setIdSubTitleIsHidden(true)),
+                    .just(Mutation.setName(inputName)),
                     .just(Mutation.setIsLoginButtonEnabled(false)),
-                    .just(Mutation.setId(inputId))
                 ])
             } else {
                 return Observable.concat([
-                    .just(Mutation.setIdSubTitleIsHidden(true)),
+                    .just(Mutation.setName(inputName)),
                     .just(Mutation.setIsLoginButtonEnabled(true)),
-                    .just(Mutation.setId(inputId))
                 ])
             }
             
-        case .didPwdTextFieldChanged(let inputPwd):
-            if inputPwd == "" {
+        case .didPhoneNumberTextFieldChanged(let inputNumber):
+            let name = currentState.name
+            if name == "" || name == nil {
                 return Observable.concat([
-                    .just(Mutation.setPwdSubTitleIsHidden(false)),
-                    .just(Mutation.setPwdSubTitleMessage("비밀번호를 입력하세요.")),
-                    .just(Mutation.setIsIconEyeOn(false)),
-                    .just(Mutation.setIsLoginButtonEnabled(false))
+                    .just(Mutation.setPhoneNumber(inputNumber)),
+                    .just(Mutation.setIsLoginButtonEnabled(false)),
                 ])
-            }
-            
-            let isPwdRule = service.checkPwdValidation(inputPwd)
-            if isPwdRule == false {
+            } else {
                 return Observable.concat([
-                    .just(Mutation.setPwdSubTitleIsHidden(false)),
-                    .just(Mutation.setPwdSubTitleMessage("비밀번호는 8~12자리 영문, 숫자, 특수문자 조합입니다.")),
-                    .just(Mutation.setIsLoginButtonEnabled(false))
+                    .just(Mutation.setPhoneNumber(inputNumber)),
+                    .just(Mutation.setIsLoginButtonEnabled(true))
                 ])
             }
         
-            let id = currentState.id
-            if id == "" || id == nil {
+        case .didLoginButtonTapped:
+            let name = currentState.name
+            if name == "" || name == nil {
+                let message = "이름을 입력해주세요!"
                 return Observable.concat([
-                    .just(Mutation.setPwdSubTitleIsHidden(true)),
-                    .just(Mutation.setIsLoginButtonEnabled(false)),
-                    .just(Mutation.setPwd(inputPwd))
-                ])
-            } else {
-                return Observable.concat([
-                    .just(Mutation.setPwdSubTitleIsHidden(true)),
-                    .just(Mutation.setIsLoginButtonEnabled(true)),
-                    .just(Mutation.setPwd(inputPwd))
+                    .just(Mutation.setIsPresentAlertMessage(message)),
+                    .just(Mutation.setIsPresentAlertMessage(nil))
                 ])
             }
-        case.didIconButtonTapped:
-            let eyeOnOff = currentState.isIconEyeOn == true ? false : true
-            return Observable.concat([
-                .just(Mutation.setIsIconEyeOn(eyeOnOff))
-            ])
             
-        case .didLoginButtonTapped:
+            let phoneNumber = currentState.phoneNumber
+            if phoneNumber == nil || phoneNumber == "" {
+                let message = "전화번호를 입력해주세요!"
+                return Observable.concat([
+                    .just(Mutation.setIsPresentAlertMessage(message)),
+                    .just(Mutation.setIsPresentAlertMessage(nil))
+                ])
+            }
+            
             let parameter = [
-                "userId": currentState.id as Any,
-                "userPwd": currentState.pwd as Any
+                "phoneNumber": currentState.phoneNumber as Any,
+                "name": currentState.name as Any
             ]
             
-            return Observable.empty()
+            return Observable
+                .just(Void())
+                .flatMapLatest { self.apiService.postRxRequest(stringUrl: Constant.APIURL.login, parameter: parameter, type: APIResponse<User>.self)}
+                .flatMap{ response -> Observable<Mutation> in
+                    if response.status == 200 {
+                        let accessToken = response.data?.accessToken ?? ""
+                        UserDefaults.standard.set(accessToken, forKey: "USER_ACCESS_TOKEN")
+                        UserDefaults.standard.set(name, forKey: "USER_NAME")
+                        
+                        return Observable.concat([
+                            .just(Mutation.setIsPresentMainVC(true)),
+                            .just(Mutation.setIsPresentMainVC(nil))
+                        ])
+                    } else {
+                        let message = response.message
+                        return Observable.concat([
+                            .just(Mutation.setIsPresentAlertMessage(message)),
+                            .just(Mutation.setIsPresentAlertMessage(nil))
+                        ])
+                    }
+                    
+                }
             
         case .didRegisterButtonTapped:
             return Observable.concat([
@@ -156,18 +150,10 @@ class LoginReactor: Reactor {
     func reduce(state: State, mutation: Mutation) -> State {
         var newState = state
         switch mutation {
-        case .setId(let id):
-            newState.id = id
-        case .setIdSubTitleIsHidden(let isHidden):
-            newState.idSubTitleIsHidden = isHidden
-        case .setPwd(let pwd):
-            newState.pwd = pwd
-        case .setPwdSubTitleIsHidden(let isHidden):
-            newState.pwdSubTitleIsHidden = isHidden
-        case .setPwdSubTitleMessage(let message):
-            newState.pwdSubTitleMessage = message
-        case .setIsIconEyeOn(let isHidden):
-            newState.isIconEyeOn = isHidden
+        case .setName(let name):
+            newState.name = name
+        case .setPhoneNumber(let number):
+            newState.phoneNumber = number
         case .setIsLoginButtonEnabled(let isEnabled):
             newState.isLoginButtonEnabled = isEnabled
             
@@ -181,8 +167,6 @@ class LoginReactor: Reactor {
             
         case .setIsPresentMainVC(let isPresent):
             newState.isPresentMainVC = isPresent
-        case .setIsPresentPlatformMainVC(let isPresent):
-            newState.isPresentPlatformMainVC = isPresent
             
         case .setIsPresentAlertMessage(let message):
             newState.isPresentAlertMessage = message

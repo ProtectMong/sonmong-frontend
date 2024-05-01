@@ -10,5 +10,5 @@ import Foundation
 struct User: Codable {
     var accessToken: String?
     var userName: String?
-    var userNumber: String?
+    var phoneNumber: String?
 }

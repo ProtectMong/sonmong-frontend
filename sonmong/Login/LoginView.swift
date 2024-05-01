@@ -10,9 +10,6 @@ import UIKit
 import SnapKit
 
 class LoginView: UIView {
-    let outerView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 30))
-    let iconButton = UIButton(frame: CGRect(x: 0, y: 0, width: 25, height: 30))
-    
     let baseScrollView: UIScrollView = {
         let scrollView = UIScrollView(frame: .zero)
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -34,19 +31,26 @@ class LoginView: UIView {
     let mainIconImageView: UIImageView = {
         let view = UIImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.image = UIImage(named: "sonmong")
+        view.image = UIImage(named: "login_main_logo")
         
         return view
     }()
     
-    let mainIconDescriptionLabel: UILabel = {
+    let subIconImageView: UIImageView = {
+        let view = UIImageView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.image = UIImage(named: "login_sub_logo")
+        
+        return view
+    }()
+    
+    let loginMessageLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "손몽이를 지켜줘!"
-        label.font = .systemFont(ofSize: 13, weight: .regular)
-        label.textColor = UIColor.black
-        label.textAlignment = .center
-        
+        label.text = "닉네임/전화번호를\n입력해주세요."
+        label.font = .systemFont(ofSize: 14, weight: .medium)
+        label.textColor = Constant.Color.f1
+        label.numberOfLines = 0
         return label
     }()
     
@@ -60,12 +64,13 @@ class LoginView: UIView {
         return view
     }()
     
-    let idTextField: UITextField = {
+    let nameTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.placeholder = "아이디를 입력하세요"
+        textField.placeholder = "이름을 입력하세요"
+        textField.backgroundColor = Constant.Color.f1
         textField.layer.borderColor = UIColor(red: 0.80, green: 0.80, blue: 0.80, alpha: 1.00).cgColor
-        textField.layer.cornerRadius = 5
+        textField.layer.cornerRadius = 10
         textField.layer.borderWidth = 1
         
         let margin = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: 15))
@@ -75,23 +80,13 @@ class LoginView: UIView {
         return textField
     }()
     
-    let idSubTitleLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "아이디는 이메일형식입니다."
-        label.textColor = UIColor(red: 0.91, green: 0.24, blue: 0.31, alpha: 1.00)
-        label.font = .systemFont(ofSize: 12, weight: .regular)
-        label.isHidden = true
-        
-        return label
-    }()
-    
-    let pwdTextField: UITextField = {
+    let phoneNumberTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.placeholder = "비밀번호를 입력하세요."
+        textField.placeholder = "전화번호를 입력하세요."
+        textField.backgroundColor = Constant.Color.f1
         textField.layer.borderColor = UIColor(red: 0.80, green: 0.80, blue: 0.80, alpha: 1.00).cgColor
-        textField.layer.cornerRadius = 5
+        textField.layer.cornerRadius = 10
         textField.layer.borderWidth = 1
         textField.isSecureTextEntry = true
         
@@ -102,25 +97,14 @@ class LoginView: UIView {
         return textField
     }()
     
-    let pwdSubTitleLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "비밀번호를 입력해주세요."
-        label.textColor = UIColor(red: 0.91, green: 0.24, blue: 0.31, alpha: 1.00)
-        label.font = .systemFont(ofSize: 12, weight: .regular)
-        label.isHidden = true
-        
-        return label
-    }()
-    
     let loginButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("로그인", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 16, weight: .medium)
-        button.backgroundColor = UIColor.orange
-        button.layer.cornerRadius = 5
+        button.titleLabel?.font = .systemFont(ofSize: 17, weight: .bold)
+        button.backgroundColor = Constant.Color.g2
+        button.layer.cornerRadius = 15
         
         return button
     }()
@@ -182,8 +166,19 @@ class LoginView: UIView {
         return button
     }()
     
+    let mainDescriptionLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "손목 헬스케어 앱"
+        label.font = .systemFont(ofSize: 12, weight: .regular)
+        label.textColor = Constant.Color.f1
+        label.textAlignment = .center
+        
+        return label
+    }()
+    
     func layout(superView: UIView) {
-        superView.backgroundColor = .white
+        superView.backgroundColor = Constant.Color.m7
         
         superView.addSubview(self)
         self.snp.makeConstraints { make in
@@ -210,87 +205,83 @@ class LoginView: UIView {
             make.width.equalTo(baseScrollView.snp.width)
         }
         
-//        self.addSubview(contentView)
-//        contentView.snp.makeConstraints { make in
-//            make.top.equalTo(self.snp.top)
-//            make.leading.equalTo(self.snp.leading)
-//            make.trailing.equalTo(self.snp.trailing)
-//            make.bottom.equalTo(self.snp.bottom)
-//        }
-        
         contentView.addSubview(mainIconImageView)
         mainIconImageView.snp.makeConstraints { make in
             make.top.equalTo(contentView.snp.top).offset(120)
             make.centerX.equalTo(contentView.snp.centerX)
-            make.width.equalTo(72)
-            make.height.equalTo(41)
+            make.width.equalTo(150)
+            make.height.equalTo(75)
         }
         
-        contentView.addSubview(mainIconDescriptionLabel)
-        mainIconDescriptionLabel.snp.makeConstraints { make in
+        contentView.addSubview(subIconImageView)
+        subIconImageView.snp.makeConstraints { make in
             make.top.equalTo(mainIconImageView.snp.bottom).offset(13)
-            make.leading.equalTo(contentView.snp.leading).offset(20)
-            make.trailing.equalTo(contentView.snp.trailing).offset(-20)
-            make.height.equalTo(15)
+            make.centerX.equalTo(contentView.snp.centerX)
+            make.width.equalTo(95)
+            make.height.equalTo(24)
+        }
+        
+        contentView.addSubview(loginMessageLabel)
+        loginMessageLabel.snp.makeConstraints { make in
+            make.top.equalTo(subIconImageView.snp.bottom).offset(80)
+            make.leading.equalTo(22)
         }
         
         contentView.addSubview(loginStackView)
         loginStackView.snp.makeConstraints { make in
-            make.top.equalTo(mainIconDescriptionLabel.snp.bottom).offset(100)
-            make.leading.equalTo(contentView.snp.leading).offset(25)
-            make.trailing.equalTo(contentView.snp.trailing).offset(-25)
+            make.top.equalTo(loginMessageLabel.snp.bottom).offset(15)
+            make.leading.equalTo(contentView.snp.leading).offset(22)
+            make.trailing.equalTo(contentView.snp.trailing).offset(-22)
         }
         
-        loginStackView.addArrangedSubview(idTextField)
-        loginStackView.setCustomSpacing(5, after: idTextField)
-        idTextField.snp.makeConstraints { make in
+        loginStackView.addArrangedSubview(nameTextField)
+        loginStackView.setCustomSpacing(15, after: nameTextField)
+        nameTextField.snp.makeConstraints { make in
             make.height.equalTo(48)
         }
-        loginStackView.addArrangedSubview(idSubTitleLabel)
-        loginStackView.setCustomSpacing(10, after: idSubTitleLabel)
         
-        loginStackView.addArrangedSubview(pwdTextField)
-        loginStackView.setCustomSpacing(5, after: pwdTextField)
-        pwdTextField.snp.makeConstraints { make in
+        loginStackView.addArrangedSubview(phoneNumberTextField)
+        loginStackView.setCustomSpacing(30, after: phoneNumberTextField)
+        phoneNumberTextField.snp.makeConstraints { make in
             make.height.equalTo(48)
         }
-        loginStackView.addArrangedSubview(pwdSubTitleLabel)
-        loginStackView.setCustomSpacing(10, after: pwdSubTitleLabel)
+        
         loginStackView.addArrangedSubview(loginButton)
         loginButton.snp.makeConstraints { make in
             make.height.equalTo(54)
         }
         
-        iconButton.setImage(UIImage(named: "ic_eye_on"), for: .normal)
-        iconButton.contentMode = .left
-        iconButton.tintColor = .black
-        iconButton.isHidden = true
-        outerView.addSubview(iconButton)
-        pwdTextField.rightView = outerView
-        pwdTextField.rightViewMode = .always
+//        contentView.addSubview(textButtonStackView)
+//        textButtonStackView.snp.makeConstraints { make in
+//            make.top.equalTo(loginStackView.snp.bottom).offset(20)
+//            make.centerX.equalTo(contentView.snp.centerX)
+//            make.bottom.equalTo(contentView.snp.bottom).offset(-50)
+//            make.height.equalTo(20)
+//        }
+//        
+//        [registerButton, firstSeparateView, findIdButton, secondSeparateView, resetPwdButton].forEach {
+//            textButtonStackView.addArrangedSubview($0)
+//        }
+//
+//        firstSeparateView.snp.makeConstraints { make in
+//            make.top.equalTo(textButtonStackView.snp.top).offset(3)
+//            make.bottom.equalTo(textButtonStackView.snp.bottom).offset(-3)
+//            make.width.equalTo(1)
+//        }
+//
+//        secondSeparateView.snp.makeConstraints { make in
+//            make.top.equalTo(textButtonStackView.snp.top).offset(3)
+//            make.bottom.equalTo(textButtonStackView.snp.bottom).offset(-3)
+//            make.width.equalTo(1)
+//        }
         
-        contentView.addSubview(textButtonStackView)
-        textButtonStackView.snp.makeConstraints { make in
-            make.top.equalTo(loginStackView.snp.bottom).offset(20)
-            make.centerX.equalTo(contentView.snp.centerX)
+        contentView.addSubview(mainDescriptionLabel)
+        mainDescriptionLabel.snp.makeConstraints { make in
+            make.top.equalTo(loginStackView.snp.bottom).offset(150)
             make.bottom.equalTo(contentView.snp.bottom).offset(-50)
+            make.centerX.equalTo(contentView.snp.centerX)
+            make.width.equalTo(80)
             make.height.equalTo(20)
-        }
-        
-        [registerButton, firstSeparateView, findIdButton, secondSeparateView, resetPwdButton].forEach {
-            textButtonStackView.addArrangedSubview($0)
-        }
-
-        firstSeparateView.snp.makeConstraints { make in
-            make.top.equalTo(textButtonStackView.snp.top).offset(3)
-            make.bottom.equalTo(textButtonStackView.snp.bottom).offset(-3)
-            make.width.equalTo(1)
-        }
-
-        secondSeparateView.snp.makeConstraints { make in
-            make.top.equalTo(textButtonStackView.snp.top).offset(3)
-            make.bottom.equalTo(textButtonStackView.snp.bottom).offset(-3)
-            make.width.equalTo(1)
         }
     }
     

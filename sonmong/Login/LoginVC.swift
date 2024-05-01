@@ -24,61 +24,14 @@ class LoginVC: UIViewController, View  {
     func bind(reactor: LoginReactor) {
         baseView.layout(superView: self.view)
         
-        baseView.idTextField.rx.text.orEmpty
-            .map { Reactor.Action.didIdTextFieldChanged($0) }
+        baseView.nameTextField.rx.text.orEmpty
+            .map { Reactor.Action.didNameTextFieldChanged($0) }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
-        reactor.state.map { $0.idSubTitleIsHidden }
-            .distinctUntilChanged()
-            .filterNil()
-            .bind(to: baseView.idSubTitleLabel.rx.isHidden)
-            .disposed(by: disposeBag)
-        
-        baseView.pwdTextField.rx.text.orEmpty
+        baseView.phoneNumberTextField.rx.text.orEmpty
             .skip(1)
-            .map { Reactor.Action.didPwdTextFieldChanged($0) }
-            .bind(to: reactor.action)
-            .disposed(by: disposeBag)
-        
-        reactor.state.map { $0.pwdSubTitleIsHidden }
-            .distinctUntilChanged()
-            .filterNil()
-            .bind(to: baseView.pwdSubTitleLabel.rx.isHidden)
-            .disposed(by: disposeBag)
-        
-        reactor.state.map { $0.pwdSubTitleMessage }
-            .distinctUntilChanged()
-            .filterNil()
-            .bind(to: baseView.pwdSubTitleLabel.rx.text)
-            .disposed(by: disposeBag)
-        
-        reactor.state.map { $0.isIconEyeOn }
-            .distinctUntilChanged()
-            .filterNil()
-            .filter{ $0 == true }
-            .withUnretained(self)
-            .subscribe(onNext: { vc, isHidden in
-                vc.baseView.iconButton.isHidden = false
-                vc.baseView.iconButton.setImage(UIImage(named: "pw_eye-off_ic"), for: .normal)
-                vc.baseView.pwdTextField.isSecureTextEntry = false
-            })
-            .disposed(by: disposeBag)
-        
-        reactor.state.map { $0.isIconEyeOn }
-            .distinctUntilChanged()
-            .filterNil()
-            .filter{ $0 == false }
-            .withUnretained(self)
-            .subscribe(onNext: { vc, isHidden in
-                vc.baseView.iconButton.isHidden = false
-                vc.baseView.iconButton.setImage(UIImage(named: "pw_eye_ic"), for: .normal)
-                vc.baseView.pwdTextField.isSecureTextEntry = true
-            })
-            .disposed(by: disposeBag)
-        
-        baseView.iconButton.rx.tap
-            .map { Reactor.Action.didIconButtonTapped }
+            .map { Reactor.Action.didPhoneNumberTextFieldChanged($0) }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
@@ -88,9 +41,8 @@ class LoginVC: UIViewController, View  {
             .filter { $0 == true }
             .withUnretained(self)
             .subscribe(onNext: { vc, isEnabled in
-//                vc.baseView.loginButton.backgroundColor = Platform.Color.ff6e40
-//                vc.baseView.loginButton.setTitleColor(Platform.Color.ffffff, for: .normal)
-//                vc.baseView.loginButton.isEnabled = isEnabled
+                vc.baseView.loginButton.backgroundColor = Constant.Color.m2
+                vc.baseView.loginButton.isEnabled = isEnabled
             })
             .disposed(by: disposeBag)
         
@@ -100,9 +52,8 @@ class LoginVC: UIViewController, View  {
             .filter { $0 == false }
             .withUnretained(self)
             .subscribe(onNext: { vc, isEnabled in
-//                vc.baseView.loginButton.backgroundColor = Platform.Color.eeeeee
-//                vc.baseView.loginButton.setTitleColor(Platform.Color.b7b7ba, for: .normal)
-//                vc.baseView.loginButton.isEnabled = isEnabled
+                vc.baseView.loginButton.backgroundColor = Constant.Color.g2
+                vc.baseView.loginButton.isEnabled = isEnabled
             })
             .disposed(by: disposeBag)
         
@@ -115,8 +66,14 @@ class LoginVC: UIViewController, View  {
             .distinctUntilChanged()
             .filterNil()
             .filter { $0 == true }
-            .subscribe(onNext: { _ in
-                
+            .withUnretained(self)
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { vc, _ in
+                let mainVC = MainVC()
+                if let window = vc.view.window {
+                    window.rootViewController = mainVC
+                    window.makeKeyAndVisible()
+                }
             })
             .disposed(by: disposeBag)
         
@@ -196,21 +153,6 @@ class LoginVC: UIViewController, View  {
 //                
 //                vc.navigationController?.pushViewController(resetPwdCheckIDVC, animated: true)
             }).disposed(by: disposeBag)
-        
-        reactor.state.map { $0.isPresentPlatformMainVC }
-            .distinctUntilChanged()
-            .filterNil()
-            .filter { $0 == true }
-            .withUnretained(self)
-            .subscribe(onNext: { vc, _ in
-//                let platformMainVC = PlatformMainVC()
-//                let platformMainReactor = PlatformMainReactor()
-//                platformMainVC.reactor = platformMainReactor
-//                
-//                vc.navigationController?.pushViewController(platformMainVC, animated: true)
-//                
-            })
-            .disposed(by: disposeBag)
     }
     
     func bindKeyboard() {
