@@ -75,7 +75,6 @@
 		A1EE02492BAE7DC5008EE352 /* LoginReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EE02482BAE7DC5008EE352 /* LoginReactor.swift */; };
 		A1F484E52BE21239003F5E66 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F484E42BE21239003F5E66 /* Request.swift */; };
 		A1F484E72BE21D67003F5E66 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F484E62BE21D67003F5E66 /* MainVC.swift */; };
-		A1F484EB2BE21DCF003F5E66 /* MainReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F484EA2BE21DCF003F5E66 /* MainReactor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -158,7 +157,6 @@
 		A1EE02482BAE7DC5008EE352 /* LoginReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginReactor.swift; sourceTree = "<group>"; };
 		A1F484E42BE21239003F5E66 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		A1F484E62BE21D67003F5E66 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
-		A1F484EA2BE21DCF003F5E66 /* MainReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainReactor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,7 +237,6 @@
 				4C5CA06A2BB2DD4800E2E659 /* HomeView.swift */,
 				A15C25C52BAFDEDC007AA1E7 /* HomeReactor.swift */,
 				A1F484E62BE21D67003F5E66 /* MainVC.swift */,
-				A1F484EA2BE21DCF003F5E66 /* MainReactor.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -528,7 +525,6 @@
 				A15C25DC2BB024F9007AA1E7 /* QurationSecondView.swift in Sources */,
 				A15C25E02BB02CB8007AA1E7 /* QurationThirdVC.swift in Sources */,
 				A1CFB0C62BAEF17700BAABC8 /* APIService.swift in Sources */,
-				A1F484EB2BE21DCF003F5E66 /* MainReactor.swift in Sources */,
 				4C5CA0732BB473BB00E2E659 /* QurationLoadingView.swift in Sources */,
 				A1F484E52BE21239003F5E66 /* Request.swift in Sources */,
 				A15C25EA2BB02F39007AA1E7 /* QurationFourthReactor.swift in Sources */,
