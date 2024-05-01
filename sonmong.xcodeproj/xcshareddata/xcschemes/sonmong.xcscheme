@@ -16,7 +16,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A1C3A24D2BADD922000A41FD"
-               BuildableName = "&#x1106;&#x1169;&#x11bc;&#x110c;&#x1175;.app"
+               BuildableName = "MONGJI.app"
                BlueprintName = "sonmong"
                ReferencedContainer = "container:sonmong.xcodeproj">
             </BuildableReference>
@@ -69,7 +69,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A1C3A24D2BADD922000A41FD"
-            BuildableName = "&#x1106;&#x1169;&#x11bc;&#x110c;&#x1175;.app"
+            BuildableName = "MONGJI.app"
             BlueprintName = "sonmong"
             ReferencedContainer = "container:sonmong.xcodeproj">
          </BuildableReference>
@@ -86,7 +86,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A1C3A24D2BADD922000A41FD"
-            BuildableName = "&#x1106;&#x1169;&#x11bc;&#x110c;&#x1175;.app"
+            BuildableName = "MONGJI.app"
             BlueprintName = "sonmong"
             ReferencedContainer = "container:sonmong.xcodeproj">
          </BuildableReference>

@@ -21,24 +21,33 @@ class QurationThirdReactor: Reactor {
     }
     
     enum Mutation {
+        case setQurationParameter(Quration?)
         case setPainHow(String?)
         case setPainWhen(String?)
         case setPainWithWork(Bool?)
         
         case setIsPresentPreviousVC(Bool?)
         case setIsPresentNextVC(Bool?)
+        
+        case setIsPresentAlertMesasge(String?)
     }
     
     struct State {
+        var qurationParameter: Quration?
         var painHow: String?
         var painWhen: String?
         var painWithWork: Bool?
         
         var isPresentPreviousVC: Bool?
         var isPresentNextVC: Bool?
+        
+        var isPresentAlertMesasge: String?
     }
     
-    let initialState = State()
+    let initialState: State
+    init(qurationParameter: Quration?) {
+        self.initialState = State(qurationParameter: qurationParameter)
+    }
     
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
@@ -69,16 +78,41 @@ class QurationThirdReactor: Reactor {
             ])
             
         case .didNextButtonTapped:
-            return Observable.concat([
-                .just(Mutation.setIsPresentNextVC(true)),
-                .just(Mutation.setIsPresentNextVC(nil))
-            ])
+            
+            var message = ""
+            var qurationParameter = currentState.qurationParameter ?? Quration()
+            
+            if let painHow = currentState.painHow {
+                qurationParameter.howSick = painHow
+            }
+            
+            if let painWhen = currentState.painWhen {
+                qurationParameter.whatActivities = painWhen
+            }
+            if let painWithWork = currentState.painWithWork {
+                qurationParameter.putStrainOnWrist = painWithWork
+            }
+            
+            if message == "" {
+                return Observable.concat([
+                    .just(Mutation.setQurationParameter(qurationParameter)),
+                    .just(Mutation.setIsPresentNextVC(true)),
+                    .just(Mutation.setIsPresentNextVC(nil))
+                ])
+            } else {
+                return Observable.concat([
+                    .just(Mutation.setIsPresentAlertMesasge(message)),
+                    .just(Mutation.setIsPresentAlertMesasge(nil))
+                ])
+            }
         }
     }
     
     func reduce(state: State, mutation: Mutation) -> State {
         var newState = state
         switch mutation {
+        case .setQurationParameter(let parameter):
+            newState.qurationParameter = parameter
         case .setPainHow(let inputData):
             newState.painHow = inputData
         case .setPainWhen(let inputData):
@@ -90,6 +124,9 @@ class QurationThirdReactor: Reactor {
             newState.isPresentPreviousVC = isPresent
         case .setIsPresentNextVC(let isPresent):
             newState.isPresentNextVC = isPresent
+            
+        case .setIsPresentAlertMesasge(let message):
+            newState.isPresentAlertMesasge = message
         }
         return newState
     }

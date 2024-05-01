@@ -133,33 +133,6 @@ class LoginReactor: Reactor {
                 "userPwd": currentState.pwd as Any
             ]
             
-//            return Observable
-//                .just(parameter)
-//                .flatMapLatest { ETNAPIService.shared.rx.request(url: Platform.APIURL.login, parameter: $0, type: PlatformAuth.self) }
-//                .flatMap { response -> Observable<LoginReactor.Mutation> in
-//                    if response?.resultStatus?.messageCode == "2000" {
-//                        let accessToken = response?.resultData?.accessToken
-//                        let refreshToken = response?.resultData?.refreshToken
-//                        UserDefaults.standard.set(accessToken, forKey: Platform.UDKey.accessToken)
-//                        UserDefaults.standard.set(refreshToken, forKey: Platform.UDKey.refreshToken)
-//                        return Observable
-//                            .just(Void())
-//                            .delay(RxTimeInterval.seconds(1), scheduler: MainScheduler.asyncInstance)
-//                            .flatMap { _ in
-//                                return Observable.concat([
-//                                    .just(Mutation.setIsPresentPlatformMainVC(true)),
-//                                    .just(Mutation.setIsPresentPlatformMainVC(nil))
-//                                ])
-//                            }
-//                    } else {
-//                        let message = response?.resultStatus?.messageText
-//                        return Observable.concat([
-//                            .just(Mutation.setIsPresentAlertMessage(message)),
-//                            .just(Mutation.setIsPresentAlertMessage(nil))
-//                        ])
-//                    }
-//                }
-            
             return Observable.empty()
             
         case .didRegisterButtonTapped:

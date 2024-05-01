@@ -45,6 +45,8 @@
 		A15C25EA2BB02F39007AA1E7 /* QurationFourthReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15C25E92BB02F39007AA1E7 /* QurationFourthReactor.swift */; };
 		A15C25EC2BB0505B007AA1E7 /* QurationHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15C25EB2BB0505B007AA1E7 /* QurationHistoryTableViewCell.swift */; };
 		A15C25EE2BB05097007AA1E7 /* QurationHistoryTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15C25ED2BB05097007AA1E7 /* QurationHistoryTableViewHeaderView.swift */; };
+		A1A43DE62BB7B7EB00AD9CFF /* QurationAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A43DE52BB7B7EB00AD9CFF /* QurationAnswer.swift */; };
+		A1A43DE82BB7B97400AD9CFF /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A43DE72BB7B97400AD9CFF /* Extension.swift */; };
 		A1C3A2522BADD922000A41FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C3A2512BADD922000A41FD /* AppDelegate.swift */; };
 		A1C3A2542BADD922000A41FD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C3A2532BADD922000A41FD /* SceneDelegate.swift */; };
 		A1C3A2562BADD922000A41FD /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C3A2552BADD922000A41FD /* LaunchViewController.swift */; };
@@ -124,6 +126,8 @@
 		A15C25E92BB02F39007AA1E7 /* QurationFourthReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QurationFourthReactor.swift; sourceTree = "<group>"; };
 		A15C25EB2BB0505B007AA1E7 /* QurationHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QurationHistoryTableViewCell.swift; sourceTree = "<group>"; };
 		A15C25ED2BB05097007AA1E7 /* QurationHistoryTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QurationHistoryTableViewHeaderView.swift; sourceTree = "<group>"; };
+		A1A43DE52BB7B7EB00AD9CFF /* QurationAnswer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QurationAnswer.swift; sourceTree = "<group>"; };
+		A1A43DE72BB7B97400AD9CFF /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		A1C3A24E2BADD922000A41FD /* MONGJI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MONGJI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1C3A2512BADD922000A41FD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A1C3A2532BADD922000A41FD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -214,8 +218,8 @@
 				A15C25E72BB02F2A007AA1E7 /* QurationFourthView.swift */,
 				A15C25E92BB02F39007AA1E7 /* QurationFourthReactor.swift */,
 				4C5CA0702BB4735C00E2E659 /* QurationLoadingVC.swift */,
-				4C5CA0742BB473D700E2E659 /* QurationLoadingReactor.swift */,
 				4C5CA0722BB473BB00E2E659 /* QurationLoadingView.swift */,
+				4C5CA0742BB473D700E2E659 /* QurationLoadingReactor.swift */,
 				A1E8A8812BB5D4CE0062ADED /* QurationFinalVC.swift */,
 				A1E8A8832BB5D4E40062ADED /* QurationFinalView.swift */,
 				A1E8A8852BB5D4F00062ADED /* QurationFinalReactor.swift */,
@@ -301,6 +305,7 @@
 				A1CFB0C32BAEF10800BAABC8 /* APIResponse.swift */,
 				A1CFB0C52BAEF17700BAABC8 /* APIService.swift */,
 				A15C25D52BAFFF66007AA1E7 /* CollectionViewCellLeftAlignFlowLayout.swift */,
+				A1A43DE72BB7B97400AD9CFF /* Extension.swift */,
 			);
 			path = Supporting;
 			sourceTree = "<group>";
@@ -310,6 +315,7 @@
 			children = (
 				A1CFB0D02BAEFB7300BAABC8 /* User.swift */,
 				4C5CA06E2BB45F6300E2E659 /* Quration.swift */,
+				A1A43DE52BB7B7EB00AD9CFF /* QurationAnswer.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -509,7 +515,9 @@
 				A1E8A8842BB5D4E40062ADED /* QurationFinalView.swift in Sources */,
 				A15C25EC2BB0505B007AA1E7 /* QurationHistoryTableViewCell.swift in Sources */,
 				A15C25CC2BAFEBDC007AA1E7 /* QurationMainReactor.swift in Sources */,
+				A1A43DE82BB7B97400AD9CFF /* Extension.swift in Sources */,
 				A1CFB0D12BAEFB7300BAABC8 /* User.swift in Sources */,
+				A1A43DE62BB7B7EB00AD9CFF /* QurationAnswer.swift in Sources */,
 				A15C25D62BAFFF66007AA1E7 /* CollectionViewCellLeftAlignFlowLayout.swift in Sources */,
 				A1EE02422BAE7C75008EE352 /* LoginVC.swift in Sources */,
 				A1CFB0B92BAEEBF200BAABC8 /* RegisterUserVC.swift in Sources */,
@@ -703,7 +711,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = WC5T233HM3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = sonmong/Info.plist;
@@ -732,7 +740,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = WC5T233HM3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = sonmong/Info.plist;

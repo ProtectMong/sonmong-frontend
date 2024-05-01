@@ -44,7 +44,9 @@ extension Constant {
     }
     
     struct APIURL {
-        static let aiCuration = "/api/v1/ai-consulting/curation"
+        static let mongji = "http://mongji.site:8080"
+        
+        static let aiCuration = mongji + "/api/v1/ai-consulting/curation"
     }
     
 }

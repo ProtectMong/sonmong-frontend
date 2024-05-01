@@ -85,10 +85,11 @@ class QurationSecondVC: UIViewController, View, SliderViewDelegate {
             .distinctUntilChanged()
             .filterNil()
             .filter { $0 == true }
+            .map { _ in reactor.currentState.qurationParameter }
             .withUnretained(self)
-            .subscribe(onNext: { vc, _ in
+            .subscribe(onNext: { vc, parameter in
                 let nextVC = QurationThirdVC()
-                let nextReactor = QurationThirdReactor()
+                let nextReactor = QurationThirdReactor(qurationParameter: parameter)
                 nextVC.reactor = nextReactor
                 
                 vc.navigationController?.pushViewController(nextVC, animated: true)

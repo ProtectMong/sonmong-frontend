@@ -17,7 +17,7 @@ class APIService {
     
     private let decoder = JSONDecoder() // JSONDecoder 인스턴스를 생성합니다.
 
-    func request<T: Codable>(url: String, parameters: [String: Any], type: T.Type, token: String) -> Observable<T> {
+    func request<T: Codable>(url: String, parameters: [String: Any], type: T.Type, token: String) -> Observable<APIResponse<T>?> {
         let headers: HTTPHeaders = [
                     "Authorization": "Bearer \(token)",
                     "Accept": "application/json"
@@ -32,10 +32,10 @@ class APIService {
                             // HTTP 상태 코드를 확인합니다.
                             if response.statusCode == 200 {
                                 do {
-                                    // JSON 데이터를 `type` 파라미터로 전달받은 T 타입의 객체로 디코딩합니다.
-                                    let decodedObject = try self.decoder.decode(T.self, from: data)
-                                    // 성공적으로 디코딩된 객체를 Observer에 전달합니다.
-                                    observer.onNext(decodedObject)
+                                    let decoder = JSONDecoder()
+                                    let responseData = try? decoder.decode(APIResponse<T>.self, from: data)
+                                    
+                                    observer.onNext(responseData)
                                     observer.onCompleted()
                                 } catch {
                                     // 디코딩 에러를 Observer에 전달합니다.
@@ -47,6 +47,7 @@ class APIService {
                             }
                         }, onError: { error in
                             // 네트워크 요청 실패를 Observer에 전달합니다.
+                            print("😈error : \(error)")
                             observer.onError(error)
                         })
                         .disposed(by: self.disposeBag)
