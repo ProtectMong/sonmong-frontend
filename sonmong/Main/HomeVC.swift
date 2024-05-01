@@ -156,15 +156,15 @@ class HomeVC: UIViewController, View {
     }
     
     func bindNavigation() {
-        let backButtonItem = UIBarButtonItem(image: UIImage(named: "search_ic"), style: .plain, target: nil, action: nil)
-        backButtonItem.tintColor = Constant.Color.b1
-        backButtonItem.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        // 로고 이미지를 위한 UIImageView 생성
+        let logoImageView = UIImageView(image: UIImage(named: "nav_left_icon"))
+        logoImageView.contentMode = .scaleAspectFit
+        logoImageView.frame = CGRect(x: 22, y: 0, width: 30, height: 30) // 크기 조정
         
-//        self.navigationItem.setRightBarButton([backButtonItem], animated: false)
-
-        backButtonItem.rx.tap
-            .subscribe(onNext: { _ in
-//                self.navigationController?.popViewController(animated: true)
-            }).disposed(by: disposeBag)
+        // 커스텀 뷰를 버튼 아이템에 설정
+        let logoItem = UIBarButtonItem(customView: logoImageView)
+        
+        // 네비게이션 아이템에 로고 아이템 추가
+        self.navigationItem.leftBarButtonItem = logoItem
     }
 }
