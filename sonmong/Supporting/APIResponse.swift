@@ -7,10 +7,16 @@
 
 import Foundation
 
+//public struct APIResponse<T: Codable> : Codable {
+//    public var resultData: T?
+//    public var resultStatus: APIMessage?
+//    public var total: Int?
+//}
+
 public struct APIResponse<T: Codable> : Codable {
-    public var resultData: T?
-    public var resultStatus: APIMessage?
-    public var total: Int?
+    public var data: T?
+    public var message: String?
+    public var status: Int?
 }
 
 public struct APIMessage: Codable {
