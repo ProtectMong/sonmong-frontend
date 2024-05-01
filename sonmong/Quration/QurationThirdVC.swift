@@ -120,10 +120,11 @@ class QurationThirdVC: UIViewController, View {
             .distinctUntilChanged()
             .filterNil()
             .filter { $0 == true }
+            .map { _ in reactor.currentState.qurationParameter }
             .withUnretained(self)
-            .subscribe(onNext: { vc, _ in
+            .subscribe(onNext: { vc, parameter  in
                 let nextVC = QurationFourthVC()
-                let nextReactor = QurationFourthReactor()
+                let nextReactor = QurationFourthReactor(qurationParameter: parameter)
                 nextVC.reactor = nextReactor
                 
                 vc.navigationController?.pushViewController(nextVC, animated: true)

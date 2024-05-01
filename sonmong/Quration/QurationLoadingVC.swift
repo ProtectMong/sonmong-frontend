@@ -19,7 +19,7 @@ class QurationLoadingVC: UIViewController, View {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        reactor?.action.onNext(.viewDidLoaded)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,8 +40,9 @@ class QurationLoadingVC: UIViewController, View {
             .asObservable()
             .subscribe(onNext: { [weak self] _ in
                 Observable.just("test")
-                    .delay(.seconds(5), scheduler: MainScheduler.instance)
+//                    .delay(.seconds(5), scheduler: MainScheduler.instance)
                     .subscribe(onNext: { text in
+                        print("🛠️text = ", text)
                         let finalVC = QurationFinalVC()
                         let finalReactor = QurationFinalReactor()
                         finalVC.reactor = finalReactor

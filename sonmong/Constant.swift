@@ -44,6 +44,7 @@ extension Constant {
     }
     
     struct APIURL {
+        static let mongji = "http://mongji.site:8080"
         static let api = "http://175.106.96.107:8080"
         
         static let login = api + "/api/v1/auth/signin"

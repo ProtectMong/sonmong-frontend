@@ -231,7 +231,7 @@ class QurationFirstReactor: Reactor {
             
         case .didNextButtonTapped:
             var message = ""
-            var qurationParameter = Quration()
+            var qurationParameter = currentState.qurationParameter ?? Quration()
             
             if let painArea = currentState.selectedPainArea, painArea.count > 0 {
                 qurationParameter.whereDoesItHurt = painArea.first
