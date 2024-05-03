@@ -83,8 +83,8 @@ class APIService {
     }
     
     func postRxRequest<T: Codable>(stringUrl: String, parameter: [String : Any], type: T.Type) -> Observable<T> {
+        
         return Observable.create { observer in
-            // JSON 데이터로 변환
             guard let jsonData = try? JSONSerialization.data(withJSONObject: parameter, options: []) else {
                 observer.onError(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "JSON Serialization failed"]))
                 return Disposables.create()
