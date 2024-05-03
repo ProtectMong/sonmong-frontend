@@ -20,6 +20,7 @@ class HomeReactor: Reactor {
     }
     
     enum Mutation {
+        case setUserName(String?)
         case setIsPresentQurationMainVC(Bool?)
         case setIsPresentQurationUserInfoVC(Bool?)
         case setIsPresentAlertMessage(Bool?)
@@ -31,6 +32,7 @@ class HomeReactor: Reactor {
 //                                       "통증점수 3점"]
 //        var isQurationListTableHidden: Bool? = false
         
+        var userName: String?
         var qurationListDatasource:[String]?
         var isQurationListTableHidden: Bool? = true
         
@@ -48,8 +50,10 @@ class HomeReactor: Reactor {
     func mutate(action: HomeReactor.Action) -> Observable<HomeReactor.Mutation> {
         switch action {
         case .viewDidLoaded:
-            return Observable.concat([
+            let userName = UserDefaults.standard.object(forKey: Constant.UDKey.userName) as? String ?? ""
             
+            return Observable.concat([
+                .just(Mutation.setUserName(userName))
             ])
         case .didAIButtonTapped:
             return Observable.concat([
@@ -80,6 +84,8 @@ class HomeReactor: Reactor {
     func reduce(state: HomeReactor.State, mutation: HomeReactor.Mutation) -> State {
         var newState = state
         switch mutation {
+        case .setUserName(let name):
+            newState.userName = name
         case .setIsPresentQurationMainVC(let isPresent):
             newState.isPresentQurationMainVC = isPresent
         case .setIsPresentQurationUserInfoVC(let isPresent):

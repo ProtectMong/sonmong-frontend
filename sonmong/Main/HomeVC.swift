@@ -28,6 +28,13 @@ class HomeVC: UIViewController, View {
     func bind(reactor: HomeReactor) {
         baseView.layout(superView: self.view)
         
+        reactor.state.map { $0.userName }
+            .distinctUntilChanged()
+            .filterNil()
+            .map { "\($0)님!\n오늘의 손목 건강은 어떠신가요?" }
+            .bind(to: baseView.helloLabel.rx.text)
+            .disposed(by: disposeBag)
+        
         baseView.aiButton.rx.tap
             .map { Reactor.Action.didAIButtonTapped }
             .bind(to: reactor.action)
