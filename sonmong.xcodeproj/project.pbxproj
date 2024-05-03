@@ -265,9 +265,9 @@
 			isa = PBXGroup;
 			children = (
 				A1CFB0CF2BAEFB5400BAABC8 /* Model */,
+				A1CFB0C22BAEF0FC00BAABC8 /* Supporting */,
 				A15C25C02BAFD807007AA1E7 /* Main */,
 				A13617572BAFBDC200113997 /* Quration */,
-				A1CFB0C22BAEF0FC00BAABC8 /* Supporting */,
 				A1EE02402BAE7C66008EE352 /* Login */,
 				A1C3A2512BADD922000A41FD /* AppDelegate.swift */,
 				A1C3A2532BADD922000A41FD /* SceneDelegate.swift */,
@@ -277,7 +277,6 @@
 				A1E487E22BB6FB0400FDC47F /* splash_gif.gif */,
 				A1C3A25C2BADD923000A41FD /* LaunchScreen.storyboard */,
 				A1C3A25F2BADD923000A41FD /* Info.plist */,
-				A1CFB0BE2BAEECC700BAABC8 /* Constant.swift */,
 			);
 			path = sonmong;
 			sourceTree = "<group>";
@@ -302,6 +301,7 @@
 		A1CFB0C22BAEF0FC00BAABC8 /* Supporting */ = {
 			isa = PBXGroup;
 			children = (
+				A1CFB0BE2BAEECC700BAABC8 /* Constant.swift */,
 				A1E8A87F2BB5CAD80062ADED /* quration_loading.json */,
 				A1CFB0C32BAEF10800BAABC8 /* APIResponse.swift */,
 				A1CFB0C52BAEF17700BAABC8 /* APIService.swift */,

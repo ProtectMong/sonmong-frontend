@@ -112,8 +112,8 @@ class LoginReactor: Reactor {
                 .flatMap{ response -> Observable<Mutation> in
                     if response.status == 200 {
                         let accessToken = response.data?.accessToken ?? ""
-                        UserDefaults.standard.set(accessToken, forKey: "USER_ACCESS_TOKEN")
-                        UserDefaults.standard.set(name, forKey: "USER_NAME")
+                        UserDefaults.standard.set(accessToken, forKey: Constant.UDKey.accessToken)
+                        UserDefaults.standard.set(name, forKey: Constant.UDKey.userName)
                         
                         return Observable.concat([
                             .just(Mutation.setIsPresentMainVC(true)),

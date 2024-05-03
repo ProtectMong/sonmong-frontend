@@ -21,8 +21,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.windowScene = windowScene
         
-        let loginVC = LoginVC(reactor: LoginReactor())
-        window?.rootViewController = loginVC
+        let userAccessToken = UserDefaults.standard.object(forKey: Constant.UDKey.accessToken)
+        if userAccessToken == nil {
+            let loginVC = LoginVC(reactor: LoginReactor())
+            window?.rootViewController = loginVC
+        } else {
+            let mainVC = MainVC()
+            window?.rootViewController = mainVC
+        }
         window?.makeKeyAndVisible()
         
     }
