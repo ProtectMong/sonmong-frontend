@@ -139,6 +139,17 @@ class QurationThirdView: UIView {
         return label
     }()
     
+    let painHowEssentialMark: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "*"
+        label.textColor = Constant.Color.m1
+        label.font = .systemFont(ofSize: 20, weight: .regular)
+        label.numberOfLines = 0
+        
+        return label
+    }()
+    
     let painHowTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -166,6 +177,17 @@ class QurationThirdView: UIView {
         return label
     }()
     
+    let painWhenEssentialMark: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "*"
+        label.textColor = Constant.Color.m1
+        label.font = .systemFont(ofSize: 20, weight: .regular)
+        label.numberOfLines = 0
+        
+        return label
+    }()
+    
     let painWhenTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -185,9 +207,20 @@ class QurationThirdView: UIView {
     let painWithWorkTitle: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "귀하의 직업이나 취미 활동이 손목에 부담을 주나요??"
+        label.text = "귀하의 직업이나 취미 활동이 손목에 부담을 주나요?"
         label.textColor = Constant.Color.b1
         label.font = .systemFont(ofSize: 16, weight: .bold)
+        label.numberOfLines = 0
+        
+        return label
+    }()
+    
+    let painWithWorkEssentialMark: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "*"
+        label.textColor = Constant.Color.m1
+        label.font = .systemFont(ofSize: 20, weight: .regular)
         label.numberOfLines = 0
         
         return label
@@ -336,6 +369,12 @@ class QurationThirdView: UIView {
             make.leading.equalTo(contentView.snp.leading).offset(22)
         }
         
+        contentView.addSubview(painHowEssentialMark)
+        painHowEssentialMark.snp.makeConstraints { make in
+            make.top.equalTo(painHowTitle)
+            make.leading.equalTo(painHowTitle.snp.trailing)
+        }
+        
         contentView.addSubview(painHowTextField)
         painHowTextField.snp.makeConstraints { make in
             make.top.equalTo(painHowTitle.snp.bottom).offset(18)
@@ -350,6 +389,12 @@ class QurationThirdView: UIView {
             make.leading.equalTo(contentView.snp.leading).offset(22)
         }
         
+        contentView.addSubview(painWhenEssentialMark)
+        painWhenEssentialMark.snp.makeConstraints { make in
+            make.top.equalTo(painWhenTitle)
+            make.leading.equalTo(painWhenTitle.snp.trailing)
+        }
+        
         contentView.addSubview(painWhenTextField)
         painWhenTextField.snp.makeConstraints { make in
             make.top.equalTo(painWhenTitle.snp.bottom).offset(18)
@@ -362,6 +407,12 @@ class QurationThirdView: UIView {
         painWithWorkTitle.snp.makeConstraints { make in
             make.top.equalTo(painWhenTextField.snp.bottom).offset(30)
             make.leading.equalTo(contentView.snp.leading).offset(22)
+        }
+        
+        contentView.addSubview(painWithWorkEssentialMark)
+        painWithWorkEssentialMark.snp.makeConstraints { make in
+            make.top.equalTo(painWithWorkTitle)
+            make.leading.equalTo(painWithWorkTitle.snp.trailing)
         }
         
         contentView.addSubview(painWithWorkButtonStackView)

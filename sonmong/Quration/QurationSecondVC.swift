@@ -76,7 +76,6 @@ class QurationSecondVC: UIViewController, View, SliderViewDelegate {
             .disposed(by: disposeBag)
         
         reactor.state.map { $0.isChangeStartWhenTextFieldError }
-            .debug()
             .distinctUntilChanged()
             .filterNil()
             .filter { $0 == true }

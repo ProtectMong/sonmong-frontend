@@ -32,6 +32,9 @@ class QurationThirdVC: UIViewController, View {
     func bind(reactor: QurationThirdReactor) {
         baseView.layout(superView: self.view)
         
+        baseView.painHowTextField.delegate = self
+        baseView.painWhenTextField.delegate = self
+        
         baseView.painHowTextField.rx.text.orEmpty
             .map { Reactor.Action.didPainHowTextFieldChanged($0) }
             .bind(to: reactor.action)
@@ -106,6 +109,57 @@ class QurationThirdVC: UIViewController, View {
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
+        reactor.state.map { $0.isChangePainHowError }
+            .distinctUntilChanged()
+            .filterNil()
+            .filter { $0 == true }
+            .withUnretained(self)
+            .subscribe(onNext: { vc, _ in
+                vc.baseView.painHowTextField.layer.borderColor = Constant.Color.m1.cgColor
+            })
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.isChangePainWhenError }
+            .distinctUntilChanged()
+            .filterNil()
+            .filter { $0 == true }
+            .withUnretained(self)
+            .subscribe(onNext: { vc, _ in
+                vc.baseView.painWhenTextField.layer.borderColor = Constant.Color.m1.cgColor
+            })
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.isChangeWithWorkError }
+            .distinctUntilChanged()
+            .filterNil()
+            .filter { $0 == true }
+            .withUnretained(self)
+            .subscribe(onNext: { vc, _ in
+                vc.baseView.painWithWorkYesButton.layer.borderColor = Constant.Color.m1.cgColor
+                vc.baseView.painWithWorkNoButton.layer.borderColor = Constant.Color.m1.cgColor
+            })
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.isNextButtonEnabled }
+            .distinctUntilChanged()
+            .filterNil()
+            .filter { $0 == true }
+            .withUnretained(self)
+            .subscribe(onNext: { vc, isEnabled in
+                vc.baseView.nextButton.backgroundColor = Constant.Color.m7
+            })
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.isNextButtonEnabled }
+            .distinctUntilChanged()
+            .filterNil()
+            .filter { $0 == false }
+            .withUnretained(self)
+            .subscribe(onNext: { vc, isEnabled in
+                vc.baseView.nextButton.backgroundColor = Constant.Color.g4
+            })
+            .disposed(by: disposeBag)
+        
         reactor.state.map { $0.isPresentPreviousVC }
             .distinctUntilChanged()
             .filterNil()
@@ -154,5 +208,22 @@ class QurationThirdVC: UIViewController, View {
             .subscribe(onNext: { _ in
                 self.navigationController?.popViewController(animated: true)
             }).disposed(by: disposeBag)
+    }
+}
+extension QurationThirdVC: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == baseView.painHowTextField {
+            baseView.painHowTextField.layer.borderColor = Constant.Color.m7.cgColor
+        } else if textField == baseView.painWhenTextField {
+            baseView.painWhenTextField.layer.borderColor = Constant.Color.m7.cgColor
+        }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == baseView.painHowTextField {
+            baseView.painHowTextField.layer.borderColor = Constant.Color.g1.cgColor
+        } else if textField == baseView.painWhenTextField {
+            baseView.painWhenTextField.layer.borderColor = Constant.Color.g1.cgColor
+        }
     }
 }
