@@ -208,12 +208,76 @@ class QurationFirstVC: UIViewController, View {
             })
             .disposed(by: disposeBag)
         
+        reactor.state.map { $0.isChangePainAreaError }
+            .distinctUntilChanged()
+            .filterNil()
+            .filter { $0 == true }
+            .withUnretained(self)
+            .subscribe(onNext: { vc, _ in
+                vc.baseView.painAreaUserInputTextField.layer.borderColor = Constant.Color.m1.cgColor
+                vc.baseView.painAreaUserInputButton.backgroundColor = Constant.Color.m1
+            })
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.isChangePainAreaError }
+            .distinctUntilChanged()
+            .filterNil()
+            .filter { $0 == false }
+            .withUnretained(self)
+            .subscribe(onNext: { vc, _ in
+                vc.baseView.painAreaUserInputTextField.layer.borderColor = Constant.Color.g2.cgColor
+                vc.baseView.painAreaUserInputButton.backgroundColor = Constant.Color.g2
+            })
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.isChangePainDetailAreaError }
+            .distinctUntilChanged()
+            .filterNil()
+            .filter { $0 == true }
+            .withUnretained(self)
+            .subscribe(onNext: { vc, _ in
+                vc.baseView.painDetailAreaUserInputTextField.layer.borderColor = Constant.Color.m1.cgColor
+                vc.baseView.painDetailAreaUserInputButton.backgroundColor = Constant.Color.m1
+            })
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.isChangePainDetailAreaError }
+            .distinctUntilChanged()
+            .filterNil()
+            .filter { $0 == false }
+            .withUnretained(self)
+            .subscribe(onNext: { vc, _ in
+                vc.baseView.painDetailAreaUserInputTextField.layer.borderColor = Constant.Color.g2.cgColor
+                vc.baseView.painDetailAreaUserInputButton.backgroundColor = Constant.Color.g2
+            })
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.isNextButtonEnabled }
+            .distinctUntilChanged()
+            .filterNil()
+            .filter { $0 == true }
+            .withUnretained(self)
+            .subscribe(onNext: { vc, isEnabled in
+                vc.baseView.nextButton.backgroundColor = Constant.Color.m7
+            })
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.isNextButtonEnabled }
+            .distinctUntilChanged()
+            .filterNil()
+            .filter { $0 == false }
+            .withUnretained(self)
+            .subscribe(onNext: { vc, isEnabled in
+                vc.baseView.nextButton.backgroundColor = Constant.Color.g4
+            })
+            .disposed(by: disposeBag)
+        
         reactor.state.map { $0.isPresentAlertMesasge }
             .distinctUntilChanged()
             .filterNil()
             .withUnretained(self)
             .subscribe(onNext: { vc, message in
-                let alert = UIAlertController(title: "필수값을 확인해주세요!", message: message, preferredStyle: .alert)
+                let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
                 
                 self.present(alert, animated: true, completion: nil)

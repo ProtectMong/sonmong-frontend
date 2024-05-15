@@ -36,6 +36,9 @@ class QurationFirstReactor: Reactor {
         case setSelectedPainDetailArea([String]?)
         case setInputPainDetailAreaData(String?)
         
+        case setIsChangePainAreaError(Bool?)
+        case setIsChangePainDetailAreaError(Bool?)
+        
         case setIsPresentPreviousVC(Bool?)
         case setIsPresentNextVC(Bool?)
         
@@ -60,6 +63,10 @@ class QurationFirstReactor: Reactor {
         var selectedPainDetailArea: [String]?
         var inputPainDetailAreaData: String?
         
+        var isChangePainAreaError: Bool?
+        var isChangePainDetailAreaError: Bool?
+        
+        
         var isPresentPreviousVC: Bool?
         var isPresentNextVC: Bool?
         
@@ -82,6 +89,7 @@ class QurationFirstReactor: Reactor {
             
         case .didPainAreaSelected(let inputCellReactor):
             var selectedPainAreas: [String]? = []
+            var isNextButtonEnabled: Bool? = false
             
             let currentRecognizedDatas = currentState.painAreaDataSource?.map ({ cellReactor -> PainAreaCollectionViewCellReactor in
                 if cellReactor.currentState.title == inputCellReactor.currentState.title {
@@ -99,15 +107,21 @@ class QurationFirstReactor: Reactor {
                 }
             }) ?? []
             
-            if selectedPainAreas?.count ?? 0 <= 0 {
-                return Observable.concat([
-                    .just(Mutation.setIsNextButtonEnabled(false)),
-                    .just(Mutation.setSelectedPainArea(nil)),
-                    .just(Mutation.setPainAreaDataSource([]))
-                ])
+            if selectedPainAreas?.count ?? 0 > 0 && currentState.selectedPainDetailArea?.count ?? 0 > 0 {
+                isNextButtonEnabled = true
+            } else {
+                isNextButtonEnabled = false
             }
             
+//            return Observable.concat([
+//                .just(Mutation.setIsNextButtonEnabled(isNextButtonEnabled)),
+//                .just(Mutation.setSelectedPainArea(nil)),
+//                .just(Mutation.setPainAreaDataSource([]))
+//            ])
+//            
             return Observable.concat([
+                .just(Mutation.setIsNextButtonEnabled(isNextButtonEnabled)),
+                .just(Mutation.setIsChangePainAreaError(false)),
                 .just(Mutation.setSelectedPainArea(selectedPainAreas)),
                 .just(Mutation.setPainAreaDataSource(currentRecognizedDatas))
             ])
@@ -118,9 +132,8 @@ class QurationFirstReactor: Reactor {
             ])
             
         case .didPainAreaUserInputButtonTapped:
-            var isNextButtonEnabled: Bool? = false
-            
             let currentUserInputData = currentState.inputPainAreaData ?? ""
+            var isNextButtonEnabled: Bool? = false
             
             if currentUserInputData == "" {
                 return Observable.empty()
@@ -137,6 +150,12 @@ class QurationFirstReactor: Reactor {
             var currentSelectedPainAreas = currentState.selectedPainArea ?? []
             if currentSelectedPainAreas.contains(currentUserInputData) == false {
                 currentSelectedPainAreas.append(currentUserInputData)
+            }
+            
+            if currentSelectedPainAreas.count > 0 && currentState.selectedPainDetailArea?.count ?? 0 > 0 {
+                isNextButtonEnabled = true
+            } else {
+                isNextButtonEnabled = false
             }
             
             return Observable.concat([
@@ -162,6 +181,7 @@ class QurationFirstReactor: Reactor {
             
         case .didPainDetailAreaSelected(let inputCellReactor):
             var selectedPainDetailAreas: [String]? = []
+            var isNextButtonEnabled: Bool? = false
             
             let currentRecognizedDatas = currentState.painDetailAreaDataSource?.map ({ cellReactor -> PainAreaCollectionViewCellReactor in
                 if cellReactor.currentState.title == inputCellReactor.currentState.title {
@@ -179,7 +199,15 @@ class QurationFirstReactor: Reactor {
                 }
             }) ?? []
             
+            if currentState.selectedPainArea?.count ?? 0 > 0 && selectedPainDetailAreas?.count ?? 0 > 0 {
+                isNextButtonEnabled = true
+            } else {
+                isNextButtonEnabled = false
+            }
+            
             return Observable.concat([
+                .just(Mutation.setIsNextButtonEnabled(isNextButtonEnabled)),
+                .just(Mutation.setIsChangePainDetailAreaError(false)),
                 .just(Mutation.setSelectedPainDetailArea(selectedPainDetailAreas)),
                 .just(Mutation.setPainDetailAreaDataSource(currentRecognizedDatas))
             ])
@@ -191,6 +219,7 @@ class QurationFirstReactor: Reactor {
             
         case .didPainDetailAreaUserInputButtonTapped:
             let currentUserInputData = currentState.inputPainDetailAreaData ?? ""
+            var isNextButtonEnabled: Bool? = false
             
             if currentUserInputData == "" || currentUserInputData == nil {
                 return Observable.empty()
@@ -209,7 +238,14 @@ class QurationFirstReactor: Reactor {
                 currentSelectedPainDetailAreas.append(currentUserInputData)
             }
             
+            if currentSelectedPainDetailAreas.count > 0 && currentState.selectedPainArea?.count ?? 0 > 0 {
+                isNextButtonEnabled = true
+            } else {
+                isNextButtonEnabled = false
+            }
+            
             return Observable.concat([
+                .just(Mutation.setIsNextButtonEnabled(isNextButtonEnabled)),
                 .just(Mutation.setPainDetailAreaDataSource(currentPainDetailAreaDataSource)),
                 .just(Mutation.setSelectedPainDetailArea(currentSelectedPainDetailAreas)),
                 .just(Mutation.setInputPainDetailAreaData(nil))
@@ -222,28 +258,37 @@ class QurationFirstReactor: Reactor {
             ])
             
         case .didNextButtonTapped:
-            var message = ""
             var qurationParameter = currentState.qurationParameter ?? Quration()
+            var isChangePainAreaError = false
+            var isChangePainDetailAreaError = false
             
             if let painArea = currentState.selectedPainArea, painArea.count > 0 {
                 qurationParameter.whereDoesItHurt = painArea.first
             } else {
-                message += "🌟 통증 위치 \n"
+                isChangePainAreaError = true
             }
             
             if let painDetailArea = currentState.selectedPainDetailArea, painDetailArea.count > 0 {
                 qurationParameter.position = painDetailArea.first
             } else {
-                message += "🌟 상세 통증 위치\n"
+                isChangePainDetailAreaError = true
             }
             
-            if message == "" {
+            if isChangePainAreaError == true || isChangePainDetailAreaError == true {
+                return Observable.concat([
+                    .just(Mutation.setIsChangePainAreaError(isChangePainAreaError)),
+                    .just(Mutation.setIsChangePainDetailAreaError(isChangePainDetailAreaError))
+                ])
+            }
+            
+            if isChangePainAreaError == false && isChangePainDetailAreaError == false {
                 return Observable.concat([
                     .just(Mutation.setQurationParameter(qurationParameter)),
                     .just(Mutation.setIsPresentNextVC(true)),
                     .just(Mutation.setIsPresentNextVC(nil))
                 ])
             } else {
+                let message = "오류가 발생했습니다. 잠시 후 다시 이용해주세요."
                 return Observable.concat([
                     .just(Mutation.setIsPresentAlertMesasge(message)),
                     .just(Mutation.setIsPresentAlertMesasge(nil))
@@ -272,6 +317,11 @@ class QurationFirstReactor: Reactor {
             newState.selectedPainDetailArea = painAreas
         case .setInputPainDetailAreaData(let painArea):
             newState.inputPainDetailAreaData = painArea
+            
+        case .setIsChangePainAreaError(let isChange):
+            newState.isChangePainAreaError = isChange
+        case .setIsChangePainDetailAreaError(let isChange):
+            newState.isChangePainDetailAreaError = isChange
             
         case .setIsPresentPreviousVC(let isPresent):
             newState.isPresentPreviousVC = isPresent

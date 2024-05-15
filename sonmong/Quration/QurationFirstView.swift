@@ -151,6 +151,17 @@ class QurationFirstView: UIView {
         return label
     }()
     
+    let painAreaEssentialMark: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "*"
+        label.textColor = Constant.Color.m1
+        label.font = .systemFont(ofSize: 20, weight: .regular)
+        label.numberOfLines = 0
+        
+        return label
+    }()
+    
     let painAreaCollectionView: UICollectionView = {
         let layout = CollectionViewCellLeftAlignFlowLayout()
         layout.estimatedItemSize = CollectionViewCellLeftAlignFlowLayout.automaticSize
@@ -199,6 +210,17 @@ class QurationFirstView: UIView {
         label.text = "위의 영역 중 어느 위치가 아프신가요?"
         label.textColor = Constant.Color.b1
         label.font = .systemFont(ofSize: 16, weight: .bold)
+        label.numberOfLines = 0
+        
+        return label
+    }()
+    
+    let painDetailAreaEssentialMark: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "*"
+        label.textColor = Constant.Color.m1
+        label.font = .systemFont(ofSize: 20, weight: .regular)
         label.numberOfLines = 0
         
         return label
@@ -390,6 +412,12 @@ class QurationFirstView: UIView {
             make.leading.equalTo(contentView.snp.leading).offset(22)
         }
         
+        contentView.addSubview(painAreaEssentialMark)
+        painAreaEssentialMark.snp.makeConstraints { make in
+            make.top.equalTo(painAreaTitle)
+            make.leading.equalTo(painAreaTitle.snp.trailing)
+        }
+        
         contentView.addSubview(painAreaCollectionView)
         painAreaCollectionView.snp.makeConstraints { make in
             make.top.equalTo(painAreaTitle.snp.bottom).offset(18)
@@ -418,6 +446,12 @@ class QurationFirstView: UIView {
         painDetailAreaTitle.snp.makeConstraints { make in
             make.top.equalTo(painAreaUserInputTextField.snp.bottom).offset(30)
             make.leading.equalTo(contentView.snp.leading).offset(22)
+        }
+        
+        contentView.addSubview(painDetailAreaEssentialMark)
+        painDetailAreaEssentialMark.snp.makeConstraints { make in
+            make.top.equalTo(painDetailAreaTitle)
+            make.leading.equalTo(painDetailAreaTitle.snp.trailing)
         }
         
         contentView.addSubview(painDetailAreaCollectionView)
