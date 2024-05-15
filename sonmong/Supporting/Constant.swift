@@ -22,6 +22,7 @@ extension Constant {
         static let g7 = UIColor(red: 0.10, green: 0.10, blue: 0.10, alpha: 1.00)
         
         static let b1 = UIColor(red: 0.00, green: 0.00, blue: 0.00, alpha: 1.00)
+        static let b1_mate = UIColor(red: 0.00, green: 0.00, blue: 0.00, alpha: 0.50)
         
         static let l1 = UIColor(red: 0.96, green: 0.96, blue: 0.97, alpha: 1.00)
         static let l2 = UIColor(red: 0.90, green: 0.91, blue: 0.93, alpha: 1.00)

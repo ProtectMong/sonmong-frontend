@@ -98,6 +98,26 @@ class HomeView: UIView {
         return button
     }()
     
+    let sonmongCommingSoonView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = Constant.Color.b1_mate
+        view.layer.cornerRadius = 13
+        
+        return view
+    }()
+    
+    let sonmongCommingSoonLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "오픈 준비중"
+        label.font = .systemFont(ofSize: 17, weight: .semibold)
+        label.textColor = Constant.Color.f1
+        label.textAlignment = .center
+        
+        return label
+    }()
+    
     let sonmongButtonView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -157,45 +177,45 @@ class HomeView: UIView {
         return view
     }()
     
-    let todaysRecommendTitleLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "오늘의 손목 추천 운동"
-        label.font = .systemFont(ofSize: 21, weight: .bold)
-        label.textColor = Constant.Color.g7
-        
-        return label
-    }()
-    
-    let todaysRecommendGoDetailButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = UIColor.clear
-        button.isUserInteractionEnabled = true
-        button.setTitle("자세히보기", for: .normal)
-        button.setImage(UIImage(named: "chevron-forward-outline"), for: .normal)
-        button.semanticContentAttribute = .forceRightToLeft
-        button.setTitleColor(Constant.Color.g3, for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 13, weight: .regular)
-        let spacing: CGFloat = -5
-        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: spacing, bottom: 0, right: 0)
-        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: spacing)
-        
-        return button
-    }()
-    
-    let recommandView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = Constant.Color.f1
-        view.layer.cornerRadius = 13
-        view.layer.shadowColor = Constant.Color.b1.cgColor
-        view.layer.shadowOpacity = 0.10
-        view.layer.shadowOffset = CGSize(width: 0, height: 0)
-        view.layer.shadowRadius = 8.0
-        
-        return view
-    }()
+//    let todaysRecommendTitleLabel: UILabel = {
+//        let label = UILabel()
+//        label.translatesAutoresizingMaskIntoConstraints = false
+//        label.text = "오늘의 손목 추천 운동"
+//        label.font = .systemFont(ofSize: 21, weight: .bold)
+//        label.textColor = Constant.Color.g7
+//        
+//        return label
+//    }()
+//    
+//    let todaysRecommendGoDetailButton: UIButton = {
+//        let button = UIButton()
+//        button.translatesAutoresizingMaskIntoConstraints = false
+//        button.backgroundColor = UIColor.clear
+//        button.isUserInteractionEnabled = true
+//        button.setTitle("자세히보기", for: .normal)
+//        button.setImage(UIImage(named: "chevron-forward-outline"), for: .normal)
+//        button.semanticContentAttribute = .forceRightToLeft
+//        button.setTitleColor(Constant.Color.g3, for: .normal)
+//        button.titleLabel?.font = .systemFont(ofSize: 13, weight: .regular)
+//        let spacing: CGFloat = -5
+//        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: spacing, bottom: 0, right: 0)
+//        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: spacing)
+//        
+//        return button
+//    }()
+//    
+//    let recommandView: UIView = {
+//        let view = UIView()
+//        view.translatesAutoresizingMaskIntoConstraints = false
+//        view.backgroundColor = Constant.Color.f1
+//        view.layer.cornerRadius = 13
+//        view.layer.shadowColor = Constant.Color.b1.cgColor
+//        view.layer.shadowOpacity = 0.10
+//        view.layer.shadowOffset = CGSize(width: 0, height: 0)
+//        view.layer.shadowRadius = 8.0
+//        
+//        return view
+//    }()
     
 //    let youtubeThumbnailImageView: UIView = {
 //        let view = UIView()
@@ -212,90 +232,90 @@ class HomeView: UIView {
 //        return view
 //    }()
     
-    let youtubeThumbnailImageView: UIImageView = {
-        let view = UIImageView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.layer.cornerRadius = 94/2
-        view.clipsToBounds = true
-        view.backgroundColor = UIColor.lightGray
-        view.isUserInteractionEnabled = true
-        view.layer.shadowColor = Constant.Color.b1.cgColor
-        view.layer.shadowOpacity = 0.80
-        view.layer.shadowOffset = CGSize(width: 0, height: 0)
-        view.layer.shadowRadius = 11.0
-        view.image = UIImage(named: "youtube-sample")
-        
-        return view
-    }()
-    
-    let youtubePlayButtonButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(named: "player_play_ic"), for: .normal)
-        
-        return button
-    }()
-    
-    let youtubeTitleLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "손목 터널증후군 스트레칭"
-        label.font = .systemFont(ofSize: 15, weight: .semibold)
-        label.textColor = Constant.Color.g6
-        
-        return label
-    }()
-    
-    let youtubeInfoLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "엄지사용 근육이완, 1분"
-        label.font = .systemFont(ofSize: 13, weight: .regular)
-        label.textColor = Constant.Color.g4
-        return label
-    }()
-    
-    let youtubeFirstTagView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.layer.cornerRadius = 10
-        view.backgroundColor = Constant.Color.f2
-        view.layer.borderColor = Constant.Color.g1.cgColor
-        view.layer.borderWidth = 1
-        
-        return view
-    }()
-    
-    let youtubeFirstTagLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "하루 2번"
-        label.font = .systemFont(ofSize: 11, weight: .regular)
-        label.textColor = Constant.Color.g5
-        
-        return label
-    }()
-    
-    let youtubeSecondTagView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.layer.cornerRadius = 10
-        view.backgroundColor = Constant.Color.f2
-        view.layer.borderColor = Constant.Color.g1.cgColor
-        view.layer.borderWidth = 1
-        
-        return view
-    }()
-    
-    let youtubeSecondTagLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "일상 스트레칭"
-        label.font = .systemFont(ofSize: 11, weight: .regular)
-        label.textColor = Constant.Color.g5
-        
-        return label
-    }()
+//    let youtubeThumbnailImageView: UIImageView = {
+//        let view = UIImageView()
+//        view.translatesAutoresizingMaskIntoConstraints = false
+//        view.layer.cornerRadius = 94/2
+//        view.clipsToBounds = true
+//        view.backgroundColor = UIColor.lightGray
+//        view.isUserInteractionEnabled = true
+//        view.layer.shadowColor = Constant.Color.b1.cgColor
+//        view.layer.shadowOpacity = 0.80
+//        view.layer.shadowOffset = CGSize(width: 0, height: 0)
+//        view.layer.shadowRadius = 11.0
+//        view.image = UIImage(named: "youtube-sample")
+//        
+//        return view
+//    }()
+//    
+//    let youtubePlayButtonButton: UIButton = {
+//        let button = UIButton()
+//        button.translatesAutoresizingMaskIntoConstraints = false
+//        button.setImage(UIImage(named: "player_play_ic"), for: .normal)
+//        
+//        return button
+//    }()
+//    
+//    let youtubeTitleLabel: UILabel = {
+//        let label = UILabel()
+//        label.translatesAutoresizingMaskIntoConstraints = false
+//        label.text = "손목 터널증후군 스트레칭"
+//        label.font = .systemFont(ofSize: 15, weight: .semibold)
+//        label.textColor = Constant.Color.g6
+//        
+//        return label
+//    }()
+//    
+//    let youtubeInfoLabel: UILabel = {
+//        let label = UILabel()
+//        label.translatesAutoresizingMaskIntoConstraints = false
+//        label.text = "엄지사용 근육이완, 1분"
+//        label.font = .systemFont(ofSize: 13, weight: .regular)
+//        label.textColor = Constant.Color.g4
+//        return label
+//    }()
+//    
+//    let youtubeFirstTagView: UIView = {
+//        let view = UIView()
+//        view.translatesAutoresizingMaskIntoConstraints = false
+//        view.layer.cornerRadius = 10
+//        view.backgroundColor = Constant.Color.f2
+//        view.layer.borderColor = Constant.Color.g1.cgColor
+//        view.layer.borderWidth = 1
+//        
+//        return view
+//    }()
+//    
+//    let youtubeFirstTagLabel: UILabel = {
+//        let label = UILabel()
+//        label.translatesAutoresizingMaskIntoConstraints = false
+//        label.text = "하루 2번"
+//        label.font = .systemFont(ofSize: 11, weight: .regular)
+//        label.textColor = Constant.Color.g5
+//        
+//        return label
+//    }()
+//    
+//    let youtubeSecondTagView: UIView = {
+//        let view = UIView()
+//        view.translatesAutoresizingMaskIntoConstraints = false
+//        view.layer.cornerRadius = 10
+//        view.backgroundColor = Constant.Color.f2
+//        view.layer.borderColor = Constant.Color.g1.cgColor
+//        view.layer.borderWidth = 1
+//        
+//        return view
+//    }()
+//    
+//    let youtubeSecondTagLabel: UILabel = {
+//        let label = UILabel()
+//        label.translatesAutoresizingMaskIntoConstraints = false
+//        label.text = "일상 스트레칭"
+//        label.font = .systemFont(ofSize: 11, weight: .regular)
+//        label.textColor = Constant.Color.g5
+//        
+//        return label
+//    }()
     
     let qurationBaseView: UIView = {
         let view = UIView()
@@ -499,92 +519,107 @@ class HomeView: UIView {
             make.edges.equalTo(sonmongButtonView.snp.edges)
         }
         
-        contentView.addSubview(recommendBaseView)
-        recommendBaseView.snp.makeConstraints { make in
-            make.top.equalTo(topBaseView.snp.bottom)
-            make.leading.equalTo(contentView.snp.leading)
-            make.trailing.equalTo(contentView.snp.trailing)
+        topBaseView.addSubview(sonmongCommingSoonView)
+        sonmongCommingSoonView.snp.makeConstraints { make in
+            make.top.equalTo(helloLabel.snp.bottom).offset(15)
+            make.leading.equalTo(topBaseView.snp.centerX).offset(5)
+            make.trailing.equalTo(topBaseView.snp.trailing).offset(-22)
+            make.bottom.equalTo(topBaseView.snp.bottom).offset(-23)
+            make.height.equalTo(160)
         }
         
-        recommendBaseView.addSubview(todaysRecommendGoDetailButton)
-        todaysRecommendGoDetailButton.snp.makeConstraints { make in
-            make.top.equalTo(recommendBaseView.snp.top).offset(37)
-            make.trailing.lessThanOrEqualTo(recommendBaseView.snp.trailing).offset(-22)
+        sonmongCommingSoonView.addSubview(sonmongCommingSoonLabel)
+        sonmongCommingSoonLabel.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
         }
         
-        recommendBaseView.addSubview(todaysRecommendTitleLabel)
-        todaysRecommendTitleLabel.snp.makeConstraints { make in
-            make.bottom.equalTo(todaysRecommendGoDetailButton.snp.bottom)
-            make.leading.equalTo(recommendBaseView.snp.leading).offset(22)
-        }
+//        contentView.addSubview(recommendBaseView)
+//        recommendBaseView.snp.makeConstraints { make in
+//            make.top.equalTo(topBaseView.snp.bottom)
+//            make.leading.equalTo(contentView.snp.leading)
+//            make.trailing.equalTo(contentView.snp.trailing)
+//        }
         
-        recommendBaseView.addSubview(recommandView)
-        recommandView.snp.makeConstraints { make in
-            make.top.equalTo(todaysRecommendTitleLabel.snp.bottom).offset(15)
-            make.leading.equalTo(recommendBaseView.snp.leading).offset(22)
-            make.trailing.equalTo(recommendBaseView.snp.trailing).offset(-22)
-            make.bottom.equalTo(recommendBaseView.snp.bottom).offset(-25)
-        }
-        
-        recommandView.addSubview(youtubeThumbnailImageView)
-        youtubeThumbnailImageView.snp.makeConstraints { make in
-            make.top.equalTo(recommandView.snp.top).offset(27.5)
-            make.leading.equalTo(recommandView.snp.leading).offset(17)
-            make.bottom.equalTo(recommandView.snp.bottom).offset(-27.5)
-            make.width.equalTo(94)
-            make.height.equalTo(94)
-        }
-        
-        youtubeThumbnailImageView.addSubview(youtubePlayButtonButton)
-        youtubePlayButtonButton.snp.makeConstraints { make in
-            make.centerX.equalTo(youtubeThumbnailImageView.snp.centerX)
-            make.centerY.equalTo(youtubeThumbnailImageView.snp.centerY)
-        }
-        
-        recommandView.addSubview(youtubeTitleLabel)
-        youtubeTitleLabel.snp.makeConstraints { make in
-            make.top.equalTo(recommandView.snp.top).offset(33)
-            make.leading.equalTo(youtubeThumbnailImageView.snp.trailing).offset(17)
-            make.trailing.equalTo(recommandView.snp.trailing).offset(-17)
-        }
-        
-        recommandView.addSubview(youtubeInfoLabel)
-        youtubeInfoLabel.snp.makeConstraints { make in
-            make.top.equalTo(youtubeTitleLabel.snp.bottom).offset(10)
-            make.leading.equalTo(youtubeTitleLabel.snp.leading)
-        }
-        
-        recommandView.addSubview(youtubeFirstTagView)
-        youtubeFirstTagView.snp.makeConstraints { make in
-            make.bottom.equalTo(youtubeThumbnailImageView.snp.bottom)
-            make.leading.equalTo(youtubeTitleLabel.snp.leading)
-        }
-        
-        youtubeFirstTagView.addSubview(youtubeFirstTagLabel)
-        youtubeFirstTagLabel.snp.makeConstraints { make in
-            make.top.equalTo(youtubeFirstTagView.snp.top).offset(3.5)
-            make.leading.equalTo(youtubeFirstTagView.snp.leading).offset(10)
-            make.trailing.equalTo(youtubeFirstTagView.snp.trailing).offset(-10)
-            make.bottom.equalTo(youtubeFirstTagView.snp.bottom).offset(-3.5)
-        }
-        
-        recommandView.addSubview(youtubeSecondTagView)
-        youtubeSecondTagView.snp.makeConstraints { make in
-            make.bottom.equalTo(youtubeFirstTagView.snp.bottom)
-            make.leading.equalTo(youtubeFirstTagView.snp.trailing).offset(7)
-        }
-        
-        youtubeSecondTagView.addSubview(youtubeSecondTagLabel)
-        youtubeSecondTagLabel.snp.makeConstraints { make in
-            make.top.equalTo(youtubeSecondTagView.snp.top).offset(3.5)
-            make.leading.equalTo(youtubeSecondTagView.snp.leading).offset(10)
-            make.trailing.equalTo(youtubeSecondTagView.snp.trailing).offset(-10)
-            make.bottom.equalTo(youtubeSecondTagView.snp.bottom).offset(-3.5)
-        }
+//        recommendBaseView.addSubview(todaysRecommendGoDetailButton)
+//        todaysRecommendGoDetailButton.snp.makeConstraints { make in
+//            make.top.equalTo(recommendBaseView.snp.top).offset(37)
+//            make.trailing.lessThanOrEqualTo(recommendBaseView.snp.trailing).offset(-22)
+//        }
+//        
+//        recommendBaseView.addSubview(todaysRecommendTitleLabel)
+//        todaysRecommendTitleLabel.snp.makeConstraints { make in
+//            make.bottom.equalTo(todaysRecommendGoDetailButton.snp.bottom)
+//            make.leading.equalTo(recommendBaseView.snp.leading).offset(22)
+//        }
+//        
+//        recommendBaseView.addSubview(recommandView)
+//        recommandView.snp.makeConstraints { make in
+//            make.top.equalTo(todaysRecommendTitleLabel.snp.bottom).offset(15)
+//            make.leading.equalTo(recommendBaseView.snp.leading).offset(22)
+//            make.trailing.equalTo(recommendBaseView.snp.trailing).offset(-22)
+//            make.bottom.equalTo(recommendBaseView.snp.bottom).offset(-25)
+//        }
+//        
+//        recommandView.addSubview(youtubeThumbnailImageView)
+//        youtubeThumbnailImageView.snp.makeConstraints { make in
+//            make.top.equalTo(recommandView.snp.top).offset(27.5)
+//            make.leading.equalTo(recommandView.snp.leading).offset(17)
+//            make.bottom.equalTo(recommandView.snp.bottom).offset(-27.5)
+//            make.width.equalTo(94)
+//            make.height.equalTo(94)
+//        }
+//        
+//        youtubeThumbnailImageView.addSubview(youtubePlayButtonButton)
+//        youtubePlayButtonButton.snp.makeConstraints { make in
+//            make.centerX.equalTo(youtubeThumbnailImageView.snp.centerX)
+//            make.centerY.equalTo(youtubeThumbnailImageView.snp.centerY)
+//        }
+//        
+//        recommandView.addSubview(youtubeTitleLabel)
+//        youtubeTitleLabel.snp.makeConstraints { make in
+//            make.top.equalTo(recommandView.snp.top).offset(33)
+//            make.leading.equalTo(youtubeThumbnailImageView.snp.trailing).offset(17)
+//            make.trailing.equalTo(recommandView.snp.trailing).offset(-17)
+//        }
+//        
+//        recommandView.addSubview(youtubeInfoLabel)
+//        youtubeInfoLabel.snp.makeConstraints { make in
+//            make.top.equalTo(youtubeTitleLabel.snp.bottom).offset(10)
+//            make.leading.equalTo(youtubeTitleLabel.snp.leading)
+//        }
+//        
+//        recommandView.addSubview(youtubeFirstTagView)
+//        youtubeFirstTagView.snp.makeConstraints { make in
+//            make.bottom.equalTo(youtubeThumbnailImageView.snp.bottom)
+//            make.leading.equalTo(youtubeTitleLabel.snp.leading)
+//        }
+//        
+//        youtubeFirstTagView.addSubview(youtubeFirstTagLabel)
+//        youtubeFirstTagLabel.snp.makeConstraints { make in
+//            make.top.equalTo(youtubeFirstTagView.snp.top).offset(3.5)
+//            make.leading.equalTo(youtubeFirstTagView.snp.leading).offset(10)
+//            make.trailing.equalTo(youtubeFirstTagView.snp.trailing).offset(-10)
+//            make.bottom.equalTo(youtubeFirstTagView.snp.bottom).offset(-3.5)
+//        }
+//        
+//        recommandView.addSubview(youtubeSecondTagView)
+//        youtubeSecondTagView.snp.makeConstraints { make in
+//            make.bottom.equalTo(youtubeFirstTagView.snp.bottom)
+//            make.leading.equalTo(youtubeFirstTagView.snp.trailing).offset(7)
+//        }
+//        
+//        youtubeSecondTagView.addSubview(youtubeSecondTagLabel)
+//        youtubeSecondTagLabel.snp.makeConstraints { make in
+//            make.top.equalTo(youtubeSecondTagView.snp.top).offset(3.5)
+//            make.leading.equalTo(youtubeSecondTagView.snp.leading).offset(10)
+//            make.trailing.equalTo(youtubeSecondTagView.snp.trailing).offset(-10)
+//            make.bottom.equalTo(youtubeSecondTagView.snp.bottom).offset(-3.5)
+//        }
         
         contentView.addSubview(qurationBaseView)
         qurationBaseView.snp.makeConstraints { make in
-            make.top.equalTo(recommendBaseView.snp.bottom)
+//            make.top.equalTo(recommendBaseView.snp.bottom)
+            make.top.equalTo(topBaseView.snp.bottom)
             make.leading.equalTo(contentView.snp.leading)
             make.trailing.equalTo(contentView.snp.trailing)
             make.bottom.equalTo(contentView.snp.bottom).offset(-15)
