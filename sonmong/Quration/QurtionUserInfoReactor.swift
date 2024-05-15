@@ -82,9 +82,7 @@ class QurationUserInfoReactor: Reactor {
         case .didGenderGirlButtonTapped:
             var isNextButtonEnabled: Bool? = false
             if let birthday = currentState.birthday {
-                if let selectedJobOrHobby = currentState.selectedJobOrHobby, selectedJobOrHobby.count > 0 {
-                    isNextButtonEnabled = true
-                }
+                isNextButtonEnabled = true
             }
             return Observable.concat([
                 .just(Mutation.setIsNextButtonEnabled(isNextButtonEnabled)),

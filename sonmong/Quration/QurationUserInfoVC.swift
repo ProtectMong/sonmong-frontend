@@ -145,7 +145,6 @@ class QurationUserInfoVC: UIViewController, View {
             .filter { $0 == true }
             .withUnretained(self)
             .subscribe(onNext: { vc, isEnabled in
-//                vc.baseView.nextButton.isEnabled = isEnabled
                 vc.baseView.nextButton.backgroundColor = Constant.Color.m7
             })
             .disposed(by: disposeBag)
@@ -156,7 +155,6 @@ class QurationUserInfoVC: UIViewController, View {
             .filter { $0 == false }
             .withUnretained(self)
             .subscribe(onNext: { vc, isEnabled in
-//                vc.baseView.nextButton.isEnabled = isEnabled
                 vc.baseView.nextButton.backgroundColor = Constant.Color.g4
             })
             .disposed(by: disposeBag)
