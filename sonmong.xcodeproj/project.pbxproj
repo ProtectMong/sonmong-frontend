@@ -65,6 +65,7 @@
 		A1CFB0D12BAEFB7300BAABC8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CFB0D02BAEFB7300BAABC8 /* User.swift */; };
 		A1D7E05B2BB1790900EAF09F /* QurationMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D7E05A2BB1790900EAF09F /* QurationMainView.swift */; };
 		A1E487E32BB6FB0400FDC47F /* splash_gif.gif in Resources */ = {isa = PBXBuildFile; fileRef = A1E487E22BB6FB0400FDC47F /* splash_gif.gif */; };
+		A1E5B4082BF49D7600E6981B /* QurationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E5B4072BF49D7600E6981B /* QurationList.swift */; };
 		A1E8A87E2BB5CA030062ADED /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = A1E8A87D2BB5CA030062ADED /* Lottie */; };
 		A1E8A8802BB5CAD80062ADED /* quration_loading.json in Resources */ = {isa = PBXBuildFile; fileRef = A1E8A87F2BB5CAD80062ADED /* quration_loading.json */; };
 		A1E8A8822BB5D4CE0062ADED /* QurationFinalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E8A8812BB5D4CE0062ADED /* QurationFinalVC.swift */; };
@@ -150,6 +151,7 @@
 		A1CFB0D02BAEFB7300BAABC8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A1D7E05A2BB1790900EAF09F /* QurationMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QurationMainView.swift; sourceTree = "<group>"; };
 		A1E487E22BB6FB0400FDC47F /* splash_gif.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = splash_gif.gif; sourceTree = "<group>"; };
+		A1E5B4072BF49D7600E6981B /* QurationList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QurationList.swift; sourceTree = "<group>"; };
 		A1E8A87F2BB5CAD80062ADED /* quration_loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = quration_loading.json; sourceTree = "<group>"; };
 		A1E8A8812BB5D4CE0062ADED /* QurationFinalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QurationFinalVC.swift; sourceTree = "<group>"; };
 		A1E8A8832BB5D4E40062ADED /* QurationFinalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QurationFinalView.swift; sourceTree = "<group>"; };
@@ -322,6 +324,7 @@
 				A1CFB0D02BAEFB7300BAABC8 /* User.swift */,
 				4C5CA06E2BB45F6300E2E659 /* Quration.swift */,
 				A1F686FB2BF45E2E00D9E8C8 /* QurationAnswer.swift */,
+				A1E5B4072BF49D7600E6981B /* QurationList.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -508,6 +511,7 @@
 				A1D7E05B2BB1790900EAF09F /* QurationMainView.swift in Sources */,
 				A13617592BAFBDE200113997 /* QurationUserInfoVC.swift in Sources */,
 				A15C25D22BAFFDA3007AA1E7 /* QurationFirstReactor.swift in Sources */,
+				A1E5B4082BF49D7600E6981B /* QurationList.swift in Sources */,
 				A177908B2BF45FF6000641BA /* CodeSupporting.swift in Sources */,
 				A1CFB0BD2BAEEC3200BAABC8 /* RegisterUserReactor.swift in Sources */,
 				A15C25E42BB02CDE007AA1E7 /* QurationThirdReactor.swift in Sources */,

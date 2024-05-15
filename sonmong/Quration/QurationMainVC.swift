@@ -21,7 +21,7 @@ class QurationMainVC: UIViewController, View {
         super.viewDidLoad()
         
         bindNavigation()
-        baseView.layout(superView: self.view)
+        reactor?.action.onNext(.viewDidLoaded)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -31,12 +31,14 @@ class QurationMainVC: UIViewController, View {
     }
     
     func bind(reactor: QurationMainReactor) {
+        baseView.layout(superView: self.view)
         
         reactor.state.map { $0.historyDataSource }
-            .distinctUntilChanged()
             .filterNil()
             .bind(to: baseView.qurationListTable.rx.items(cellIdentifier: "QurationHistoryTableViewCell", cellType: QurationHistoryTableViewCell.self)) { row, data, cell in
-                cell.totalTitleLabel.text = data
+                cell.totalTitleLabel.text = "통증점수 \(data.levelOfPain ?? 0) 점"
+                cell.dateLabel.text = data.createdAt?.toString(withFormat: "yy.MM.dd")
+                cell.tagLabel.text = "\(data.sequence ?? 0)일차"
             }
             .disposed(by: disposeBag)
         
@@ -89,6 +91,13 @@ class QurationMainVC: UIViewController, View {
 extension QurationMainVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "QurationHistoryTableViewHeaderView") as! QurationHistoryTableViewHeaderView
+        
+        reactor?.state.map { $0.historyCount }
+            .distinctUntilChanged()
+            .filterNil()
+            .map { "총 \($0)개" }
+            .bind(to: headerView.totalNumberLabel.rx.text)
+            .disposed(by: disposeBag)
         
         return headerView
     }
