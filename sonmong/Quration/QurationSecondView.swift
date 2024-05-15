@@ -140,6 +140,17 @@ class QurationSecondView: UIView {
         return label
     }()
     
+    let painLevelEssentialMark: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "*"
+        label.textColor = Constant.Color.m1
+        label.font = .systemFont(ofSize: 20, weight: .regular)
+        label.numberOfLines = 0
+        
+        return label
+    }()
+    
     let painLevelView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -155,6 +166,7 @@ class QurationSecondView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 14, weight: .medium)
         label.textColor = Constant.Color.g5
+        label.text = "정도0, 안 아파요."
         
         return label
     }()
@@ -177,13 +189,24 @@ class QurationSecondView: UIView {
         return label
     }()
     
+    let painStartWhenEssentialMark: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "*"
+        label.textColor = Constant.Color.m1
+        label.font = .systemFont(ofSize: 20, weight: .regular)
+        label.numberOfLines = 0
+        
+        return label
+    }()
+    
     let painStartWhenTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.layer.borderWidth = 1
         textField.layer.borderColor = Constant.Color.g1.cgColor
         textField.layer.cornerRadius = 10
-        textField.placeholder = ""
+        textField.placeholder = "yyyy.MM.dd"
         textField.textColor = Constant.Color.g5
         
         let outerView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 15))
@@ -296,6 +319,12 @@ class QurationSecondView: UIView {
             make.leading.equalTo(contentView.snp.leading).offset(22)
         }
         
+        contentView.addSubview(painLevelEssentialMark)
+        painLevelEssentialMark.snp.makeConstraints { make in
+            make.top.equalTo(painLevelTitle)
+            make.leading.equalTo(painLevelTitle.snp.trailing)
+        }
+        
         contentView.addSubview(painLevelView)
         painLevelView.snp.makeConstraints { make in
             make.top.equalTo(painLevelTitle.snp.bottom).offset(18)
@@ -322,7 +351,12 @@ class QurationSecondView: UIView {
         painStartWhenTitle.snp.makeConstraints { make in
             make.top.equalTo(painLevelView.snp.bottom).offset(40)
             make.leading.equalTo(contentView.snp.leading).offset(22)
-            
+        }
+        
+        contentView.addSubview(painStartWhenEssentialMark)
+        painStartWhenEssentialMark.snp.makeConstraints { make in
+            make.top.equalTo(painStartWhenTitle)
+            make.leading.equalTo(painStartWhenTitle.snp.trailing)
         }
         
         contentView.addSubview(painStartWhenTextField)

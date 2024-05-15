@@ -25,6 +25,11 @@ class QurationSecondReactor: Reactor {
         case setLevelOfPain(Int?)
         case setStartWhen(String?)
         
+        case setIsChangeSliderViewError(Bool?)
+        case setIsChangeStartWhenTextFieldError(Bool?)
+        
+        case setIsNextButtonEnabled(Bool?)
+        case setIsPresentAlertMesasge(String?)
         case setIsPresentPreviousVC(Bool?)
         case setIsPresentNextVC(Bool?)
     }
@@ -35,6 +40,11 @@ class QurationSecondReactor: Reactor {
         var levelOfPain: Int?
         var startWhen: String?
         
+        var isChangeSliderViewError: Bool?
+        var isChangeStartWhenTextFieldError: Bool?
+        
+        var isNextButtonEnabled: Bool?
+        var isPresentAlertMesasge: String?
         var isPresentPreviousVC: Bool?
         var isPresentNextVC: Bool?
     }
@@ -55,8 +65,16 @@ class QurationSecondReactor: Reactor {
         case .didSliderValueChanged(let inputData):
             var quration = currentState.qurationParameter ?? Quration()
             quration.levelOfPain = inputData
+            var isNextButtonEnabled: Bool? = false
+            
+            if quration.howLong == nil {
+                isNextButtonEnabled = false
+            } else {
+                isNextButtonEnabled = true
+            }
             
             return Observable.concat([
+                .just(Mutation.setIsNextButtonEnabled(isNextButtonEnabled)),
                 .just(Mutation.setQurationParameter(quration)),
                 .just(Mutation.setLevelOfPain(inputData))
             ])
@@ -65,7 +83,16 @@ class QurationSecondReactor: Reactor {
             var quration = currentState.qurationParameter ?? Quration()
             quration.howLong = inputDate?.toString(withFormat: "yyyy.MM.dd")
             
+            var isNextButtonEnabled: Bool? = false
+            
+            if quration.levelOfPain == nil {
+                isNextButtonEnabled = false
+            } else {
+                isNextButtonEnabled = true
+            }
+            
             return Observable.concat([
+                .just(Mutation.setIsNextButtonEnabled(isNextButtonEnabled)),
                 .just(Mutation.setQurationParameter(quration)),
                 .just(Mutation.setStartWhen(inputDate?.toString(withFormat: "yyyy.MM.dd")))
             ])
@@ -77,10 +104,38 @@ class QurationSecondReactor: Reactor {
             ])
             
         case .didNextButtonTapped:
-            return Observable.concat([
-                .just(Mutation.setIsPresentNextVC(true)),
-                .just(Mutation.setIsPresentNextVC(nil))
-            ])
+            var qurationParameter = currentState.qurationParameter
+            var isChangeSliderViewError = false
+            var isChangeStartWhenTextFieldError = false
+            
+            if qurationParameter?.levelOfPain == nil {
+                isChangeSliderViewError = true
+            }
+            
+            if qurationParameter?.howLong == nil {
+                isChangeStartWhenTextFieldError = true
+            }
+            
+            if  isChangeSliderViewError == true || isChangeStartWhenTextFieldError == true {
+                return Observable.concat([
+                    .just(Mutation.setIsChangeSliderViewError(isChangeSliderViewError)),
+                    .just(Mutation.setIsChangeStartWhenTextFieldError(isChangeStartWhenTextFieldError))
+                ])
+            }
+            
+            if isChangeSliderViewError == false && isChangeStartWhenTextFieldError == false {
+                return Observable.concat([
+                    .just(Mutation.setIsPresentNextVC(true)),
+                    .just(Mutation.setIsPresentNextVC(nil))
+                ])
+            } else {
+                let message = "오류가 발생했습니다. 잠시 후 다시 이용해주세요."
+                return Observable.concat([
+                    .just(Mutation.setIsPresentAlertMesasge(message)),
+                    .just(Mutation.setIsPresentAlertMesasge(nil))
+                ])
+            }
+           
         }
     }
     
@@ -94,6 +149,15 @@ class QurationSecondReactor: Reactor {
         case .setStartWhen(let date):
             newState.startWhen = date
             
+        case .setIsChangeSliderViewError(let isChange):
+            newState.isChangeSliderViewError = isChange
+        case .setIsChangeStartWhenTextFieldError(let isChange):
+            newState.isChangeStartWhenTextFieldError = isChange
+            
+        case .setIsNextButtonEnabled(let isEnabled):
+            newState.isNextButtonEnabled = isEnabled
+        case .setIsPresentAlertMesasge(let message):
+            newState.isPresentAlertMesasge = message
         case .setIsPresentPreviousVC(let isPresent):
             newState.isPresentPreviousVC = isPresent
         case .setIsPresentNextVC(let isPresent):

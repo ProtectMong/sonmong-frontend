@@ -13,6 +13,7 @@ import ReactorKit
 
 class QurationSecondVC: UIViewController, View, SliderViewDelegate {
     func sliderView(_ sender: SliderView, changedValue value: Int) {
+        self.baseView.painLevelView.layer.borderColor = Constant.Color.m7.cgColor
         let newValue = value - 1
         if newValue == 0 {
             self.baseView.painLevelTextLabel.text = "정도\(newValue), 안 아파요."
@@ -28,7 +29,6 @@ class QurationSecondVC: UIViewController, View, SliderViewDelegate {
     
     var disposeBag = DisposeBag()
     let baseView = QurationSecondView()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,6 +65,48 @@ class QurationSecondVC: UIViewController, View, SliderViewDelegate {
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
+        reactor.state.map { $0.isChangeSliderViewError }
+            .distinctUntilChanged()
+            .filterNil()
+            .filter { $0 == true }
+            .withUnretained(self)
+            .subscribe(onNext: { vc, _ in
+                vc.baseView.painLevelView.layer.borderColor = Constant.Color.m1.cgColor
+            })
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.isChangeStartWhenTextFieldError }
+            .debug()
+            .distinctUntilChanged()
+            .filterNil()
+            .filter { $0 == true }
+            .withUnretained(self)
+            .subscribe(onNext: { vc, _ in
+                vc.baseView.painStartWhenTextField.layer.borderColor = Constant.Color.m1.cgColor
+            })
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.isNextButtonEnabled }
+            .distinctUntilChanged()
+            .filterNil()
+            .filter { $0 == true }
+            .withUnretained(self)
+            .subscribe(onNext: { vc, isEnabled in
+                vc.baseView.nextButton.backgroundColor = Constant.Color.m7
+            })
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.isNextButtonEnabled }
+            .distinctUntilChanged()
+            .filterNil()
+            .filter { $0 == false }
+            .withUnretained(self)
+            .subscribe(onNext: { vc, isEnabled in
+                vc.baseView.nextButton.backgroundColor = Constant.Color.g4
+            })
+            .disposed(by: disposeBag)
+        
+        
         reactor.state.map { $0.isPresentPreviousVC }
             .distinctUntilChanged()
             .filterNil()
@@ -87,6 +129,18 @@ class QurationSecondVC: UIViewController, View, SliderViewDelegate {
                 nextVC.reactor = nextReactor
                 
                 vc.navigationController?.pushViewController(nextVC, animated: true)
+            })
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.isPresentAlertMesasge }
+            .distinctUntilChanged()
+            .filterNil()
+            .withUnretained(self)
+            .subscribe(onNext: { vc, message in
+                let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
+                
+                self.present(alert, animated: true, completion: nil)
             })
             .disposed(by: disposeBag)
     }
@@ -112,9 +166,6 @@ class QurationSecondVC: UIViewController, View, SliderViewDelegate {
         // 초기 날짜 설정
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy.MM.dd"
-        if let initialDate = dateFormatter.date(from: "2024.01.01") {
-            startWhenPicker.date = initialDate
-        }
         
         // UIDatePicker 최소 및 최대 날짜 설정 (옵션)
         if let minDate = dateFormatter.date(from: "1900/01/01"),
@@ -126,6 +177,7 @@ class QurationSecondVC: UIViewController, View, SliderViewDelegate {
         baseView.painStartWhenTextField.inputAccessoryView = toolBar
         
         startWhenPicker.rx.date
+            .skip(1)
             .distinctUntilChanged()
             .withUnretained(self)
             .subscribe(onNext: { vc, date in
@@ -163,6 +215,7 @@ class QurationSecondVC: UIViewController, View, SliderViewDelegate {
 extension QurationSecondVC: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         baseView.painStartWhenTextField.layer.borderColor = Constant.Color.m7.cgColor
+        baseView.painLevelView.layer.borderColor = Constant.Color.g1.cgColor
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
