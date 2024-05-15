@@ -48,6 +48,7 @@ extension Constant {
         
         static let login = api + "/api/v1/auth/signin"
         static let aiCuration = api + "/api/v1/ai-consulting/curation"
+        static let aiCurationList = api + "/api/v1/ai-consulting"
     }
     
     struct UDKey {
