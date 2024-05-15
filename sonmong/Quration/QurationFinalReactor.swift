@@ -19,10 +19,17 @@ class QurationFinalReactor: Reactor {
     }
     
     struct State {
-        
+        var isEmptyData: Bool?
+        var result: QurationAnswer?
     }
     
-    let initialState = State()
+    let initialState: State
+    
+    init(isEmptyData: Bool?, result: QurationAnswer?) {
+        self.initialState = State(isEmptyData: isEmptyData, result: result)
+    }
+    
+    
     
     func mutate(action: Action) -> Observable<Mutation> {
         

@@ -139,8 +139,6 @@ class QurationUserInfoReactor: Reactor {
                 
             }
             
-            print("✅ currentSelectedJobOrHobby = ", currentSelectedJobOrHobby)
-            
             return Observable.concat([
                 .just(Mutation.setIsNextButtonEnabled(isNextButtonEnabled)),
                 .just(Mutation.setSelectedJobOrHobby(currentSelectedJobOrHobby)),
@@ -194,7 +192,7 @@ class QurationUserInfoReactor: Reactor {
             var qurationParameter = Quration()
             
             if let birthday = currentState.birthday, birthday != "" {
-                qurationParameter.birthday = birthday.toDate()
+                qurationParameter.birthday = birthday
             } else {
                 message += "🌟 생년월일\n"
             }

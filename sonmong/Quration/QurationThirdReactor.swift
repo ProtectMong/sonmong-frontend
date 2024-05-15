@@ -21,6 +21,8 @@ class QurationThirdReactor: Reactor {
     }
     
     enum Mutation {
+        case setQurationParameter(Quration?)
+        
         case setPainHow(String?)
         case setPainWhen(String?)
         case setPainWithWork(Bool?)
@@ -30,6 +32,8 @@ class QurationThirdReactor: Reactor {
     }
     
     struct State {
+        var qurationParameter: Quration?
+        
         var painHow: String?
         var painWhen: String?
         var painWithWork: Bool?
@@ -38,27 +42,51 @@ class QurationThirdReactor: Reactor {
         var isPresentNextVC: Bool?
     }
     
-    let initialState = State()
+    let initialState: State
+    
+    init() {
+        self.initialState = State()
+    }
+    
+    init(qurationParameter: Quration?) {
+        self.initialState = State(qurationParameter: qurationParameter)
+    }
     
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .didPainHowTextFieldChanged(let inputData):
+            var quration = currentState.qurationParameter ?? Quration()
+            quration.howSick = inputData
+            
             return Observable.concat([
+                .just(Mutation.setQurationParameter(quration)),
                 .just(Mutation.setPainHow(inputData))
             ])
             
         case .didPainWhenTextFieldChanged(let inputData):
+            var quration = currentState.qurationParameter ?? Quration()
+            quration.whatActivities = inputData
+            
             return Observable.concat([
+                .just(Mutation.setQurationParameter(quration)),
                 .just(Mutation.setPainWhen(inputData))
             ])
             
         case .didPainWithWorkYesButton:
+            var quration = currentState.qurationParameter ?? Quration()
+            quration.putStrainOnWrist = true
+            
             return Observable.concat([
+                .just(Mutation.setQurationParameter(quration)),
                 .just(Mutation.setPainWithWork(true))
             ])
             
         case .didPainWithWorkNoButton:
+            var quration = currentState.qurationParameter ?? Quration()
+            quration.putStrainOnWrist = false
+            
             return Observable.concat([
+                .just(Mutation.setQurationParameter(quration)),
                 .just(Mutation.setPainWithWork(false))
             ])
             
@@ -79,6 +107,8 @@ class QurationThirdReactor: Reactor {
     func reduce(state: State, mutation: Mutation) -> State {
         var newState = state
         switch mutation {
+        case .setQurationParameter(let quration):
+            newState.qurationParameter = quration
         case .setPainHow(let inputData):
             newState.painHow = inputData
         case .setPainWhen(let inputData):

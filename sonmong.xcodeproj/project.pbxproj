@@ -44,6 +44,7 @@
 		A15C25EA2BB02F39007AA1E7 /* QurationFourthReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15C25E92BB02F39007AA1E7 /* QurationFourthReactor.swift */; };
 		A15C25EC2BB0505B007AA1E7 /* QurationHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15C25EB2BB0505B007AA1E7 /* QurationHistoryTableViewCell.swift */; };
 		A15C25EE2BB05097007AA1E7 /* QurationHistoryTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15C25ED2BB05097007AA1E7 /* QurationHistoryTableViewHeaderView.swift */; };
+		A177908B2BF45FF6000641BA /* CodeSupporting.swift in Sources */ = {isa = PBXBuildFile; fileRef = A177908A2BF45FF6000641BA /* CodeSupporting.swift */; };
 		A1857B172BE1117F00A00AB6 /* ReactorKit in Frameworks */ = {isa = PBXBuildFile; productRef = A1857B162BE1117F00A00AB6 /* ReactorKit */; };
 		A1C3A2522BADD922000A41FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C3A2512BADD922000A41FD /* AppDelegate.swift */; };
 		A1C3A2542BADD922000A41FD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C3A2532BADD922000A41FD /* SceneDelegate.swift */; };
@@ -75,6 +76,7 @@
 		A1EE02492BAE7DC5008EE352 /* LoginReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EE02482BAE7DC5008EE352 /* LoginReactor.swift */; };
 		A1F484E52BE21239003F5E66 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F484E42BE21239003F5E66 /* Request.swift */; };
 		A1F484E72BE21D67003F5E66 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F484E62BE21D67003F5E66 /* MainVC.swift */; };
+		A1F686FC2BF45E2E00D9E8C8 /* QurationAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F686FB2BF45E2E00D9E8C8 /* QurationAnswer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,6 +128,7 @@
 		A15C25E92BB02F39007AA1E7 /* QurationFourthReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QurationFourthReactor.swift; sourceTree = "<group>"; };
 		A15C25EB2BB0505B007AA1E7 /* QurationHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QurationHistoryTableViewCell.swift; sourceTree = "<group>"; };
 		A15C25ED2BB05097007AA1E7 /* QurationHistoryTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QurationHistoryTableViewHeaderView.swift; sourceTree = "<group>"; };
+		A177908A2BF45FF6000641BA /* CodeSupporting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeSupporting.swift; sourceTree = "<group>"; };
 		A1C3A24E2BADD922000A41FD /* 몽지.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "몽지.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1C3A2512BADD922000A41FD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A1C3A2532BADD922000A41FD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -157,6 +160,7 @@
 		A1EE02482BAE7DC5008EE352 /* LoginReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginReactor.swift; sourceTree = "<group>"; };
 		A1F484E42BE21239003F5E66 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		A1F484E62BE21D67003F5E66 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		A1F686FB2BF45E2E00D9E8C8 /* QurationAnswer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QurationAnswer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,8 +222,8 @@
 				A15C25E72BB02F2A007AA1E7 /* QurationFourthView.swift */,
 				A15C25E92BB02F39007AA1E7 /* QurationFourthReactor.swift */,
 				4C5CA0702BB4735C00E2E659 /* QurationLoadingVC.swift */,
-				4C5CA0742BB473D700E2E659 /* QurationLoadingReactor.swift */,
 				4C5CA0722BB473BB00E2E659 /* QurationLoadingView.swift */,
+				4C5CA0742BB473D700E2E659 /* QurationLoadingReactor.swift */,
 				A1E8A8812BB5D4CE0062ADED /* QurationFinalVC.swift */,
 				A1E8A8832BB5D4E40062ADED /* QurationFinalView.swift */,
 				A1E8A8852BB5D4F00062ADED /* QurationFinalReactor.swift */,
@@ -307,6 +311,7 @@
 				A1CFB0C52BAEF17700BAABC8 /* APIService.swift */,
 				A15C25D52BAFFF66007AA1E7 /* CollectionViewCellLeftAlignFlowLayout.swift */,
 				A1F484E42BE21239003F5E66 /* Request.swift */,
+				A177908A2BF45FF6000641BA /* CodeSupporting.swift */,
 			);
 			path = Supporting;
 			sourceTree = "<group>";
@@ -316,6 +321,7 @@
 			children = (
 				A1CFB0D02BAEFB7300BAABC8 /* User.swift */,
 				4C5CA06E2BB45F6300E2E659 /* Quration.swift */,
+				A1F686FB2BF45E2E00D9E8C8 /* QurationAnswer.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -494,6 +500,7 @@
 				A1E8A8862BB5D4F00062ADED /* QurationFinalReactor.swift in Sources */,
 				A15C25EE2BB05097007AA1E7 /* QurationHistoryTableViewHeaderView.swift in Sources */,
 				A15C25C82BAFEBB2007AA1E7 /* QurationMainVC.swift in Sources */,
+				A1F686FC2BF45E2E00D9E8C8 /* QurationAnswer.swift in Sources */,
 				A1E8A8822BB5D4CE0062ADED /* QurationFinalVC.swift in Sources */,
 				A1C3A2562BADD922000A41FD /* LaunchViewController.swift in Sources */,
 				A15C25E62BB02F13007AA1E7 /* QurationFourthVC.swift in Sources */,
@@ -501,6 +508,7 @@
 				A1D7E05B2BB1790900EAF09F /* QurationMainView.swift in Sources */,
 				A13617592BAFBDE200113997 /* QurationUserInfoVC.swift in Sources */,
 				A15C25D22BAFFDA3007AA1E7 /* QurationFirstReactor.swift in Sources */,
+				A177908B2BF45FF6000641BA /* CodeSupporting.swift in Sources */,
 				A1CFB0BD2BAEEC3200BAABC8 /* RegisterUserReactor.swift in Sources */,
 				A15C25E42BB02CDE007AA1E7 /* QurationThirdReactor.swift in Sources */,
 				A1EE02492BAE7DC5008EE352 /* LoginReactor.swift in Sources */,

@@ -23,8 +23,8 @@ class QurationSecondVC: UIViewController, View, SliderViewDelegate {
         } else {
             self.baseView.painLevelTextLabel.text = "정도\(newValue), 많이 아파요."
         }
+        reactor?.action.onNext(.didSliderValueChanged(newValue))
     }
-    
     
     var disposeBag = DisposeBag()
     let baseView = QurationSecondView()
@@ -47,13 +47,7 @@ class QurationSecondVC: UIViewController, View, SliderViewDelegate {
         baseView.layout(superView: self.view)
         
         baseView.painStartWhenTextField.delegate = self
-        
         baseView.painLevelSlider.delegate = self
-//        baseView.painLevelSlider.currentValueObservable
-//            .subscribe(onNext: { currentValue in
-//                print("현재 슬라이더 값: \(currentValue)")
-//            })
-//            .disposed(by: disposeBag)
         
         reactor.state.map { $0.startWhen }
             .distinctUntilChanged()
@@ -85,10 +79,11 @@ class QurationSecondVC: UIViewController, View, SliderViewDelegate {
             .distinctUntilChanged()
             .filterNil()
             .filter { $0 == true }
+            .map { _ in reactor.currentState.qurationParameter }
             .withUnretained(self)
-            .subscribe(onNext: { vc, _ in
+            .subscribe(onNext: { vc, quration in
                 let nextVC = QurationThirdVC()
-                let nextReactor = QurationThirdReactor()
+                let nextReactor = QurationThirdReactor(qurationParameter: quration)
                 nextVC.reactor = nextReactor
                 
                 vc.navigationController?.pushViewController(nextVC, animated: true)

@@ -133,4 +133,64 @@ class APIService {
             }
         }
     }
+    
+    func postRxSecureRequest<T: Codable>(stringUrl: String, parameter: [String : Any], type: T.Type) -> Observable<T> {
+        
+        return Observable.create { observer in
+            guard let jsonData = try? JSONSerialization.data(withJSONObject: parameter, options: []) else {
+                observer.onError(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "JSON Serialization failed"]))
+                return Disposables.create()
+            }
+            
+            // URLRequest 구성
+            guard let url = URL(string: stringUrl) else { return Disposables.create() }
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.httpBody = jsonData
+            
+            // UserDefaults에서 토큰을 가져와서 헤더에 추가
+            if let token = UserDefaults.standard.string(forKey: Constant.UDKey.accessToken) {
+                request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+                print("Request AccessToken: ", token)
+            }
+            
+            print("Request Parameter: ", parameter)
+            
+            // URLSession을 사용하여 HTTP 요청 전송
+            let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                if let error = error {
+                    print("Request Error: ", error)
+                    observer.onError(error)
+                    return
+                }
+                
+                if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 200 {
+                    observer.onError(NSError(domain: "", code: httpResponse.statusCode, userInfo: [NSLocalizedDescriptionKey: "HTTP Error"]))
+                    return
+                }
+                
+                // JSON 응답을 T 타입으로 디코딩
+                guard let data = data else {
+                    observer.onError(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "No data received"]))
+                    return
+                }
+                
+                do {
+                    let decodedData = try JSONDecoder().decode(T.self, from: data)
+                    print("DecodeData: \(decodedData)")
+                    observer.onNext(decodedData)
+                    observer.onCompleted()
+                } catch {
+                    observer.onError(error)
+                }
+            }
+            task.resume()
+            
+            // 작업을 취소할 수 있는 Disposable 반환
+            return Disposables.create {
+                task.cancel()
+            }
+        }
+    }
 }

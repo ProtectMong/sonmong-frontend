@@ -17,6 +17,7 @@ public struct APIResponse<T: Codable> : Codable {
     public var data: T?
     public var message: String?
     public var status: Int?
+    public var httpStatus: String?
 }
 
 public struct APIMessage: Codable {

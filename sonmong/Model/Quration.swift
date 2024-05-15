@@ -6,15 +6,15 @@
 //
 
 import Foundation
-struct Quration {
+struct Quration: Codable {
     var userId: String?
-    var birthday: Date?
+    var birthday: String?
     var gender: Bool?
     var jobOrHobby: String?
     var whereDoesItHurt: String?
     var position: String?
     var levelOfPain: Int?
-    var howLong: Date?
+    var howLong: String?
     var howSick: String?
     var whatActivities: String?
     var putStrainOnWrist: Bool?

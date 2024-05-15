@@ -47,7 +47,7 @@ extension Constant {
         static let api = "http://175.106.96.107:8080"
         
         static let login = api + "/api/v1/auth/signin"
-        static let aiCuration = "/api/v1/ai-consulting/curation"
+        static let aiCuration = api + "/api/v1/ai-consulting/curation"
     }
     
     struct UDKey {

@@ -21,6 +21,7 @@ class QurationFourthReactor: Reactor {
     }
     
     enum Mutation {
+        case setQurationParameter(Quration?)
         case setPastPain(Bool?)
         case setPastMusclePain(Bool?)
         
@@ -29,6 +30,7 @@ class QurationFourthReactor: Reactor {
     }
     
     struct State {
+        var qurationParameter: Quration?
         var pastPain: Bool?
         var pastMusclePain: Bool?
      
@@ -36,27 +38,51 @@ class QurationFourthReactor: Reactor {
         var isPresentNextVC: Bool?
     }
     
-    let initialState = State()
+    let initialState: State
+    
+    init() {
+        self.initialState = State()
+    }
+    
+    init(qurationParameter: Quration?) {
+        self.initialState = State(qurationParameter: qurationParameter)
+    }
     
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .didPastPainYesButtonTapped:
+            var quration = currentState.qurationParameter ?? Quration()
+            quration.pastMedicalHistory = true
+            
             return Observable.concat([
+                .just(Mutation.setQurationParameter(quration)),
                 .just(Mutation.setPastPain(true))
             ])
             
         case .didPastPainNoButtonTapped:
+            var quration = currentState.qurationParameter ?? Quration()
+            quration.pastMedicalHistory = false
+            
             return Observable.concat([
+                .just(Mutation.setQurationParameter(quration)),
                 .just(Mutation.setPastPain(false))
             ])
             
         case .didPastMusclePainYesButtonTapped:
+            var quration = currentState.qurationParameter ?? Quration()
+            quration.differentPastMedicalHistory = true
+            
             return Observable.concat([
+                .just(Mutation.setQurationParameter(quration)),
                 .just(Mutation.setPastMusclePain(true))
             ])
             
         case .didPastMusclePainNoButtonTapped:
+            var quration = currentState.qurationParameter ?? Quration()
+            quration.differentPastMedicalHistory = false
+            
             return Observable.concat([
+                .just(Mutation.setQurationParameter(quration)),
                 .just(Mutation.setPastMusclePain(false))
             ])
             
@@ -77,6 +103,8 @@ class QurationFourthReactor: Reactor {
     func reduce(state: State, mutation: Mutation) -> State {
         var newState = state
         switch mutation {
+        case .setQurationParameter(let quration):
+            newState.qurationParameter = quration
         case .setPastPain(let pastData):
             newState.pastPain = pastData
         case .setPastMusclePain(let pastData):

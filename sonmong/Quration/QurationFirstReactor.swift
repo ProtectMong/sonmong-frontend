@@ -99,8 +99,6 @@ class QurationFirstReactor: Reactor {
                 }
             }) ?? []
             
-            print("✅ selectedPainAreas = \(selectedPainAreas)")
-            
             if selectedPainAreas?.count ?? 0 <= 0 {
                 return Observable.concat([
                     .just(Mutation.setIsNextButtonEnabled(false)),
@@ -140,8 +138,6 @@ class QurationFirstReactor: Reactor {
             if currentSelectedPainAreas.contains(currentUserInputData) == false {
                 currentSelectedPainAreas.append(currentUserInputData)
             }
-            
-            print("✅ selectedPainAreas = \(currentSelectedPainAreas)")
             
             return Observable.concat([
                 .just(Mutation.setIsNextButtonEnabled(isNextButtonEnabled)),
@@ -183,8 +179,6 @@ class QurationFirstReactor: Reactor {
                 }
             }) ?? []
             
-            print("✅ selectedPainDetailAreas = \(selectedPainDetailAreas)")
-            
             return Observable.concat([
                 .just(Mutation.setSelectedPainDetailArea(selectedPainDetailAreas)),
                 .just(Mutation.setPainDetailAreaDataSource(currentRecognizedDatas))
@@ -215,8 +209,6 @@ class QurationFirstReactor: Reactor {
                 currentSelectedPainDetailAreas.append(currentUserInputData)
             }
             
-            print("✅ selectedPainDetailAreas = \(currentSelectedPainDetailAreas)")
-            
             return Observable.concat([
                 .just(Mutation.setPainDetailAreaDataSource(currentPainDetailAreaDataSource)),
                 .just(Mutation.setSelectedPainDetailArea(currentSelectedPainDetailAreas)),
@@ -231,7 +223,7 @@ class QurationFirstReactor: Reactor {
             
         case .didNextButtonTapped:
             var message = ""
-            var qurationParameter = Quration()
+            var qurationParameter = currentState.qurationParameter ?? Quration()
             
             if let painArea = currentState.selectedPainArea, painArea.count > 0 {
                 qurationParameter.whereDoesItHurt = painArea.first
