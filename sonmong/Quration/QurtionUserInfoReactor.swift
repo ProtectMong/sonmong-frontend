@@ -31,6 +31,9 @@ class QurationUserInfoReactor: Reactor {
         case setInputJobOrHobbyData(String?)
         case setSelectedJobOrHobby([String]?)
         
+        case setIsChangeBirthdayTextFieldError(Bool?)
+        case setIsChangeGenderButtonsError(Bool?)
+
         case setIsPresentPreviousVC(Bool?)
         case setIsPresentNextVC(Bool?)
         
@@ -46,6 +49,9 @@ class QurationUserInfoReactor: Reactor {
         var inputJobOrHobbyData: String?
         var selectedJobOrHobby: [String]?
         
+        var isChangeBirthdayTextFieldError: Bool?
+        var isChangeGenderButtonsError: Bool?
+
         var isPresentPreviousVC: Bool?
         var isPresentNextVC: Bool?
         
@@ -187,41 +193,48 @@ class QurationUserInfoReactor: Reactor {
             ])
             
         case .didNextButtonTapped:
-            
-            var message = ""
             var qurationParameter = Quration()
+            var isChangeBirthdayTextFieldError = false
+            var isChangeGenderButtonsError = false
             
             if let birthday = currentState.birthday, birthday != "" {
                 qurationParameter.birthday = birthday
             } else {
-                message += "🌟 생년월일\n"
+                isChangeBirthdayTextFieldError = true
             }
             
             if let gender = currentState.gender {
                 qurationParameter.gender = gender
             } else {
-                message += "🌟 성별\n"
+                isChangeGenderButtonsError = true
+            }
+            
+            if  isChangeBirthdayTextFieldError == true || isChangeGenderButtonsError == true {
+                return Observable.concat([
+                    .just(Mutation.setIsChangeBirthdayTextFieldError(isChangeBirthdayTextFieldError)),
+                    .just(Mutation.setIsChangeGenderButtonsError(isChangeGenderButtonsError))
+                ])
             }
             
             if let jobOrHobby = currentState.selectedJobOrHobby, jobOrHobby.count > 0 {
-                #warning("jobOrHobby 타입 체크 후 수정")
                 qurationParameter.jobOrHobby = jobOrHobby.first
-            } else {
-                message += "🌟 직업이나 취미\n"
             }
             
-            if message == "" {
+            if  isChangeBirthdayTextFieldError == false && isChangeGenderButtonsError == false {
                 return Observable.concat([
                     .just(Mutation.setQurationParameter(qurationParameter)),
                     .just(Mutation.setIsPresentNextVC(true)),
                     .just(Mutation.setIsPresentNextVC(nil))
                 ])
             } else {
+                let message = "오류가 발생했습니다. 잠시 후 다시 이용해주세요."
                 return Observable.concat([
                     .just(Mutation.setIsPresentAlertMesasge(message)),
                     .just(Mutation.setIsPresentAlertMesasge(nil))
                 ])
             }
+            
+            
         }
     }
     
@@ -240,6 +253,11 @@ class QurationUserInfoReactor: Reactor {
             newState.inputJobOrHobbyData = data
         case .setSelectedJobOrHobby(let dataSource):
             newState.selectedJobOrHobby = dataSource
+
+        case .setIsChangeBirthdayTextFieldError(let isChange):
+            newState.isChangeBirthdayTextFieldError = isChange
+        case .setIsChangeGenderButtonsError(let isChange):
+            newState.isChangeGenderButtonsError = isChange
             
         case .setIsPresentPreviousVC(let isPresent):
             newState.isPresentPreviousVC = isPresent

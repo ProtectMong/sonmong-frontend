@@ -151,6 +151,17 @@ class QurationUserInfoView: UIView {
         return label
     }()
     
+    let birthdayEssentialLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "*"
+        label.textColor = Constant.Color.m1
+        label.font = .systemFont(ofSize: 20, weight: .regular)
+        label.numberOfLines = 0
+        
+        return label
+    }()
+    
     let birthdayTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -178,6 +189,17 @@ class QurationUserInfoView: UIView {
         label.text = "성별을 알려주세요."
         label.textColor = Constant.Color.b1
         label.font = .systemFont(ofSize: 16, weight: .bold)
+        label.numberOfLines = 0
+        
+        return label
+    }()
+    
+    let genderEssentialLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "*"
+        label.textColor = Constant.Color.m1
+        label.font = .systemFont(ofSize: 20, weight: .regular)
         label.numberOfLines = 0
         
         return label
@@ -325,12 +347,6 @@ class QurationUserInfoView: UIView {
         return button
     }()
     
-//    var isEnabled: Bool {
-//            didSet {
-//                nextButton.backgroundColor = isEnabled ? Constant.Color.m7 : Constant.Color.g4
-//            }
-//        }
-    
     func layout(superView: UIView) {
         superView.backgroundColor = .white
         
@@ -351,7 +367,8 @@ class QurationUserInfoView: UIView {
         }
         
         stepButtonBaseView.addSubview(stepButtonStackView)
-        stepButtonStackView.snp.makeConstraints { make in            make.top.equalTo(stepButtonBaseView.snp.top).offset(10)
+        stepButtonStackView.snp.makeConstraints { make in            
+            make.top.equalTo(stepButtonBaseView.snp.top).offset(10)
             make.leading.equalTo(stepButtonBaseView.snp.leading).offset(6)
             make.trailing.equalTo(stepButtonBaseView.snp.trailing).offset(-6)
             make.height.equalTo(46)
@@ -421,6 +438,12 @@ class QurationUserInfoView: UIView {
             make.leading.equalTo(contentView.snp.leading).offset(22)
         }
         
+        contentView.addSubview(birthdayEssentialLabel)
+        birthdayEssentialLabel.snp.makeConstraints { make in
+            make.top.equalTo(birthdayTitleLabel)
+            make.leading.equalTo(birthdayTitleLabel.snp.trailing)
+        }
+        
         contentView.addSubview(birthdayTextField)
         birthdayTextField.snp.makeConstraints { make in
             make.top.equalTo(birthdayTitleLabel.snp.bottom).offset(13)
@@ -433,6 +456,12 @@ class QurationUserInfoView: UIView {
         genderTitleLabel.snp.makeConstraints { make in
             make.top.equalTo(birthdayTextField.snp.bottom).offset(30)
             make.leading.equalTo(contentView.snp.leading).offset(22)
+        }
+        
+        contentView.addSubview(genderEssentialLabel)
+        genderEssentialLabel.snp.makeConstraints { make in
+            make.top.equalTo(genderTitleLabel)
+            make.leading.equalTo(genderTitleLabel.snp.trailing)
         }
         
         contentView.addSubview(genderStackView)

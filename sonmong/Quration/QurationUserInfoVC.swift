@@ -196,6 +196,31 @@ class QurationUserInfoVC: UIViewController, View {
             })
             .disposed(by: disposeBag)
         
+        reactor.state.map { $0.isChangeBirthdayTextFieldError }
+            .debug()
+            .distinctUntilChanged()
+            .filterNil()
+            .filter { $0 == true }
+            .withUnretained(self)
+            .subscribe(onNext: { vc, _ in
+                vc.baseView.birthdayTextField.layer.borderColor = Constant.Color.m1.cgColor
+            })
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.isChangeGenderButtonsError }
+            .debug()
+            .distinctUntilChanged()
+            .filterNil()
+            .filter { $0 == true }
+            .withUnretained(self)
+            .subscribe(onNext: { vc, _ in
+                vc.baseView.genderGirlButton.layer.borderColor = Constant.Color.m1.cgColor
+//                vc.baseView.genderGirlButton.backgroundColor = Constant.Color.m1_mate
+                vc.baseView.genderBoyButton.layer.borderColor = Constant.Color.m1.cgColor
+//                vc.baseView.genderBoyButton.backgroundColor = Constant.Color.m1_mate
+            })
+            .disposed(by: disposeBag)
+        
         reactor.state.map { $0.isPresentAlertMesasge }
             .distinctUntilChanged()
             .filterNil()
@@ -237,9 +262,6 @@ class QurationUserInfoVC: UIViewController, View {
         // 초기 날짜 설정
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy.MM.dd"
-//        if let initialDate = dateFormatter.date(from: "1900.01.01") {
-//            birthdayPicker.date = initialDate
-//        }
         
         // UIDatePicker 최소 및 최대 날짜 설정 (옵션)
         if let minDate = dateFormatter.date(from: "1960/01/01"),
@@ -301,16 +323,6 @@ class QurationUserInfoVC: UIViewController, View {
     }
 
 }
-
-//extension QurationUserInfoVC: UITextFieldDelegate {
-//    func textFieldDidBeginEditing(_ textField: UITextField) {
-//        baseView.birthdayTextField.layer.borderColor = Constant.Color.m7.cgColor
-//    }
-//
-//    func textFieldDidEndEditing(_ textField: UITextField) {
-//        baseView.birthdayTextField.layer.borderColor = Constant.Color.g1.cgColor
-//    }
-//}
 
 extension QurationUserInfoVC: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
