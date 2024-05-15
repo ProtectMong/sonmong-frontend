@@ -71,6 +71,19 @@ class QurationMainVC: UIViewController, View {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func bindNavigation() {
+        let titleLabel = UILabel()
+        titleLabel.text = "AI상담"
+        titleLabel.textColor = Constant.Color.g5
+        titleLabel.font = .systemFont(ofSize: 17, weight: .bold)
+        titleLabel.sizeToFit()
+        
+        let leftItem = UIBarButtonItem(customView: titleLabel)
+        navigationItem.leftBarButtonItem = leftItem
+    }
+    
+    
 }
 
 extension QurationMainVC: UITableViewDelegate {
@@ -83,9 +96,5 @@ extension QurationMainVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
         return 50
-    }
-    
-    func bindNavigation() {
-       
     }
 }
