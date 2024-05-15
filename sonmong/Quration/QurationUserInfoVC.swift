@@ -140,6 +140,7 @@ class QurationUserInfoVC: UIViewController, View {
             .disposed(by: disposeBag)
         
         reactor.state.map { $0.isNextButtonEnabled }
+            .debug()
             .distinctUntilChanged()
             .filterNil()
             .filter { $0 == true }
@@ -171,6 +172,29 @@ class QurationUserInfoVC: UIViewController, View {
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
+        reactor.state.map { $0.isChangeBirthdayTextFieldError }
+            .distinctUntilChanged()
+            .filterNil()
+            .filter { $0 == true }
+            .withUnretained(self)
+            .subscribe(onNext: { vc, _ in
+                vc.baseView.birthdayTextField.layer.borderColor = Constant.Color.m1.cgColor
+            })
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.isChangeGenderButtonsError }
+            .distinctUntilChanged()
+            .filterNil()
+            .filter { $0 == true }
+            .withUnretained(self)
+            .subscribe(onNext: { vc, _ in
+                vc.baseView.genderGirlButton.layer.borderColor = Constant.Color.m1.cgColor
+//                vc.baseView.genderGirlButton.backgroundColor = Constant.Color.m1_mate
+                vc.baseView.genderBoyButton.layer.borderColor = Constant.Color.m1.cgColor
+//                vc.baseView.genderBoyButton.backgroundColor = Constant.Color.m1_mate
+            })
+            .disposed(by: disposeBag)
+        
         reactor.state.map { $0.isPresentPreviousVC }
             .distinctUntilChanged()
             .filterNil()
@@ -193,31 +217,6 @@ class QurationUserInfoVC: UIViewController, View {
                 nextVC.reactor = nextReactor
                 
                 vc.navigationController?.pushViewController( nextVC, animated: true)
-            })
-            .disposed(by: disposeBag)
-        
-        reactor.state.map { $0.isChangeBirthdayTextFieldError }
-            .debug()
-            .distinctUntilChanged()
-            .filterNil()
-            .filter { $0 == true }
-            .withUnretained(self)
-            .subscribe(onNext: { vc, _ in
-                vc.baseView.birthdayTextField.layer.borderColor = Constant.Color.m1.cgColor
-            })
-            .disposed(by: disposeBag)
-        
-        reactor.state.map { $0.isChangeGenderButtonsError }
-            .debug()
-            .distinctUntilChanged()
-            .filterNil()
-            .filter { $0 == true }
-            .withUnretained(self)
-            .subscribe(onNext: { vc, _ in
-                vc.baseView.genderGirlButton.layer.borderColor = Constant.Color.m1.cgColor
-//                vc.baseView.genderGirlButton.backgroundColor = Constant.Color.m1_mate
-                vc.baseView.genderBoyButton.layer.borderColor = Constant.Color.m1.cgColor
-//                vc.baseView.genderBoyButton.backgroundColor = Constant.Color.m1_mate
             })
             .disposed(by: disposeBag)
         
