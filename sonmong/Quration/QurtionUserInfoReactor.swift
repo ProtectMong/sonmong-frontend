@@ -71,9 +71,7 @@ class QurationUserInfoReactor: Reactor {
         case .didBirthdayPickerChanged(let inputDate):
             var isNextButtonEnabled: Bool? = false
             if let gender = currentState.gender {
-                if let selectedJobOrHobby = currentState.selectedJobOrHobby, selectedJobOrHobby.count > 0 {
-                    isNextButtonEnabled = true
-                }
+                isNextButtonEnabled = true
             }
             
             return Observable.concat([
@@ -96,9 +94,7 @@ class QurationUserInfoReactor: Reactor {
         case .didGenderBoyButtonTapped:
             var isNextButtonEnabled: Bool? = false
             if let birthday = currentState.birthday {
-                if let selectedJobOrHobby = currentState.selectedJobOrHobby, selectedJobOrHobby.count > 0 {
-                    isNextButtonEnabled = true
-                }
+                isNextButtonEnabled = true
             }
             return Observable.concat([
                 .just(Mutation.setIsNextButtonEnabled(isNextButtonEnabled)),
@@ -133,16 +129,12 @@ class QurationUserInfoReactor: Reactor {
             
             if currentState.birthday != nil {
                 if currentState.gender != nil {
-                    if currentSelectedJobOrHobby.count > 0 {
-                        isNextButtonEnabled = true
-                    } else {
-                        
-                    }
+                    isNextButtonEnabled = true
                 } else {
-                    
+                    isNextButtonEnabled = false
                 }
             } else {
-                
+                isNextButtonEnabled = false
             }
             
             return Observable.concat([

@@ -140,7 +140,6 @@ class QurationUserInfoVC: UIViewController, View {
             .disposed(by: disposeBag)
         
         reactor.state.map { $0.isNextButtonEnabled }
-            .debug()
             .distinctUntilChanged()
             .filterNil()
             .filter { $0 == true }
