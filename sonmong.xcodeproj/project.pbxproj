@@ -46,6 +46,9 @@
 		A15C25EE2BB05097007AA1E7 /* QurationHistoryTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15C25ED2BB05097007AA1E7 /* QurationHistoryTableViewHeaderView.swift */; };
 		A177908B2BF45FF6000641BA /* CodeSupporting.swift in Sources */ = {isa = PBXBuildFile; fileRef = A177908A2BF45FF6000641BA /* CodeSupporting.swift */; };
 		A1857B172BE1117F00A00AB6 /* ReactorKit in Frameworks */ = {isa = PBXBuildFile; productRef = A1857B162BE1117F00A00AB6 /* ReactorKit */; };
+		A197A09D2BF4DA09003902E6 /* MyPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A197A09C2BF4DA09003902E6 /* MyPageVC.swift */; };
+		A197A09F2BF4DA1A003902E6 /* MyPageReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A197A09E2BF4DA1A003902E6 /* MyPageReactor.swift */; };
+		A197A0A12BF4DA27003902E6 /* MyPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A197A0A02BF4DA27003902E6 /* MyPageView.swift */; };
 		A1C3A2522BADD922000A41FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C3A2512BADD922000A41FD /* AppDelegate.swift */; };
 		A1C3A2542BADD922000A41FD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C3A2532BADD922000A41FD /* SceneDelegate.swift */; };
 		A1C3A2562BADD922000A41FD /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C3A2552BADD922000A41FD /* LaunchViewController.swift */; };
@@ -130,6 +133,9 @@
 		A15C25EB2BB0505B007AA1E7 /* QurationHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QurationHistoryTableViewCell.swift; sourceTree = "<group>"; };
 		A15C25ED2BB05097007AA1E7 /* QurationHistoryTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QurationHistoryTableViewHeaderView.swift; sourceTree = "<group>"; };
 		A177908A2BF45FF6000641BA /* CodeSupporting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeSupporting.swift; sourceTree = "<group>"; };
+		A197A09C2BF4DA09003902E6 /* MyPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageVC.swift; sourceTree = "<group>"; };
+		A197A09E2BF4DA1A003902E6 /* MyPageReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageReactor.swift; sourceTree = "<group>"; };
+		A197A0A02BF4DA27003902E6 /* MyPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageView.swift; sourceTree = "<group>"; };
 		A1C3A24E2BADD922000A41FD /* 몽지.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "몽지.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1C3A2512BADD922000A41FD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A1C3A2532BADD922000A41FD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -247,6 +253,16 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
+		A197A09B2BF4D9FD003902E6 /* MyPage */ = {
+			isa = PBXGroup;
+			children = (
+				A197A09C2BF4DA09003902E6 /* MyPageVC.swift */,
+				A197A0A02BF4DA27003902E6 /* MyPageView.swift */,
+				A197A09E2BF4DA1A003902E6 /* MyPageReactor.swift */,
+			);
+			path = MyPage;
+			sourceTree = "<group>";
+		};
 		A1C3A2452BADD922000A41FD = {
 			isa = PBXGroup;
 			children = (
@@ -273,6 +289,7 @@
 				A1CFB0CF2BAEFB5400BAABC8 /* Model */,
 				A1CFB0C22BAEF0FC00BAABC8 /* Supporting */,
 				A15C25C02BAFD807007AA1E7 /* Main */,
+				A197A09B2BF4D9FD003902E6 /* MyPage */,
 				A13617572BAFBDC200113997 /* Quration */,
 				A1EE02402BAE7C66008EE352 /* Login */,
 				A1C3A2512BADD922000A41FD /* AppDelegate.swift */,
@@ -498,6 +515,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A15C25D02BAFFD99007AA1E7 /* QurationFirstView.swift in Sources */,
+				A197A09F2BF4DA1A003902E6 /* MyPageReactor.swift in Sources */,
 				A1F484E72BE21D67003F5E66 /* MainVC.swift in Sources */,
 				4C5CA0752BB473D700E2E659 /* QurationLoadingReactor.swift in Sources */,
 				A1E8A8862BB5D4F00062ADED /* QurationFinalReactor.swift in Sources */,
@@ -534,6 +552,7 @@
 				A1CFB0B92BAEEBF200BAABC8 /* RegisterUserVC.swift in Sources */,
 				A1C3A2542BADD922000A41FD /* SceneDelegate.swift in Sources */,
 				A15C25C62BAFDEDC007AA1E7 /* HomeReactor.swift in Sources */,
+				A197A09D2BF4DA09003902E6 /* MyPageVC.swift in Sources */,
 				A15C25DC2BB024F9007AA1E7 /* QurationSecondView.swift in Sources */,
 				A15C25E02BB02CB8007AA1E7 /* QurationThirdVC.swift in Sources */,
 				A1CFB0C62BAEF17700BAABC8 /* APIService.swift in Sources */,
@@ -551,6 +570,7 @@
 				A15C25C42BAFDEC6007AA1E7 /* HomeVC.swift in Sources */,
 				4C5CA06D2BB3192E00E2E659 /* Slider.swift in Sources */,
 				A12D52272BAE82D4000B08D4 /* LoginService.swift in Sources */,
+				A197A0A12BF4DA27003902E6 /* MyPageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
