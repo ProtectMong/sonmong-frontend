@@ -222,7 +222,7 @@ class QurationUserInfoVC: UIViewController, View {
             .filterNil()
             .withUnretained(self)
             .subscribe(onNext: { vc, message in
-                let alert = UIAlertController(title: "필수값을 확인해주세요!", message: message, preferredStyle: .alert)
+                let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
                 
                 self.present(alert, animated: true, completion: nil)

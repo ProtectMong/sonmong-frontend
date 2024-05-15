@@ -161,8 +161,6 @@ class QurationUserInfoReactor: Reactor {
                 }
             }) ?? []
             
-            print("✅ selectedJobOrHobby = \(selectedJobOrHobby)")
-            
             if currentRecognizedDatas.count <= 0 {
                 return Observable.concat([
                     .just(Mutation.setSelectedJobOrHobby(nil)),
