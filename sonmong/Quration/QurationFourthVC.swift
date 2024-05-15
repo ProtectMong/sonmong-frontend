@@ -126,6 +126,38 @@ class QurationFourthVC: UIViewController, View {
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
+        reactor.state.map { $0.isChangePastPainError }
+            .distinctUntilChanged()
+            .filterNil()
+            .filter { $0 == true }
+            .withUnretained(self)
+            .subscribe(onNext: { vc, _ in
+                vc.baseView.pastPainNoButton.layer.borderColor = Constant.Color.m1.cgColor
+                vc.baseView.pastPainYesButton.layer.borderColor = Constant.Color.m1.cgColor
+            })
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.isChangePastMusclePainError }
+            .distinctUntilChanged()
+            .filterNil()
+            .filter { $0 == true }
+            .withUnretained(self)
+            .subscribe(onNext: { vc, isEnabled in
+                vc.baseView.pastMusclePainNoButton.layer.borderColor = Constant.Color.m1.cgColor
+                vc.baseView.pastMusclePainYesButton.layer.borderColor = Constant.Color.m1.cgColor
+            })
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.isNextButtonEnabled }
+            .distinctUntilChanged()
+            .filterNil()
+            .filter { $0 == false }
+            .withUnretained(self)
+            .subscribe(onNext: { vc, isEnabled in
+                vc.baseView.nextButton.backgroundColor = Constant.Color.g4
+            })
+            .disposed(by: disposeBag)
+        
         reactor.state.map { $0.isPresentPreviousVC }
             .distinctUntilChanged()
             .filterNil()

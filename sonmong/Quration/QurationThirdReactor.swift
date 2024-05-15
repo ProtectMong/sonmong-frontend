@@ -168,7 +168,7 @@ class QurationThirdReactor: Reactor {
                 isChangeWithWorkError = true
             }
             
-            if  isChangePainHowError == true || isChangePainWhenError == true || isChangeWithWorkError == true {
+            if isChangePainHowError == true || isChangePainWhenError == true || isChangeWithWorkError == true {
                 return Observable.concat([
                     .just(Mutation.setIsChangePainHowError(isChangePainHowError)),
                     .just(Mutation.setIsChangePainWhenError(isChangePainWhenError)),

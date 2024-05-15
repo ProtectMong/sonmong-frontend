@@ -140,6 +140,17 @@ class QurationFourthView: UIView {
         return label
     }()
     
+    let pastPainEssentialMark: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "*"
+        label.textColor = Constant.Color.m1
+        label.font = .systemFont(ofSize: 20, weight: .regular)
+        label.numberOfLines = 0
+        
+        return label
+    }()
+    
     let pastPainButtonStackView: UIStackView = {
         let view = UIStackView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -182,6 +193,17 @@ class QurationFourthView: UIView {
         label.text = "다른 관절이나 근육 관련 질환을 앓은 적이 있나요?"
         label.textColor = Constant.Color.b1
         label.font = .systemFont(ofSize: 16, weight: .bold)
+        label.numberOfLines = 0
+        
+        return label
+    }()
+    
+    let pastMusclePainEssentialMark: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "*"
+        label.textColor = Constant.Color.m1
+        label.font = .systemFont(ofSize: 20, weight: .regular)
         label.numberOfLines = 0
         
         return label
@@ -330,6 +352,12 @@ class QurationFourthView: UIView {
             make.leading.equalTo(contentView.snp.leading).offset(22)
         }
         
+        contentView.addSubview(pastPainEssentialMark)
+        pastPainEssentialMark.snp.makeConstraints { make in
+            make.top.equalTo(pastPainTitle)
+            make.leading.equalTo(pastPainTitle.snp.trailing)
+        }
+        
         contentView.addSubview(pastPainButtonStackView)
         pastPainButtonStackView.snp.makeConstraints { make in
             make.top.equalTo(pastPainTitle.snp.bottom).offset(14)
@@ -346,6 +374,12 @@ class QurationFourthView: UIView {
         pastMusclePainTitle.snp.makeConstraints { make in
             make.top.equalTo(pastPainButtonStackView.snp.bottom).offset(30)
             make.leading.equalTo(contentView.snp.leading).offset(22)
+        }
+        
+        contentView.addSubview(pastMusclePainEssentialMark)
+        pastMusclePainEssentialMark.snp.makeConstraints { make in
+            make.top.equalTo(pastMusclePainTitle)
+            make.leading.equalTo(pastMusclePainTitle.snp.trailing)
         }
         
         contentView.addSubview(pastMusclePainButtonStackView)
