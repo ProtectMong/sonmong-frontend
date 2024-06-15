@@ -45,7 +45,8 @@ extension Constant {
     }
     
     struct APIURL {
-        static let api = "http://175.106.96.107:8080"
+        static let apiDevelopments = "http://175.106.96.107:8080"
+        static let api = "https://mongji.site"
         
         static let login = api + "/api/v1/auth/signin"
         static let aiCuration = api + "/api/v1/ai-consulting/curation"
@@ -55,6 +56,7 @@ extension Constant {
     struct UDKey {
         static let accessToken = "USER_ACCESS_TOKEN"
         static let userName = "USER_NAME"
+        static let userPhoneNumber = "USER_PHONE_NUMBER"
     }
     
 }

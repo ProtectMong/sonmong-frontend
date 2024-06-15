@@ -93,6 +93,7 @@ extension QurationMainVC: UITableViewDelegate {
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "QurationHistoryTableViewHeaderView") as! QurationHistoryTableViewHeaderView
         
         reactor?.state.map { $0.historyCount }
+            .debug()
             .distinctUntilChanged()
             .filterNil()
             .map { "총 \($0)개" }

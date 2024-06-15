@@ -114,6 +114,7 @@ class LoginReactor: Reactor {
                         let accessToken = response.data?.accessToken ?? ""
                         UserDefaults.standard.set(accessToken, forKey: Constant.UDKey.accessToken)
                         UserDefaults.standard.set(name, forKey: Constant.UDKey.userName)
+                        UserDefaults.standard.set(phoneNumber, forKey: Constant.UDKey.userPhoneNumber)
                         
                         return Observable.concat([
                             .just(Mutation.setIsPresentMainVC(true)),

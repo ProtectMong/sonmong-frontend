@@ -152,6 +152,10 @@ class HomeVC: UIViewController, View {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = false
+    }
     
     init(reactor: HomeReactor) {
         super.init(nibName: nil, bundle: nil)

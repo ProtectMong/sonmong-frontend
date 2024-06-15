@@ -21,6 +21,7 @@ class QurationFinalVC: UIViewController, View {
         super.viewDidLoad()
         
         bindNavigation()
+        reactor?.action.onNext(.viewDidLoaded)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -32,7 +33,18 @@ class QurationFinalVC: UIViewController, View {
     func bind(reactor: QurationFinalReactor) {
         baseView.layout(superView: self.view)
         
-        
+        reactor.state.map { $0.result }
+            .filterNil()
+            .map { _ in UserDefaults.standard.object(forKey: Constant.UDKey.userName) }
+            .filterNil()
+            .withUnretained(self)
+            .subscribe(onNext: { vc, userName in
+                let levelOfPain = reactor.currentState.requestData?.levelOfPain ?? 0
+                let titleText = "\(userName)님의 통증 점수 \(levelOfPain)점"
+                vc.baseView.painGradeTitleLable.text = titleText
+            })
+            .disposed(by: disposeBag)
+         
     }
     
     func bindNavigation() {

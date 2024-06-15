@@ -30,7 +30,6 @@ class QurationHistoryTableViewHeaderView: UITableViewHeaderFooterView {
     let totalNumberLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "총 3개"
         label.font = .systemFont(ofSize: 14, weight: .regular)
         label.textColor = Constant.Color.g4
         

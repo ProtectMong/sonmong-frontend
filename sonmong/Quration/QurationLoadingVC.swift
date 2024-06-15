@@ -45,10 +45,9 @@ class QurationLoadingVC: UIViewController, View {
                     .delay(.seconds(3), scheduler: MainScheduler.instance)
                     .subscribe(onNext: { text in
                         let result = reactor.currentState.qurationResult
-                        print("👏 finla!! = ", result)
-                        
+                        let request = reactor.currentState.qurationParameter
                         let finalVC = QurationFinalVC()
-                        let finalReactor = QurationFinalReactor(isEmptyData: isQuraitonDataEmpty, result: result)
+                        let finalReactor = QurationFinalReactor(isEmptyData: isQuraitonDataEmpty, requestData: request, result: result)
                         finalVC.reactor = finalReactor
                         
                         vc.navigationController?.pushViewController(finalVC, animated: true)
