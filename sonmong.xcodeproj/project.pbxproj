@@ -13,6 +13,14 @@
 		4C5CA0712BB4735C00E2E659 /* QurationLoadingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5CA0702BB4735C00E2E659 /* QurationLoadingVC.swift */; };
 		4C5CA0732BB473BB00E2E659 /* QurationLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5CA0722BB473BB00E2E659 /* QurationLoadingView.swift */; };
 		4C5CA0752BB473D700E2E659 /* QurationLoadingReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5CA0742BB473D700E2E659 /* QurationLoadingReactor.swift */; };
+		A11A8FCA2C1D572900011216 /* MyPageServies.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11A8FC92C1D572900011216 /* MyPageServies.swift */; };
+		A11A8FCC2C1D5C5200011216 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11A8FCB2C1D5C5200011216 /* Extension.swift */; };
+		A11A8FCE2C1D611700011216 /* PrivacyPolicyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11A8FCD2C1D611700011216 /* PrivacyPolicyVC.swift */; };
+		A11A8FD02C1D614400011216 /* PrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11A8FCF2C1D614400011216 /* PrivacyPolicyView.swift */; };
+		A11A8FD22C1D619C00011216 /* PrivacyPolicyReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11A8FD12C1D619C00011216 /* PrivacyPolicyReactor.swift */; };
+		A11A8FD42C1D646300011216 /* TermsOfServiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11A8FD32C1D646300011216 /* TermsOfServiceVC.swift */; };
+		A11A8FD62C1D648D00011216 /* TermsOfServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11A8FD52C1D648D00011216 /* TermsOfServiceView.swift */; };
+		A11A8FD82C1D649D00011216 /* TermsOfServiceReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11A8FD72C1D649D00011216 /* TermsOfServiceReactor.swift */; };
 		A12D521B2BAE7F3E000B08D4 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = A12D521A2BAE7F3E000B08D4 /* SnapKit */; };
 		A12D521E2BAE7F4B000B08D4 /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = A12D521D2BAE7F4B000B08D4 /* RxBlocking */; };
 		A12D52202BAE7F4B000B08D4 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = A12D521F2BAE7F4B000B08D4 /* RxCocoa */; };
@@ -49,6 +57,10 @@
 		A197A09D2BF4DA09003902E6 /* MyPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A197A09C2BF4DA09003902E6 /* MyPageVC.swift */; };
 		A197A09F2BF4DA1A003902E6 /* MyPageReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A197A09E2BF4DA1A003902E6 /* MyPageReactor.swift */; };
 		A197A0A12BF4DA27003902E6 /* MyPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A197A0A02BF4DA27003902E6 /* MyPageView.swift */; };
+		A197A0A32BF98153003902E6 /* MypageListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A197A0A22BF98153003902E6 /* MypageListCell.swift */; };
+		A197A0A52C0C29F0003902E6 /* SNSLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A197A0A42C0C29F0003902E6 /* SNSLoginView.swift */; };
+		A197A0A72C0C2C5B003902E6 /* SNSLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A197A0A62C0C2C5B003902E6 /* SNSLoginVC.swift */; };
+		A197A0A92C0C2C82003902E6 /* SNSLoginReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A197A0A82C0C2C82003902E6 /* SNSLoginReactor.swift */; };
 		A1C3A2522BADD922000A41FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C3A2512BADD922000A41FD /* AppDelegate.swift */; };
 		A1C3A2542BADD922000A41FD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C3A2532BADD922000A41FD /* SceneDelegate.swift */; };
 		A1C3A2562BADD922000A41FD /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C3A2552BADD922000A41FD /* LaunchViewController.swift */; };
@@ -107,6 +119,14 @@
 		4C5CA0702BB4735C00E2E659 /* QurationLoadingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QurationLoadingVC.swift; sourceTree = "<group>"; };
 		4C5CA0722BB473BB00E2E659 /* QurationLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QurationLoadingView.swift; sourceTree = "<group>"; };
 		4C5CA0742BB473D700E2E659 /* QurationLoadingReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QurationLoadingReactor.swift; sourceTree = "<group>"; };
+		A11A8FC92C1D572900011216 /* MyPageServies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageServies.swift; sourceTree = "<group>"; };
+		A11A8FCB2C1D5C5200011216 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		A11A8FCD2C1D611700011216 /* PrivacyPolicyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyVC.swift; sourceTree = "<group>"; };
+		A11A8FCF2C1D614400011216 /* PrivacyPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyView.swift; sourceTree = "<group>"; };
+		A11A8FD12C1D619C00011216 /* PrivacyPolicyReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyReactor.swift; sourceTree = "<group>"; };
+		A11A8FD32C1D646300011216 /* TermsOfServiceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfServiceVC.swift; sourceTree = "<group>"; };
+		A11A8FD52C1D648D00011216 /* TermsOfServiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfServiceView.swift; sourceTree = "<group>"; };
+		A11A8FD72C1D649D00011216 /* TermsOfServiceReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfServiceReactor.swift; sourceTree = "<group>"; };
 		A12D52262BAE82D4000B08D4 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		A13617582BAFBDE200113997 /* QurationUserInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QurationUserInfoVC.swift; sourceTree = "<group>"; };
 		A136175A2BAFBE0C00113997 /* QurtionUserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QurtionUserInfoView.swift; sourceTree = "<group>"; };
@@ -136,6 +156,10 @@
 		A197A09C2BF4DA09003902E6 /* MyPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageVC.swift; sourceTree = "<group>"; };
 		A197A09E2BF4DA1A003902E6 /* MyPageReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageReactor.swift; sourceTree = "<group>"; };
 		A197A0A02BF4DA27003902E6 /* MyPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageView.swift; sourceTree = "<group>"; };
+		A197A0A22BF98153003902E6 /* MypageListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageListCell.swift; sourceTree = "<group>"; };
+		A197A0A42C0C29F0003902E6 /* SNSLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNSLoginView.swift; sourceTree = "<group>"; };
+		A197A0A62C0C2C5B003902E6 /* SNSLoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNSLoginVC.swift; sourceTree = "<group>"; };
+		A197A0A82C0C2C82003902E6 /* SNSLoginReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNSLoginReactor.swift; sourceTree = "<group>"; };
 		A1C3A24E2BADD922000A41FD /* 몽지.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "몽지.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1C3A2512BADD922000A41FD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A1C3A2532BADD922000A41FD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -259,6 +283,13 @@
 				A197A09C2BF4DA09003902E6 /* MyPageVC.swift */,
 				A197A0A02BF4DA27003902E6 /* MyPageView.swift */,
 				A197A09E2BF4DA1A003902E6 /* MyPageReactor.swift */,
+				A197A0A22BF98153003902E6 /* MypageListCell.swift */,
+				A11A8FCD2C1D611700011216 /* PrivacyPolicyVC.swift */,
+				A11A8FCF2C1D614400011216 /* PrivacyPolicyView.swift */,
+				A11A8FD12C1D619C00011216 /* PrivacyPolicyReactor.swift */,
+				A11A8FD32C1D646300011216 /* TermsOfServiceVC.swift */,
+				A11A8FD52C1D648D00011216 /* TermsOfServiceView.swift */,
+				A11A8FD72C1D649D00011216 /* TermsOfServiceReactor.swift */,
 			);
 			path = MyPage;
 			sourceTree = "<group>";
@@ -331,6 +362,7 @@
 				A15C25D52BAFFF66007AA1E7 /* CollectionViewCellLeftAlignFlowLayout.swift */,
 				A1F484E42BE21239003F5E66 /* Request.swift */,
 				A177908A2BF45FF6000641BA /* CodeSupporting.swift */,
+				A11A8FCB2C1D5C5200011216 /* Extension.swift */,
 			);
 			path = Supporting;
 			sourceTree = "<group>";
@@ -342,6 +374,7 @@
 				4C5CA06E2BB45F6300E2E659 /* Quration.swift */,
 				A1F686FB2BF45E2E00D9E8C8 /* QurationAnswer.swift */,
 				A1E5B4072BF49D7600E6981B /* QurationList.swift */,
+				A11A8FC92C1D572900011216 /* MyPageServies.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -353,6 +386,9 @@
 				A1EE02432BAE7C7B008EE352 /* LoginView.swift */,
 				A1EE02482BAE7DC5008EE352 /* LoginReactor.swift */,
 				A12D52262BAE82D4000B08D4 /* LoginService.swift */,
+				A197A0A62C0C2C5B003902E6 /* SNSLoginVC.swift */,
+				A197A0A42C0C29F0003902E6 /* SNSLoginView.swift */,
+				A197A0A82C0C2C82003902E6 /* SNSLoginReactor.swift */,
 				A1CFB0B82BAEEBF200BAABC8 /* RegisterUserVC.swift */,
 				A1CFB0BA2BAEEC1800BAABC8 /* RegisterUserView.swift */,
 				A1CFB0BC2BAEEC3200BAABC8 /* RegisterUserReactor.swift */,
@@ -517,28 +553,36 @@
 				A15C25D02BAFFD99007AA1E7 /* QurationFirstView.swift in Sources */,
 				A197A09F2BF4DA1A003902E6 /* MyPageReactor.swift in Sources */,
 				A1F484E72BE21D67003F5E66 /* MainVC.swift in Sources */,
+				A11A8FD62C1D648D00011216 /* TermsOfServiceView.swift in Sources */,
 				4C5CA0752BB473D700E2E659 /* QurationLoadingReactor.swift in Sources */,
 				A1E8A8862BB5D4F00062ADED /* QurationFinalReactor.swift in Sources */,
 				A15C25EE2BB05097007AA1E7 /* QurationHistoryTableViewHeaderView.swift in Sources */,
 				A15C25C82BAFEBB2007AA1E7 /* QurationMainVC.swift in Sources */,
 				A1F686FC2BF45E2E00D9E8C8 /* QurationAnswer.swift in Sources */,
 				A1E8A8822BB5D4CE0062ADED /* QurationFinalVC.swift in Sources */,
+				A11A8FCC2C1D5C5200011216 /* Extension.swift in Sources */,
 				A1C3A2562BADD922000A41FD /* LaunchViewController.swift in Sources */,
 				A15C25E62BB02F13007AA1E7 /* QurationFourthVC.swift in Sources */,
 				A1C3A2522BADD922000A41FD /* AppDelegate.swift in Sources */,
 				A1D7E05B2BB1790900EAF09F /* QurationMainView.swift in Sources */,
+				A11A8FD42C1D646300011216 /* TermsOfServiceVC.swift in Sources */,
 				A13617592BAFBDE200113997 /* QurationUserInfoVC.swift in Sources */,
 				A15C25D22BAFFDA3007AA1E7 /* QurationFirstReactor.swift in Sources */,
 				A1E5B4082BF49D7600E6981B /* QurationList.swift in Sources */,
+				A11A8FD22C1D619C00011216 /* PrivacyPolicyReactor.swift in Sources */,
 				A177908B2BF45FF6000641BA /* CodeSupporting.swift in Sources */,
 				A1CFB0BD2BAEEC3200BAABC8 /* RegisterUserReactor.swift in Sources */,
 				A15C25E42BB02CDE007AA1E7 /* QurationThirdReactor.swift in Sources */,
 				A1EE02492BAE7DC5008EE352 /* LoginReactor.swift in Sources */,
+				A11A8FCA2C1D572900011216 /* MyPageServies.swift in Sources */,
 				A1CFB0BB2BAEEC1800BAABC8 /* RegisterUserView.swift in Sources */,
+				A11A8FCE2C1D611700011216 /* PrivacyPolicyVC.swift in Sources */,
+				A11A8FD82C1D649D00011216 /* TermsOfServiceReactor.swift in Sources */,
 				4C5CA06B2BB2DD4800E2E659 /* HomeView.swift in Sources */,
 				A15C25CE2BAFFD78007AA1E7 /* QurationFirstVC.swift in Sources */,
 				A15C25E22BB02CD1007AA1E7 /* QurationThirdView.swift in Sources */,
 				A15C25E82BB02F2A007AA1E7 /* QurationFourthView.swift in Sources */,
+				A197A0A72C0C2C5B003902E6 /* SNSLoginVC.swift in Sources */,
 				A15C25DE2BB02502007AA1E7 /* QurationSecondReactor.swift in Sources */,
 				A15C25D82BB002EA007AA1E7 /* PainAreaCollectionViewCellReactor.swift in Sources */,
 				A136175D2BAFBE1E00113997 /* QurtionUserInfoReactor.swift in Sources */,
@@ -552,10 +596,13 @@
 				A1CFB0B92BAEEBF200BAABC8 /* RegisterUserVC.swift in Sources */,
 				A1C3A2542BADD922000A41FD /* SceneDelegate.swift in Sources */,
 				A15C25C62BAFDEDC007AA1E7 /* HomeReactor.swift in Sources */,
+				A197A0A52C0C29F0003902E6 /* SNSLoginView.swift in Sources */,
 				A197A09D2BF4DA09003902E6 /* MyPageVC.swift in Sources */,
 				A15C25DC2BB024F9007AA1E7 /* QurationSecondView.swift in Sources */,
 				A15C25E02BB02CB8007AA1E7 /* QurationThirdVC.swift in Sources */,
 				A1CFB0C62BAEF17700BAABC8 /* APIService.swift in Sources */,
+				A197A0A32BF98153003902E6 /* MypageListCell.swift in Sources */,
+				A11A8FD02C1D614400011216 /* PrivacyPolicyView.swift in Sources */,
 				4C5CA0732BB473BB00E2E659 /* QurationLoadingView.swift in Sources */,
 				A1F484E52BE21239003F5E66 /* Request.swift in Sources */,
 				A15C25EA2BB02F39007AA1E7 /* QurationFourthReactor.swift in Sources */,
@@ -571,6 +618,7 @@
 				4C5CA06D2BB3192E00E2E659 /* Slider.swift in Sources */,
 				A12D52272BAE82D4000B08D4 /* LoginService.swift in Sources */,
 				A197A0A12BF4DA27003902E6 /* MyPageView.swift in Sources */,
+				A197A0A92C0C2C82003902E6 /* SNSLoginReactor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

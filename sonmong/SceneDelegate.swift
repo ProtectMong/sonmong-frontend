@@ -23,6 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let userAccessToken = UserDefaults.standard.object(forKey: Constant.UDKey.accessToken)
         if userAccessToken == nil {
+//            let loginVC = SNSLoginVC(reactor: SNSLoginReactor())
             let loginVC = LoginVC(reactor: LoginReactor())
             window?.rootViewController = loginVC
         } else {
